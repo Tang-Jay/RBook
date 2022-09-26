@@ -1,0 +1,38 @@
+---
+title: "R语言画图"
+author: "唐洁"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+# output: html_document
+---
+
+# 序
+
+学习R作图的笔记。
+
+
+```{r, include=FALSE,eval=FALSE}
+bookdown::render_book()
+```
+
+```{r, include=FALSE,eval=FALSE}
+bookdown::pdf_book()
+```
+
+```{r include=FALSE,eval=FALSE}
+bookdown::serve_book()
+```
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
