@@ -1,6 +1,6 @@
 # QQ图
 ```{r include=FALSE}
-knitr::opts_chunk$set(results='hold', collapse = TRUE, warning = FALSE, message=FALSE, fig.align='center')
+knitr::opts_chunk$set(results='hold', collapse = TRUE, warning = FALSE, out.width = '100%', out.height='100%',message=FALSE,fig.align='center')
 ```
 
 ## 背景知识

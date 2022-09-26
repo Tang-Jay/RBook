@@ -1,6 +1,6 @@
 # 绘图基础
 ```{r include=FALSE}
-knitr::opts_chunk$set(results='hold', collapse = TRUE, warning = FALSE, message=FALSE, fig.align='center')
+knitr::opts_chunk$set(results='hold', collapse = TRUE, warning = FALSE, message=FALSE, out.width = '100%', out.height = '100%',fig.align='center')
 ```
 
 ## 图形参数设置

@@ -12,10 +12,12 @@ github-repo: rstudio/bookdown-demo
 # output: html_document
 ---
 
-# 序
+# 前言
 
 学习R作图的笔记。
 
+## 致谢
+感谢谢益辉开发的bookdown和模板。
 
 ```{r, include=FALSE,eval=FALSE}
 bookdown::render_book()
