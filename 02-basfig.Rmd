@@ -1,5 +1,5 @@
 ```{r include=FALSE}
-knitr::opts_chunk$set(results='hold', collapse = TRUE, warning = FALSE, message=FALSE, out.width = '80%', out.height = '80%',fig.align='center')
+knitr::opts_chunk$set(results='hold', collapse = TRUE, warning = FALSE, message=FALSE, out.width = '60%', out.height = '60%',fig.align='center')
 ```
 
 # 低级绘图函数

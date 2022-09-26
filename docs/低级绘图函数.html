@@ -223,7 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb32-6"><a href="低级绘图函数.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">as.matrix</span>(<span class="fu">rbind</span>(data<span class="sc">$</span>pre,data<span class="sc">$</span>now)),</span>
 <span id="cb32-7"><a href="低级绘图函数.html#cb32-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">beside=</span><span class="cn">TRUE</span>,<span class="at">col=</span>col,<span class="at">axes=</span>F)</span>
 <span id="cb32-8"><a href="低级绘图函数.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-34-1.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-34-1.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="低级绘图函数.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 添加主标题、副标题、主轴标题</span></span>
 <span id="cb33-2"><a href="低级绘图函数.html#cb33-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">pre=</span><span class="fu">c</span>(<span class="dv">113</span>,<span class="dv">134</span>,<span class="dv">123</span>,<span class="dv">145</span>,<span class="dv">137</span>,<span class="dv">196</span>,<span class="dv">187</span>),</span>
 <span id="cb33-3"><a href="低级绘图函数.html#cb33-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">now=</span><span class="fu">c</span>(<span class="dv">129</span>,<span class="dv">122</span>,<span class="dv">134</span>,<span class="dv">149</span>,<span class="dv">146</span>,<span class="dv">215</span>,<span class="dv">208</span>))</span>
@@ -235,7 +235,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb33-9"><a href="低级绘图函数.html#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main=</span><span class="fu">list</span>(<span class="st">&#39;图5-1 本周pv趋势分析图&#39;</span>,<span class="at">cex=</span><span class="fl">1.5</span>,<span class="at">col=</span><span class="st">&#39;red&#39;</span>,<span class="at">font=</span><span class="dv">3</span>),</span>
 <span id="cb33-10"><a href="低级绘图函数.html#cb33-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">sub=</span><span class="st">&#39;数据来源：某电商网站&#39;</span>,</span>
 <span id="cb33-11"><a href="低级绘图函数.html#cb33-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab=</span><span class="st">&#39;网站日页面浏览量pv&#39;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-35-1.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-35-1.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="低级绘图函数.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 示例5-2</span></span>
 <span id="cb34-2"><a href="低级绘图函数.html#cb34-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">pre=</span><span class="fu">c</span>(<span class="dv">113</span>,<span class="dv">134</span>,<span class="dv">123</span>,<span class="dv">145</span>,<span class="dv">137</span>,<span class="dv">196</span>,<span class="dv">187</span>),</span>
 <span id="cb34-3"><a href="低级绘图函数.html#cb34-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">now=</span><span class="fu">c</span>(<span class="dv">129</span>,<span class="dv">122</span>,<span class="dv">134</span>,<span class="dv">149</span>,<span class="dv">146</span>,<span class="dv">215</span>,<span class="dv">208</span>))</span>
@@ -246,7 +246,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb34-8"><a href="低级绘图函数.html#cb34-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="fu">list</span>(<span class="st">&#39;图5-2 本周pv趋势分析图&#39;</span>,<span class="at">cex=</span><span class="fl">1.5</span>,<span class="at">col=</span><span class="st">&#39;red&#39;</span>,<span class="at">font=</span><span class="dv">3</span>),</span>
 <span id="cb34-9"><a href="低级绘图函数.html#cb34-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">sub=</span><span class="st">&#39;数据来源：某电商网站&#39;</span>,</span>
 <span id="cb34-10"><a href="低级绘图函数.html#cb34-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">&#39;网站日页面浏览量pv&#39;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-36-1.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-36-1.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="图例" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> 图例<a href="低级绘图函数.html#图例" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -274,7 +274,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb36-11"><a href="低级绘图函数.html#cb36-11" aria-hidden="true" tabindex="-1"></a>text.legend <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;上周pv&#39;</span>,<span class="st">&#39;本周pv&#39;</span>)</span>
 <span id="cb36-12"><a href="低级绘图函数.html#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;topleft&#39;</span>,<span class="at">pch=</span><span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">15</span>),<span class="at">legend=</span>text.legend,</span>
 <span id="cb36-13"><a href="低级绘图函数.html#cb36-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span>col,<span class="at">bty=</span><span class="st">&#39;n&#39;</span>,<span class="at">horiz=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-38-1.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-38-1.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="低级绘图函数.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 示例6-2</span></span>
 <span id="cb37-2"><a href="低级绘图函数.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span><span class="st">&#39;STKaiti&#39;</span>)</span>
 <span id="cb37-3"><a href="低级绘图函数.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">as.matrix</span>(<span class="fu">rbind</span>(data<span class="sc">$</span>pre,data<span class="sc">$</span>now)),</span>
@@ -284,7 +284,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb37-7"><a href="低级绘图函数.html#cb37-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">&#39;网站日页面浏览量pv&#39;</span>)</span>
 <span id="cb37-8"><a href="低级绘图函数.html#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;top&#39;</span>,<span class="at">pch=</span><span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">15</span>),<span class="at">legend=</span>text.legend,</span>
 <span id="cb37-9"><a href="低级绘图函数.html#cb37-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span>col,<span class="at">bty=</span><span class="st">&#39;o&#39;</span>,<span class="at">horiz=</span><span class="cn">FALSE</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-39-1.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-39-1.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="低级绘图函数.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 示例6-3</span></span>
 <span id="cb38-2"><a href="低级绘图函数.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span><span class="st">&#39;STKaiti&#39;</span>)</span>
 <span id="cb38-3"><a href="低级绘图函数.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">as.matrix</span>(<span class="fu">rbind</span>(data<span class="sc">$</span>pre,data<span class="sc">$</span>now)),</span>
@@ -293,7 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb38-6"><a href="低级绘图函数.html#cb38-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">sub=</span><span class="st">&#39;数据来源：某电商网站&#39;</span>,</span>
 <span id="cb38-7"><a href="低级绘图函数.html#cb38-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">&#39;网站日页面浏览量pv&#39;</span>,</span>
 <span id="cb38-8"><a href="低级绘图函数.html#cb38-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text=</span>text.legend)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-40-1.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-40-1.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="坐标轴" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> 坐标轴<a href="低级绘图函数.html#坐标轴" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -322,7 +322,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb40-11"><a href="低级绘图函数.html#cb40-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text=</span><span class="fu">c</span>(<span class="st">&#39;上周pv&#39;</span>,<span class="st">&#39;本周pv&#39;</span>))</span>
 <span id="cb40-12"><a href="低级绘图函数.html#cb40-12" aria-hidden="true" tabindex="-1"></a>text.x<span class="ot">=</span><span class="fu">c</span>(<span class="st">&#39;周一&#39;</span>,<span class="st">&#39;周二&#39;</span>,<span class="st">&#39;周三&#39;</span>,<span class="st">&#39;周四&#39;</span>,<span class="st">&#39;周五&#39;</span>,<span class="st">&#39;周六&#39;</span>,<span class="st">&#39;周日&#39;</span>)</span>
 <span id="cb40-13"><a href="低级绘图函数.html#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,<span class="at">at=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">11</span>,<span class="dv">14</span>,<span class="dv">17</span>,<span class="dv">20</span>), <span class="at">labels=</span>text.x, <span class="at">tick=</span><span class="cn">FALSE</span>, <span class="at">cex.axis=</span><span class="fl">0.75</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-42-1.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-42-1.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="低级绘图函数.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 示例7-2</span></span>
 <span id="cb41-2"><a href="低级绘图函数.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span><span class="st">&#39;STKaiti&#39;</span>)</span>
 <span id="cb41-3"><a href="低级绘图函数.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>,<span class="fu">rnorm</span>(<span class="dv">7</span>),<span class="at">main=</span><span class="st">&#39;图7-2&#39;</span>,</span>
@@ -330,7 +330,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb41-5"><a href="低级绘图函数.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,<span class="at">at=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>,<span class="at">labels=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>],<span class="at">col.axis=</span><span class="st">&#39;blue&#39;</span>)</span>
 <span id="cb41-6"><a href="低级绘图函数.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">3</span>,<span class="at">col=</span><span class="st">&#39;gold&#39;</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="fl">1.5</span>)</span>
 <span id="cb41-7"><a href="低级绘图函数.html#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">4</span>,<span class="at">col=</span><span class="st">&#39;violet&#39;</span>,<span class="at">col.axis=</span><span class="st">&#39;dark violet&#39;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-43-1.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-43-1.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="低级绘图函数.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 高级绘图 plot</span></span>
 <span id="cb42-2"><a href="低级绘图函数.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 设置坐标轴的展示和范围axes、xlim、ylim</span></span>
 <span id="cb42-3"><a href="低级绘图函数.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="do">## axes  T(默认)显示x、y轴;F隐藏</span></span>
@@ -350,7 +350,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb43-3"><a href="低级绘图函数.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>,<span class="fu">rnorm</span>(<span class="dv">7</span>),<span class="at">main=</span><span class="st">&#39;图7-3&#39;</span>,<span class="at">type=</span><span class="st">&#39;s&#39;</span>,</span>
 <span id="cb43-4"><a href="低级绘图函数.html#cb43-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes=</span>T,<span class="at">frame=</span>F,<span class="at">col=</span><span class="st">&#39;red&#39;</span>,</span>
 <span id="cb43-5"><a href="低级绘图函数.html#cb43-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxt=</span><span class="st">&#39;s&#39;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-45-1.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-45-1.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="低级绘图函数.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 示例7-4</span></span>
 <span id="cb44-2"><a href="低级绘图函数.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span><span class="st">&#39;STKaiti&#39;</span>)</span>
 <span id="cb44-3"><a href="低级绘图函数.html#cb44-3" aria-hidden="true" tabindex="-1"></a>lx <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="at">length.out =</span> <span class="dv">41</span>)</span>
@@ -367,7 +367,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb44-14"><a href="低级绘图函数.html#cb44-14" aria-hidden="true" tabindex="-1"></a>e.y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span><span class="sc">:-</span><span class="dv">1</span> ; at.y <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span>e.y</span>
 <span id="cb44-15"><a href="低级绘图函数.html#cb44-15" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> at.y, <span class="at">col.axis =</span> <span class="st">&quot;red&quot;</span>, <span class="at">las =</span> <span class="dv">1</span>,</span>
 <span id="cb44-16"><a href="低级绘图函数.html#cb44-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">as.expression</span>(<span class="fu">lapply</span>(e.y, <span class="cf">function</span>(E) <span class="fu">bquote</span>(<span class="dv">10</span><span class="sc">^</span>.(E)))))</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-46-1.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-46-1.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="低级绘图函数.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 坐标轴的密度分布表示</span></span>
 <span id="cb45-2"><a href="低级绘图函数.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb45-3"><a href="低级绘图函数.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span><span class="st">&#39;STKaiti&#39;</span>)</span>
@@ -376,7 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb45-6"><a href="低级绘图函数.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(carat,price,<span class="at">main=</span><span class="st">&#39;图7-5&#39;</span>)</span>
 <span id="cb45-7"><a href="低级绘图函数.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rug</span>(carat)</span>
 <span id="cb45-8"><a href="低级绘图函数.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rug</span>(price,<span class="at">side=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-47-1.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-47-1.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="低级绘图函数.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(diamonds1)</span></code></pre></div>
 </div>
 <div id="网格线" class="section level2 hasAnchor" number="3.4">
@@ -394,7 +394,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb48-8"><a href="低级绘图函数.html#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,<span class="at">at=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,<span class="at">labels=</span>x.text,<span class="at">tick=</span>F)</span>
 <span id="cb48-9"><a href="低级绘图函数.html#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">50000</span>,<span class="dv">250000</span>,<span class="dv">50000</span>), <span class="at">las =</span> <span class="dv">1</span>)</span>
 <span id="cb48-10"><a href="低级绘图函数.html#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>(<span class="at">nx=</span><span class="cn">NA</span>,<span class="at">ny=</span><span class="dv">8</span>,<span class="at">lwd=</span><span class="dv">1</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-49-1.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-49-1.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="低级绘图函数.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 示例8-2</span></span>
 <span id="cb49-2"><a href="低级绘图函数.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span><span class="st">&#39;STKaiti&#39;</span>)</span>
 <span id="cb49-3"><a href="低级绘图函数.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sales.volume,<span class="at">type=</span><span class="st">&#39;b&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">20000</span>,<span class="dv">250000</span>),<span class="at">xaxt=</span><span class="st">&#39;n&#39;</span>,</span>
@@ -402,7 +402,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb49-5"><a href="低级绘图函数.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,<span class="at">at=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,<span class="at">labels=</span>x.text,<span class="at">tick=</span>F)</span>
 <span id="cb49-6"><a href="低级绘图函数.html#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>(<span class="at">nx=</span><span class="cn">NULL</span>,<span class="at">ny=</span><span class="cn">NULL</span>,<span class="at">col=</span><span class="st">&#39;lightgray&#39;</span>,</span>
 <span id="cb49-7"><a href="低级绘图函数.html#cb49-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">lty=</span><span class="st">&#39;dotted&#39;</span>,<span class="at">lwd=</span><span class="fu">par</span>(<span class="st">&#39;lwd&#39;</span>),<span class="at">equilogs=</span>T)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-50-1.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-50-1.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="点-1" class="section level2 hasAnchor" number="3.5">
 <h2><span class="header-section-number">3.5</span> 点<a href="低级绘图函数.html#点-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -426,7 +426,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb51-11"><a href="低级绘图函数.html#cb51-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mtext</span>(<span class="st">&quot;points(*, type = </span><span class="sc">\&quot;</span><span class="st">s</span><span class="sc">\&quot;</span><span class="st">, ...)&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">cex =</span> <span class="fl">0.8</span>)</span>
 <span id="cb51-12"><a href="低级绘图函数.html#cb51-12" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb51-13"><a href="低级绘图函数.html#cb51-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-52-1.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-52-1.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="线-1" class="section level2 hasAnchor" number="3.6">
 <h2><span class="header-section-number">3.6</span> 线<a href="低级绘图函数.html#线-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -442,7 +442,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb53-4"><a href="低级绘图函数.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span><span class="st">&#39;STKaiti&#39;</span>)</span>
 <span id="cb53-5"><a href="低级绘图函数.html#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iris[,<span class="dv">1</span>]<span class="sc">~</span>iris[,<span class="dv">3</span>],<span class="at">col=</span><span class="st">&#39;blue&#39;</span>,<span class="at">main=</span><span class="st">&#39;图9.2-1&#39;</span>)</span>
 <span id="cb53-6"><a href="低级绘图函数.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(sol.lm,<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-54-1.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-54-1.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="低级绘图函数.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="do">## lines</span></span>
 <span id="cb54-2"><a href="低级绘图函数.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 示例9.2-2</span></span>
 <span id="cb54-3"><a href="低级绘图函数.html#cb54-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">12</span></span>
@@ -455,12 +455,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb54-10"><a href="低级绘图函数.html#cb54-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mtext</span>(<span class="st">&quot;lines(*, type = </span><span class="sc">\&quot;</span><span class="st">s</span><span class="sc">\&quot;</span><span class="st">, ...)&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">cex =</span> <span class="fl">0.8</span>)</span>
 <span id="cb54-11"><a href="低级绘图函数.html#cb54-11" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb54-12"><a href="低级绘图函数.html#cb54-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-55-1.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-55-1.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="低级绘图函数.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 示例9.2-3</span></span>
 <span id="cb55-2"><a href="低级绘图函数.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span><span class="st">&#39;STKaiti&#39;</span>)</span>
 <span id="cb55-3"><a href="低级绘图函数.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cars,<span class="at">main=</span><span class="st">&#39;图9.2-3 Stopping Distance versus Speed&#39;</span>)</span>
 <span id="cb55-4"><a href="低级绘图函数.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(stats<span class="sc">::</span><span class="fu">lowess</span>(cars))</span></code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-56-1.png" width="80%" height="80%" style="display: block; margin: auto;" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-56-1.png" width="60%" height="60%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

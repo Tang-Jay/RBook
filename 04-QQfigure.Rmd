@@ -1,6 +1,6 @@
 # QQ图
 ```{r include=FALSE}
-knitr::opts_chunk$set(results='hold', collapse = TRUE, warning = FALSE, out.width = '80%', out.height='80%',message=FALSE,fig.align='center')
+knitr::opts_chunk$set(results='hold', collapse = TRUE, warning = FALSE, out.width = '100%', out.height='100%',message=FALSE,fig.align='center')
 ```
 
 ## 绘制QQ图
@@ -22,7 +22,7 @@ plot(qnorm(seq(0,1,0.001)), seq(0,1,0.001),
      xaxs = 'i', yaxs = 'i', type = 'l')
 ```
 
-```{r fig.width=5, fig.height=5}
+```{r fig.height=3.4,fig.width=3}
 x = seq(-3,3,0.01)
 par(mfrow=c(1,1))
 plot(x,x, main = 'Q-Q figure',
@@ -32,16 +32,15 @@ plot(x,x, main = 'Q-Q figure',
      type = 'l')
 ```
 
-```{r fig.width=5, fig.height=5}
+```{r fig.height=3.4,fig.width=3}
 n = 200
 x = seq(-3,3,0.01)
 par(mfrow=c(1,1))
 plot(x,x, 
      xlim = c(-3,3), ylim = c(-3,3), 
      xaxs = 'i', yaxs = 'i',
-     xaxt = 'n', yaxt = 'n',
+     yaxt = 'n',
      ann = F, type = 'l')
-axis(1, las = 1)
 axis(2, las = 1)
 title(main = paste0('Normal n = ',n), 
       xlab= 'Normal quantile', ylab = 'EL quantile', 
