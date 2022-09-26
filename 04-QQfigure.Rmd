@@ -1,9 +1,54 @@
 # QQ图
 ```{r include=FALSE}
-knitr::opts_chunk$set(results='hold', collapse = TRUE, warning = FALSE, out.width = '100%', out.height='100%',message=FALSE,fig.align='center')
+knitr::opts_chunk$set(results='hold', collapse = TRUE, warning = FALSE, out.width = '80%', out.height='80%',message=FALSE,fig.align='center')
 ```
 
-## 背景知识
+## 绘制QQ图
+### R包绘制
+- 基础包qqnorm和qqline函数
+- R包car
+
+### 手工绘制
+- 基础工具plot绘制
+```{r fig.height=4,fig.width=8}
+par(mfrow=c(1,2))
+plot(seq(-3,3,0.01), dnorm(seq(-3,3,0.01)), 
+     xlab = 'x', ylab = 'f(x)',
+     ylim = c(0,0.5),
+     xaxs = 'i', yaxs = 'i', type = 'l')
+
+plot(qnorm(seq(0,1,0.001)), seq(0,1,0.001), 
+     xlab = 'x', ylab = 'F(x)',
+     xaxs = 'i', yaxs = 'i', type = 'l')
+```
+
+```{r fig.width=5, fig.height=5}
+x = seq(-3,3,0.01)
+par(mfrow=c(1,1))
+plot(x,x, main = 'Q-Q figure',
+     xlim = c(-3,3), ylim = c(-3,3), 
+     xlab = 'Theoretical quantile', ylab = 'Sample quantile',
+     xaxs = 'i', yaxs = 'i',
+     type = 'l')
+```
+
+```{r fig.width=5, fig.height=5}
+n = 200
+x = seq(-3,3,0.01)
+par(mfrow=c(1,1))
+plot(x,x, 
+     xlim = c(-3,3), ylim = c(-3,3), 
+     xaxs = 'i', yaxs = 'i',
+     xaxt = 'n', yaxt = 'n',
+     ann = F, type = 'l')
+axis(1, las = 1)
+axis(2, las = 1)
+title(main = paste0('Normal n = ',n), 
+      xlab= 'Normal quantile', ylab = 'EL quantile', 
+      line = 2)
+```
+
+## 一个例子
 
 ### 了解分位数。
 
@@ -49,53 +94,6 @@ p + geom_hline(yintercept = qk,linetype = 2)
 ```
 
 
-## 绘制QQ图
-### R包绘制
-- 基础包qqnorm和qqline函数
-- R包car
-
-### 手工绘制
-3. 基础工具plot绘制
-```{r fig.height=4,fig.width=8}
-par(mfrow=c(1,2))
-plot(seq(-3,3,0.01), dnorm(seq(-3,3,0.01)), 
-     xlab = 'x', ylab = 'f(x)',
-     ylim = c(0,0.5),
-     xaxs = 'i', yaxs = 'i', type = 'l')
-
-plot(qnorm(seq(0,1,0.001)), seq(0,1,0.001), 
-     xlab = 'x', ylab = 'F(x)',
-     xaxs = 'i', yaxs = 'i', type = 'l')
-```
-
-```{r fig.width=5, fig.height=5}
-x = seq(-3,3,0.01)
-par(mfrow=c(1,1))
-plot(x,x, main = 'Q-Q figure',
-     xlim = c(-3,3), ylim = c(-3,3), 
-     xlab = 'Theoretical quantile', ylab = 'Sample quantile',
-     xaxs = 'i', yaxs = 'i',
-     type = 'l')
-```
-
-```{r fig.width=5, fig.height=5}
-n = 200
-x = seq(-3,3,0.01)
-par(mfrow=c(1,1))
-plot(x,x, 
-     xlim = c(-3,3), ylim = c(-3,3), 
-     xaxs = 'i', yaxs = 'i',
-     xaxt = 'n', yaxt = 'n',
-     ann = F, type = 'l')
-axis(1, las = 1)
-axis(2, las = 1)
-title(main = paste0('Normal n = ',n), 
-      xlab= 'Normal quantile', ylab = 'EL quantile', 
-      line = 2)
-```
-
-
-## 一个例子
 ### 数据准备
 
 ```{r}
