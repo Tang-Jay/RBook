@@ -16,6 +16,10 @@ github-repo: rstudio/bookdown-demo
 
 学习R作图的笔记。
 
+- [Codes](https://github.com/Tang-Jay/RBook) 
+
+- [Bookdown Online](https://tang-jay.github.io/RBook)
+
 ## 致谢
 感谢谢益辉开发的bookdown和模板。
 
