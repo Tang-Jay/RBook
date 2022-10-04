@@ -1,0 +1,202 @@
+# gt包画表
+
+```{r}
+# 安装
+remotes::install_github("rstudio/gt")
+```
+
+```{r}
+library('gt')
+library('dplyr')
+```
+
+## 获取数据
+
+```{r}
+islands_tbl <- dplyr::tibble(name=names(islands),size = islands) %>%
+dplyr::arrange(desc(size)) %>%
+dplyr::slice(1:10)
+islands_tbl
+```
+
+## 创建gt表格
+
+```{r}
+gt_tbl <- gt(data = islands_tbl)
+gt_tbl
+```
+
+## 添加标题
+
+```{r}
+gt_tbl <- gt_tbl %>% 
+  tab_header(
+    title = "Large Landmasses of the World",
+    subtitle = "The top ten largest are presented"
+  )
+gt_tbl
+```
+
+```{r}
+# 使用markdown将标题和子标题分别加粗和斜体化
+gt(islands_tbl[1:2,]) %>%
+  tab_header(
+    title = md("**Large Landmasses of the World**"),
+    subtitle = md("The *top two* largest are presented")
+  )
+```
+```{r}
+gt_tbl <- 
+  gt_tbl %>%
+  tab_source_note(
+    source_note = "Source: The World Almanac and Book of Facts, 1975, page 406."
+  ) %>%
+  tab_source_note(
+    source_note = md("Reference: McNeil, D. R. (1977) *Interactive Data Analysis*. Wiley.")
+  )
+
+gt_tbl
+```
+
+## 添加脚注
+
+```{r}
+# 添加带交叉引用的脚注
+gt_tbl <- 
+  gt_tbl %>%
+  tab_footnote(
+    footnote = "The Americas.",
+    locations = cells_body(columns = name, rows = 3:4) # 在第3/4行，name这一列添加角标
+  )
+
+gt_tbl
+```
+
+## 添加左侧边栏
+
+```{r}
+# 添加左侧边栏
+gt_tbl <- islands_tbl %>% 
+  gt(rowname_col = "name") %>% # 使用name这一列作为左侧边栏
+  tab_stubhead(label = "landmass") # 添加左侧边栏的标题
+gt_tbl
+```
+
+## 分组
+
+```{r}
+# 分组
+gt_tbl <- gt_tbl %>% 
+  tab_row_group( 
+    label = "continent",
+    rows = 1:6 # 1-6行是大洲
+  ) %>% 
+  tab_row_group(
+    label = "country",
+    rows = c("Australia", "Greenland")
+  ) %>% 
+  tab_row_group(
+    label = "subregion",
+    rows = c("New Guinea", "Borneo")
+  )
+
+gt_tbl
+```
+
+## 总体呈现
+
+```{r}
+# 全部放入一起
+gt_tbl <- islands_tbl %>% 
+  gt(rowname_col = "name") %>% 
+  tab_stubhead(label = "landmass") %>% 
+  tab_row_group(
+    label = "continent",
+    rows = 1:6
+  ) %>%
+  tab_row_group(
+    label = "country",
+    rows = c("Australia", "Greenland")
+  ) %>%
+  tab_row_group(
+    label = "subregion",
+    rows = c("New Guinea", "Borneo")
+  ) %>% 
+  tab_header(
+    title = "Large Landmasses of the World",
+    subtitle = "The top ten largest are presented"
+  ) %>%
+  tab_source_note(
+    source_note = "Source: The World Almanac and Book of Facts, 1975, page 406."
+  ) %>%
+  tab_source_note(
+    source_note = md("Reference: McNeil, D. R. (1977) *Interactive Data Analysis*. Wiley.")
+  ) %>%
+  tab_footnote(
+    footnote = md("The **largest** by area."),
+    locations = cells_body(
+      columns = size, rows = 1
+    )
+  ) %>%
+  tab_footnote(
+    footnote = "The lowest by population.",
+    locations = cells_body(
+      columns = size, rows = contains("arc")
+    )
+  )
+  
+gt_tbl
+```
+
+## 其他
+
+```{r}
+# 增加列组别
+gt_tbl <- 
+  gt(airquality) %>%
+  tab_header(
+    title = "New York Air Quality Measurements",
+    subtitle = "Daily measurements in New York City (May 1-10, 1973)"
+  ) %>%
+  tab_spanner(
+    label = "Time",
+    columns = c(Month, Day)
+  ) %>%
+  tab_spanner(
+    label = "Measurement",
+    columns = c(Ozone, Solar.R, Wind, Temp)
+  )
+
+gt_tbl
+```
+
+
+```{r}
+# 支持随意更改列的位置以及HTML语法：
+gt_tbl <- 
+  gt_tbl %>%
+  cols_move_to_start( # 移到前面去
+    columns = c(Month, Day)
+  ) %>%
+  cols_label(
+    Ozone = html("Ozone,<br>ppbV"),
+    Solar.R = html("Solar R.,<br>cal/m<sup>2</sup>"),
+    Wind = html("Wind,<br>mph"),
+    Temp = html("Temp,<br>&deg;F")
+  )
+
+gt_tbl
+```
+
+
+```{r}
+# 创建根
+gt_tbl <-
+islands_tbl %>%
+gt(rowname_col = "name")
+# 展示
+gt_tbl
+```
+
+
+

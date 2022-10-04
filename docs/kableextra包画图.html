@@ -1,0 +1,2712 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 7 章 kableExtra包画图 | R语言画图</title>
+  <meta name="description" content="第 7 章 kableExtra包画图 | R语言画图" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 7 章 kableExtra包画图 | R语言画图" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 7 章 kableExtra包画图 | R语言画图" />
+  
+  
+  
+
+<meta name="author" content="唐洁" />
+
+
+<meta name="date" content="2022-10-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="gt包画表.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R语言画图</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 前言</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i><b>1.1</b> 致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="图形参数设置.html"><a href="图形参数设置.html"><i class="fa fa-check"></i><b>2</b> 图形参数设置</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="图形参数设置.html"><a href="图形参数设置.html#颜色"><i class="fa fa-check"></i><b>2.1</b> 颜色</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="图形参数设置.html"><a href="图形参数设置.html#固有颜色"><i class="fa fa-check"></i><b>2.1.1</b> 固有颜色</a></li>
+<li class="chapter" data-level="2.1.2" data-path="图形参数设置.html"><a href="图形参数设置.html#自助调色"><i class="fa fa-check"></i><b>2.1.2</b> 自助调色</a></li>
+<li class="chapter" data-level="2.1.3" data-path="图形参数设置.html"><a href="图形参数设置.html#主题调色板"><i class="fa fa-check"></i><b>2.1.3</b> 主题调色板</a></li>
+<li class="chapter" data-level="2.1.4" data-path="图形参数设置.html"><a href="图形参数设置.html#其他主题配色函数"><i class="fa fa-check"></i><b>2.1.4</b> 其他主题配色函数</a></li>
+<li class="chapter" data-level="2.1.5" data-path="图形参数设置.html"><a href="图形参数设置.html#颜色扩展包"><i class="fa fa-check"></i><b>2.1.5</b> 颜色扩展包</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="图形参数设置.html"><a href="图形参数设置.html#文字"><i class="fa fa-check"></i><b>2.2</b> 文字</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="图形参数设置.html"><a href="图形参数设置.html#字体"><i class="fa fa-check"></i><b>2.2.1</b> 字体</a></li>
+<li class="chapter" data-level="2.2.2" data-path="图形参数设置.html"><a href="图形参数设置.html#大小"><i class="fa fa-check"></i><b>2.2.2</b> 大小</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="图形参数设置.html"><a href="图形参数设置.html#点"><i class="fa fa-check"></i><b>2.3</b> 点</a></li>
+<li class="chapter" data-level="2.4" data-path="图形参数设置.html"><a href="图形参数设置.html#线"><i class="fa fa-check"></i><b>2.4</b> 线</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="低级绘图函数.html"><a href="低级绘图函数.html"><i class="fa fa-check"></i><b>3</b> 低级绘图函数</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="低级绘图函数.html"><a href="低级绘图函数.html#标题"><i class="fa fa-check"></i><b>3.1</b> 标题</a></li>
+<li class="chapter" data-level="3.2" data-path="低级绘图函数.html"><a href="低级绘图函数.html#图例"><i class="fa fa-check"></i><b>3.2</b> 图例</a></li>
+<li class="chapter" data-level="3.3" data-path="低级绘图函数.html"><a href="低级绘图函数.html#坐标轴"><i class="fa fa-check"></i><b>3.3</b> 坐标轴</a></li>
+<li class="chapter" data-level="3.4" data-path="低级绘图函数.html"><a href="低级绘图函数.html#网格线"><i class="fa fa-check"></i><b>3.4</b> 网格线</a></li>
+<li class="chapter" data-level="3.5" data-path="低级绘图函数.html"><a href="低级绘图函数.html#点-1"><i class="fa fa-check"></i><b>3.5</b> 点</a></li>
+<li class="chapter" data-level="3.6" data-path="低级绘图函数.html"><a href="低级绘图函数.html#线-1"><i class="fa fa-check"></i><b>3.6</b> 线</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="高级绘图函数.html"><a href="高级绘图函数.html"><i class="fa fa-check"></i><b>4</b> 高级绘图函数</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="高级绘图函数.html"><a href="高级绘图函数.html#饼图"><i class="fa fa-check"></i><b>4.1</b> 饼图</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="qq图.html"><a href="qq图.html"><i class="fa fa-check"></i><b>5</b> QQ图</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="qq图.html"><a href="qq图.html#绘制qq图"><i class="fa fa-check"></i><b>5.1</b> 绘制QQ图</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="qq图.html"><a href="qq图.html#r包绘制"><i class="fa fa-check"></i><b>5.1.1</b> R包绘制</a></li>
+<li class="chapter" data-level="5.1.2" data-path="qq图.html"><a href="qq图.html#手工绘制"><i class="fa fa-check"></i><b>5.1.2</b> 手工绘制</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="qq图.html"><a href="qq图.html#一个例子"><i class="fa fa-check"></i><b>5.2</b> 一个例子</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="qq图.html"><a href="qq图.html#了解分位数"><i class="fa fa-check"></i><b>5.2.1</b> 了解分位数。</a></li>
+<li class="chapter" data-level="5.2.2" data-path="qq图.html"><a href="qq图.html#数据准备"><i class="fa fa-check"></i><b>5.2.2</b> 数据准备</a></li>
+<li class="chapter" data-level="5.2.3" data-path="qq图.html"><a href="qq图.html#三种分布的密度图"><i class="fa fa-check"></i><b>5.2.3</b> 三种分布的密度图</a></li>
+<li class="chapter" data-level="5.2.4" data-path="qq图.html"><a href="qq图.html#画出15个分位数"><i class="fa fa-check"></i><b>5.2.4</b> 画出15个分位数</a></li>
+<li class="chapter" data-level="5.2.5" data-path="qq图.html"><a href="qq图.html#绘制qq图-1"><i class="fa fa-check"></i><b>5.2.5</b> 绘制qq图</a></li>
+<li class="chapter" data-level="5.2.6" data-path="qq图.html"><a href="qq图.html#函数绘制正态qq图"><i class="fa fa-check"></i><b>5.2.6</b> 函数绘制正态qq图</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="qq图.html"><a href="qq图.html#参考资料"><i class="fa fa-check"></i><b>5.3</b> 参考资料</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="gt包画表.html"><a href="gt包画表.html"><i class="fa fa-check"></i><b>6</b> gt包画表</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="gt包画表.html"><a href="gt包画表.html#获取数据"><i class="fa fa-check"></i><b>6.1</b> 获取数据</a></li>
+<li class="chapter" data-level="6.2" data-path="gt包画表.html"><a href="gt包画表.html#创建gt表格"><i class="fa fa-check"></i><b>6.2</b> 创建gt表格</a></li>
+<li class="chapter" data-level="6.3" data-path="gt包画表.html"><a href="gt包画表.html#添加标题"><i class="fa fa-check"></i><b>6.3</b> 添加标题</a></li>
+<li class="chapter" data-level="6.4" data-path="gt包画表.html"><a href="gt包画表.html#添加脚注"><i class="fa fa-check"></i><b>6.4</b> 添加脚注</a></li>
+<li class="chapter" data-level="6.5" data-path="gt包画表.html"><a href="gt包画表.html#添加左侧边栏"><i class="fa fa-check"></i><b>6.5</b> 添加左侧边栏</a></li>
+<li class="chapter" data-level="6.6" data-path="gt包画表.html"><a href="gt包画表.html#分组"><i class="fa fa-check"></i><b>6.6</b> 分组</a></li>
+<li class="chapter" data-level="6.7" data-path="gt包画表.html"><a href="gt包画表.html#总体呈现"><i class="fa fa-check"></i><b>6.7</b> 总体呈现</a></li>
+<li class="chapter" data-level="6.8" data-path="gt包画表.html"><a href="gt包画表.html#其他"><i class="fa fa-check"></i><b>6.8</b> 其他</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="kableextra包画图.html"><a href="kableextra包画图.html"><i class="fa fa-check"></i><b>7</b> kableExtra包画图</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="kableextra包画图.html"><a href="kableextra包画图.html#生成html表格"><i class="fa fa-check"></i><b>7.1</b> 生成html表格</a></li>
+<li class="chapter" data-level="7.2" data-path="kableextra包画图.html"><a href="kableextra包画图.html#渲染表格"><i class="fa fa-check"></i><b>7.2</b> 渲染表格</a></li>
+<li class="chapter" data-level="7.3" data-path="kableextra包画图.html"><a href="kableextra包画图.html#搭配dplyr"><i class="fa fa-check"></i><b>7.3</b> 搭配dplyr</a></li>
+<li class="chapter" data-level="7.4" data-path="kableextra包画图.html"><a href="kableextra包画图.html#搭配formattable"><i class="fa fa-check"></i><b>7.4</b> 搭配formattable</a></li>
+<li class="chapter" data-level="7.5" data-path="kableextra包画图.html"><a href="kableextra包画图.html#列祖"><i class="fa fa-check"></i><b>7.5</b> 列祖</a></li>
+<li class="chapter" data-level="7.6" data-path="kableextra包画图.html"><a href="kableextra包画图.html#行组"><i class="fa fa-check"></i><b>7.6</b> 行组</a></li>
+<li class="chapter" data-level="7.7" data-path="kableextra包画图.html"><a href="kableextra包画图.html#保存html表格"><i class="fa fa-check"></i><b>7.7</b> 保存HTML表格</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言画图</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="kableextra包画图" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">第 7 章</span> kableExtra包画图<a href="kableextra包画图.html#kableextra包画图" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>记录一些自己可能会常用的表格，至于更多的可以参考大佬们写的教程，真的很酷。</p>
+<ul>
+<li><p><a href="https://haozhu233.github.io/kableExtra/awesome_table_in_html_cn.html">中文教程</a></p></li>
+<li><p><a href="http://haozhu233.github.io/kableExtra/">英文教程</a></p></li>
+</ul>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="kableextra包画图.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div>
+<div id="生成html表格" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> 生成html表格<a href="kableextra包画图.html#生成html表格" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="kableextra包画图.html#cb90-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> mtcars[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span>
+<span id="cb90-2"><a href="kableextra包画图.html#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-3"><a href="kableextra包画图.html#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(dt, <span class="st">&quot;html&quot;</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mpg
+</th>
+<th style="text-align:right;">
+cyl
+</th>
+<th style="text-align:right;">
+disp
+</th>
+<th style="text-align:right;">
+hp
+</th>
+<th style="text-align:right;">
+drat
+</th>
+<th style="text-align:right;">
+wt
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Mazda RX4
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.620
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.875
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Datsun 710
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+3.85
+</td>
+<td style="text-align:right;">
+2.320
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet 4 Drive
+</td>
+<td style="text-align:right;">
+21.4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.08
+</td>
+<td style="text-align:right;">
+3.215
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet Sportabout
+</td>
+<td style="text-align:right;">
+18.7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+360
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+3.15
+</td>
+<td style="text-align:right;">
+3.440
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="渲染表格" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> 渲染表格<a href="kableextra包画图.html#渲染表格" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="kableextra包画图.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bootstrap是个开源的CSS库，可以用来很方便地美化HTML页面。</span></span>
+<span id="cb91-2"><a href="kableextra包画图.html#cb91-2" aria-hidden="true" tabindex="-1"></a>dt <span class="sc">%&gt;%</span></span>
+<span id="cb91-3"><a href="kableextra包画图.html#cb91-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb91-4"><a href="kableextra包画图.html#cb91-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>()</span></code></pre></div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mpg
+</th>
+<th style="text-align:right;">
+cyl
+</th>
+<th style="text-align:right;">
+disp
+</th>
+<th style="text-align:right;">
+hp
+</th>
+<th style="text-align:right;">
+drat
+</th>
+<th style="text-align:right;">
+wt
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Mazda RX4
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.620
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.875
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Datsun 710
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+3.85
+</td>
+<td style="text-align:right;">
+2.320
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet 4 Drive
+</td>
+<td style="text-align:right;">
+21.4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.08
+</td>
+<td style="text-align:right;">
+3.215
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet Sportabout
+</td>
+<td style="text-align:right;">
+18.7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+360
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+3.15
+</td>
+<td style="text-align:right;">
+3.440
+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>其他风格
+<ul>
+<li>striped</li>
+<li>bordered</li>
+<li>hover</li>
+<li>condensed</li>
+<li>responsive</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="kableextra包画图.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 给表格加上斑马纹和悬浮效果</span></span>
+<span id="cb92-2"><a href="kableextra包画图.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(dt, <span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb92-3"><a href="kableextra包画图.html#cb92-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>))</span></code></pre></div>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mpg
+</th>
+<th style="text-align:right;">
+cyl
+</th>
+<th style="text-align:right;">
+disp
+</th>
+<th style="text-align:right;">
+hp
+</th>
+<th style="text-align:right;">
+drat
+</th>
+<th style="text-align:right;">
+wt
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Mazda RX4
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.620
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.875
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Datsun 710
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+3.85
+</td>
+<td style="text-align:right;">
+2.320
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet 4 Drive
+</td>
+<td style="text-align:right;">
+21.4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.08
+</td>
+<td style="text-align:right;">
+3.215
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet Sportabout
+</td>
+<td style="text-align:right;">
+18.7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+360
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+3.15
+</td>
+<td style="text-align:right;">
+3.440
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="kableextra包画图.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 让内容显得更紧凑</span></span>
+<span id="cb93-2"><a href="kableextra包画图.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(dt, <span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb93-3"><a href="kableextra包画图.html#cb93-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>))</span></code></pre></div>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mpg
+</th>
+<th style="text-align:right;">
+cyl
+</th>
+<th style="text-align:right;">
+disp
+</th>
+<th style="text-align:right;">
+hp
+</th>
+<th style="text-align:right;">
+drat
+</th>
+<th style="text-align:right;">
+wt
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Mazda RX4
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.620
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.875
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Datsun 710
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+3.85
+</td>
+<td style="text-align:right;">
+2.320
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet 4 Drive
+</td>
+<td style="text-align:right;">
+21.4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.08
+</td>
+<td style="text-align:right;">
+3.215
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet Sportabout
+</td>
+<td style="text-align:right;">
+18.7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+360
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+3.15
+</td>
+<td style="text-align:right;">
+3.440
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="kableextra包画图.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 让表格样式随屏幕宽度变化，更适合手机屏。</span></span>
+<span id="cb94-2"><a href="kableextra包画图.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(dt, <span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb94-3"><a href="kableextra包画图.html#cb94-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span></code></pre></div>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mpg
+</th>
+<th style="text-align:right;">
+cyl
+</th>
+<th style="text-align:right;">
+disp
+</th>
+<th style="text-align:right;">
+hp
+</th>
+<th style="text-align:right;">
+drat
+</th>
+<th style="text-align:right;">
+wt
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Mazda RX4
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.620
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.875
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Datsun 710
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+3.85
+</td>
+<td style="text-align:right;">
+2.320
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet 4 Drive
+</td>
+<td style="text-align:right;">
+21.4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.08
+</td>
+<td style="text-align:right;">
+3.215
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet Sportabout
+</td>
+<td style="text-align:right;">
+18.7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+360
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+3.15
+</td>
+<td style="text-align:right;">
+3.440
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="kableextra包画图.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 控制表格的宽度</span></span>
+<span id="cb95-2"><a href="kableextra包画图.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(dt, <span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb95-3"><a href="kableextra包画图.html#cb95-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="at">full_width =</span> F)</span></code></pre></div>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mpg
+</th>
+<th style="text-align:right;">
+cyl
+</th>
+<th style="text-align:right;">
+disp
+</th>
+<th style="text-align:right;">
+hp
+</th>
+<th style="text-align:right;">
+drat
+</th>
+<th style="text-align:right;">
+wt
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Mazda RX4
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.620
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.875
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Datsun 710
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+3.85
+</td>
+<td style="text-align:right;">
+2.320
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet 4 Drive
+</td>
+<td style="text-align:right;">
+21.4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.08
+</td>
+<td style="text-align:right;">
+3.215
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet Sportabout
+</td>
+<td style="text-align:right;">
+18.7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+360
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+3.15
+</td>
+<td style="text-align:right;">
+3.440
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="搭配dplyr" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> 搭配dplyr<a href="kableextra包画图.html#搭配dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="kableextra包画图.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb96-2"><a href="kableextra包画图.html#cb96-2" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="sc">%&gt;%</span></span>
+<span id="cb96-3"><a href="kableextra包画图.html#cb96-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb96-4"><a href="kableextra包画图.html#cb96-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">car =</span> <span class="fu">row.names</span>(.),</span>
+<span id="cb96-5"><a href="kableextra包画图.html#cb96-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># You don&#39;t need format = &quot;html&quot; if you have ever defined options(knitr.table.format)</span></span>
+<span id="cb96-6"><a href="kableextra包画图.html#cb96-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mpg =</span> <span class="fu">cell_spec</span>(mpg, <span class="st">&quot;html&quot;</span>, <span class="at">color =</span> <span class="fu">ifelse</span>(mpg <span class="sc">&gt;</span> <span class="dv">20</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>)),</span>
+<span id="cb96-7"><a href="kableextra包画图.html#cb96-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">cyl =</span> <span class="fu">cell_spec</span>(cyl, <span class="st">&quot;html&quot;</span>, <span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">align =</span> <span class="st">&quot;c&quot;</span>, <span class="at">angle =</span> <span class="dv">45</span>, </span>
+<span id="cb96-8"><a href="kableextra包画图.html#cb96-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">background =</span> <span class="fu">factor</span>(cyl, <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>), </span>
+<span id="cb96-9"><a href="kableextra包画图.html#cb96-9" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">c</span>(<span class="st">&quot;#666666&quot;</span>, <span class="st">&quot;#999999&quot;</span>, <span class="st">&quot;#BBBBBB&quot;</span>)))</span>
+<span id="cb96-10"><a href="kableextra包画图.html#cb96-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb96-11"><a href="kableextra包画图.html#cb96-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(car, mpg, cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb96-12"><a href="kableextra包画图.html#cb96-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">&quot;html&quot;</span>, <span class="at">escape =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb96-13"><a href="kableextra包画图.html#cb96-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>, <span class="at">full_width =</span> F)</span></code></pre></div>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+car
+</th>
+<th style="text-align:left;">
+mpg
+</th>
+<th style="text-align:left;">
+cyl
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Mazda RX4
+</td>
+<td style="text-align:left;">
+Mazda RX4
+</td>
+<td style="text-align:left;">
+<span style="     color: red !important;">21</span>
+</td>
+<td style="text-align:left;">
+<span style="-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); display: inline-block; "><span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #999999 !important;text-align: c;">6</span></span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:left;">
+<span style="     color: red !important;">21</span>
+</td>
+<td style="text-align:left;">
+<span style="-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); display: inline-block; "><span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #999999 !important;text-align: c;">6</span></span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Datsun 710
+</td>
+<td style="text-align:left;">
+Datsun 710
+</td>
+<td style="text-align:left;">
+<span style="     color: red !important;">22.8</span>
+</td>
+<td style="text-align:left;">
+<span style="-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); display: inline-block; "><span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #666666 !important;text-align: c;">4</span></span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet 4 Drive
+</td>
+<td style="text-align:left;">
+Hornet 4 Drive
+</td>
+<td style="text-align:left;">
+<span style="     color: red !important;">21.4</span>
+</td>
+<td style="text-align:left;">
+<span style="-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); display: inline-block; "><span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #999999 !important;text-align: c;">6</span></span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet Sportabout
+</td>
+<td style="text-align:left;">
+Hornet Sportabout
+</td>
+<td style="text-align:left;">
+<span style="     color: blue !important;">18.7</span>
+</td>
+<td style="text-align:left;">
+<span style="-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); display: inline-block; "><span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #BBBBBB !important;text-align: c;">8</span></span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Valiant
+</td>
+<td style="text-align:left;">
+Valiant
+</td>
+<td style="text-align:left;">
+<span style="     color: blue !important;">18.1</span>
+</td>
+<td style="text-align:left;">
+<span style="-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); display: inline-block; "><span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #999999 !important;text-align: c;">6</span></span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Duster 360
+</td>
+<td style="text-align:left;">
+Duster 360
+</td>
+<td style="text-align:left;">
+<span style="     color: blue !important;">14.3</span>
+</td>
+<td style="text-align:left;">
+<span style="-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); display: inline-block; "><span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #BBBBBB !important;text-align: c;">8</span></span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Merc 240D
+</td>
+<td style="text-align:left;">
+Merc 240D
+</td>
+<td style="text-align:left;">
+<span style="     color: red !important;">24.4</span>
+</td>
+<td style="text-align:left;">
+<span style="-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); display: inline-block; "><span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #666666 !important;text-align: c;">4</span></span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Merc 230
+</td>
+<td style="text-align:left;">
+Merc 230
+</td>
+<td style="text-align:left;">
+<span style="     color: red !important;">22.8</span>
+</td>
+<td style="text-align:left;">
+<span style="-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); display: inline-block; "><span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #666666 !important;text-align: c;">4</span></span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Merc 280
+</td>
+<td style="text-align:left;">
+Merc 280
+</td>
+<td style="text-align:left;">
+<span style="     color: blue !important;">19.2</span>
+</td>
+<td style="text-align:left;">
+<span style="-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); display: inline-block; "><span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #999999 !important;text-align: c;">6</span></span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="搭配formattable" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> 搭配formattable<a href="kableextra包画图.html#搭配formattable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="kableextra包画图.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(formattable)</span>
+<span id="cb97-2"><a href="kableextra包画图.html#cb97-2" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>] <span class="sc">%&gt;%</span></span>
+<span id="cb97-3"><a href="kableextra包画图.html#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb97-4"><a href="kableextra包画图.html#cb97-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">car =</span> <span class="fu">row.names</span>(.),</span>
+<span id="cb97-5"><a href="kableextra包画图.html#cb97-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mpg =</span> <span class="fu">color_tile</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;orange&quot;</span>)(mpg),</span>
+<span id="cb97-6"><a href="kableextra包画图.html#cb97-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">cyl =</span> <span class="fu">cell_spec</span>(cyl, <span class="st">&quot;html&quot;</span>, <span class="at">angle =</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)<span class="sc">*</span><span class="dv">60</span>, </span>
+<span id="cb97-7"><a href="kableextra包画图.html#cb97-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">background =</span> <span class="st">&quot;red&quot;</span>, <span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">align =</span> <span class="st">&quot;center&quot;</span>),</span>
+<span id="cb97-8"><a href="kableextra包画图.html#cb97-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">disp =</span> <span class="fu">ifelse</span>(disp <span class="sc">&gt;</span> <span class="dv">200</span>,</span>
+<span id="cb97-9"><a href="kableextra包画图.html#cb97-9" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">cell_spec</span>(disp, <span class="st">&quot;html&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">bold =</span> T),</span>
+<span id="cb97-10"><a href="kableextra包画图.html#cb97-10" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">cell_spec</span>(disp, <span class="st">&quot;html&quot;</span>, <span class="at">color =</span> <span class="st">&quot;green&quot;</span>, <span class="at">italic =</span> T)),</span>
+<span id="cb97-11"><a href="kableextra包画图.html#cb97-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">hp =</span> <span class="fu">color_bar</span>(<span class="st">&quot;lightgreen&quot;</span>)(hp)</span>
+<span id="cb97-12"><a href="kableextra包画图.html#cb97-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb97-13"><a href="kableextra包画图.html#cb97-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(car, <span class="fu">everything</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb97-14"><a href="kableextra包画图.html#cb97-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">&quot;html&quot;</span>, <span class="at">escape =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb97-15"><a href="kableextra包画图.html#cb97-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">&quot;hover&quot;</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb97-16"><a href="kableextra包画图.html#cb97-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">5</span>, <span class="at">width =</span> <span class="st">&quot;3cm&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb97-17"><a href="kableextra包画图.html#cb97-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;Hello&quot;</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">&quot;World&quot;</span> <span class="ot">=</span> <span class="dv">3</span>))</span></code></pre></div>
+<table class="table table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Hello
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+World
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+car
+</th>
+<th style="text-align:left;">
+mpg
+</th>
+<th style="text-align:left;">
+cyl
+</th>
+<th style="text-align:left;">
+disp
+</th>
+<th style="text-align:left;">
+hp
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Mazda RX4
+</td>
+<td style="text-align:left;">
+Mazda RX4
+</td>
+<td style="text-align:left;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f">21.0</span>
+</td>
+<td style="text-align:left;">
+<span style="-webkit-transform: rotate(60deg); -moz-transform: rotate(60deg); -ms-transform: rotate(60deg); -o-transform: rotate(60deg); transform: rotate(60deg); display: inline-block; "><span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;">6</span></span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="  font-style: italic;   color: green !important;">160</span>
+</td>
+<td style="text-align:left;">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%">110</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:left;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffcc6f">21.0</span>
+</td>
+<td style="text-align:left;">
+<span style="-webkit-transform: rotate(120deg); -moz-transform: rotate(120deg); -ms-transform: rotate(120deg); -o-transform: rotate(120deg); transform: rotate(120deg); display: inline-block; "><span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;">6</span></span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="  font-style: italic;   color: green !important;">160</span>
+</td>
+<td style="text-align:left;">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%">110</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Datsun 710
+</td>
+<td style="text-align:left;">
+Datsun 710
+</td>
+<td style="text-align:left;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffa500">22.8</span>
+</td>
+<td style="text-align:left;">
+<span style="-webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -ms-transform: rotate(180deg); -o-transform: rotate(180deg); transform: rotate(180deg); display: inline-block; "><span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;">4</span></span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="  font-style: italic;   color: green !important;">108</span>
+</td>
+<td style="text-align:left;">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 53.14%">93</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet 4 Drive
+</td>
+<td style="text-align:left;">
+Hornet 4 Drive
+</td>
+<td style="text-align:left;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffc357">21.4</span>
+</td>
+<td style="text-align:left;">
+<span style="-webkit-transform: rotate(240deg); -moz-transform: rotate(240deg); -ms-transform: rotate(240deg); -o-transform: rotate(240deg); transform: rotate(240deg); display: inline-block; "><span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;">6</span></span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style=" font-weight: bold;    color: red !important;">258</span>
+</td>
+<td style="text-align:left;">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 62.86%">110</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet Sportabout
+</td>
+<td style="text-align:left;">
+Hornet Sportabout
+</td>
+<td style="text-align:left;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">18.7</span>
+</td>
+<td style="text-align:left;">
+<span style="-webkit-transform: rotate(300deg); -moz-transform: rotate(300deg); -ms-transform: rotate(300deg); -o-transform: rotate(300deg); transform: rotate(300deg); display: inline-block; "><span style="     color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;text-align: center;">8</span></span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style=" font-weight: bold;    color: red !important;">360</span>
+</td>
+<td style="text-align:left;">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">175</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="列祖" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> 列祖<a href="kableextra包画图.html#列祖" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="kableextra包画图.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(dt, <span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb98-2"><a href="kableextra包画图.html#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb98-3"><a href="kableextra包画图.html#cb98-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">&quot; &quot;</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">&quot;Group 1&quot;</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">&quot;Group 2&quot;</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">&quot;Group 3&quot;</span> <span class="ot">=</span> <span class="dv">2</span>))</span></code></pre></div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Group 1
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Group 2
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Group 3
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mpg
+</th>
+<th style="text-align:right;">
+cyl
+</th>
+<th style="text-align:right;">
+disp
+</th>
+<th style="text-align:right;">
+hp
+</th>
+<th style="text-align:right;">
+drat
+</th>
+<th style="text-align:right;">
+wt
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Mazda RX4
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.620
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.875
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Datsun 710
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+3.85
+</td>
+<td style="text-align:right;">
+2.320
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet 4 Drive
+</td>
+<td style="text-align:right;">
+21.4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.08
+</td>
+<td style="text-align:right;">
+3.215
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet Sportabout
+</td>
+<td style="text-align:right;">
+18.7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+360
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+3.15
+</td>
+<td style="text-align:right;">
+3.440
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="kableextra包画图.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(dt, <span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb99-2"><a href="kableextra包画图.html#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;bordered&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb99-3"><a href="kableextra包画图.html#cb99-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;Group 1&quot;</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">&quot;Group 2&quot;</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">&quot;Group 3&quot;</span> <span class="ot">=</span> <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb99-4"><a href="kableextra包画图.html#cb99-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;Group 4&quot;</span> <span class="ot">=</span> <span class="dv">4</span>, <span class="st">&quot;Group 5&quot;</span> <span class="ot">=</span> <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb99-5"><a href="kableextra包画图.html#cb99-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;Group 6&quot;</span> <span class="ot">=</span> <span class="dv">6</span>))</span></code></pre></div>
+<table class="table table-striped table-bordered" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Group 6
+</div>
+</th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Group 4
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Group 5
+</div>
+</th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Group 1
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Group 2
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Group 3
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mpg
+</th>
+<th style="text-align:right;">
+cyl
+</th>
+<th style="text-align:right;">
+disp
+</th>
+<th style="text-align:right;">
+hp
+</th>
+<th style="text-align:right;">
+drat
+</th>
+<th style="text-align:right;">
+wt
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Mazda RX4
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.620
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.875
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Datsun 710
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+3.85
+</td>
+<td style="text-align:right;">
+2.320
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet 4 Drive
+</td>
+<td style="text-align:right;">
+21.4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.08
+</td>
+<td style="text-align:right;">
+3.215
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet Sportabout
+</td>
+<td style="text-align:right;">
+18.7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+360
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+3.15
+</td>
+<td style="text-align:right;">
+3.440
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="行组" class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> 行组<a href="kableextra包画图.html#行组" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="kableextra包画图.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(mtcars[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>], <span class="st">&quot;html&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Group Rows&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb100-2"><a href="kableextra包画图.html#cb100-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb100-3"><a href="kableextra包画图.html#cb100-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_rows</span>(<span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot; &quot;</span> <span class="ot">=</span> <span class="dv">3</span>, <span class="st">&quot;Group 1&quot;</span> <span class="ot">=</span> <span class="dv">4</span>, <span class="st">&quot;Group 2&quot;</span> <span class="ot">=</span> <span class="dv">3</span>))</span></code></pre></div>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-100">表 7.1: </span>Group Rows
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mpg
+</th>
+<th style="text-align:right;">
+cyl
+</th>
+<th style="text-align:right;">
+disp
+</th>
+<th style="text-align:right;">
+hp
+</th>
+<th style="text-align:right;">
+drat
+</th>
+<th style="text-align:right;">
+wt
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Mazda RX4
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160.0
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.620
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160.0
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.875
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Datsun 710
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+108.0
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+3.85
+</td>
+<td style="text-align:right;">
+2.320
+</td>
+</tr>
+<tr grouplength="4">
+<td colspan="7" style="border-bottom: 1px solid;">
+<strong>Group 1</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Hornet 4 Drive
+</td>
+<td style="text-align:right;">
+21.4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+258.0
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.08
+</td>
+<td style="text-align:right;">
+3.215
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Hornet Sportabout
+</td>
+<td style="text-align:right;">
+18.7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+360.0
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+3.15
+</td>
+<td style="text-align:right;">
+3.440
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Valiant
+</td>
+<td style="text-align:right;">
+18.1
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+225.0
+</td>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:right;">
+2.76
+</td>
+<td style="text-align:right;">
+3.460
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Duster 360
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+360.0
+</td>
+<td style="text-align:right;">
+245
+</td>
+<td style="text-align:right;">
+3.21
+</td>
+<td style="text-align:right;">
+3.570
+</td>
+</tr>
+<tr grouplength="3">
+<td colspan="7" style="border-bottom: 1px solid;">
+<strong>Group 2</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Merc 240D
+</td>
+<td style="text-align:right;">
+24.4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+146.7
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+3.69
+</td>
+<td style="text-align:right;">
+3.190
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Merc 230
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+140.8
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:right;">
+3.92
+</td>
+<td style="text-align:right;">
+3.150
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Merc 280
+</td>
+<td style="text-align:right;">
+19.2
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+167.6
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:right;">
+3.92
+</td>
+<td style="text-align:right;">
+3.440
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="kableextra包画图.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(dt, <span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb101-2"><a href="kableextra包画图.html#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb101-3"><a href="kableextra包画图.html#cb101-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_rows</span>(<span class="st">&quot;Group 1&quot;</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="at">label_row_css =</span> <span class="st">&quot;background: repeating-linear-gradient(45deg, #d9230f, #d9230f 10px, #f96352 10px, #f96352 20px); color: #fff;&quot;</span>)</span></code></pre></div>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mpg
+</th>
+<th style="text-align:right;">
+cyl
+</th>
+<th style="text-align:right;">
+disp
+</th>
+<th style="text-align:right;">
+hp
+</th>
+<th style="text-align:right;">
+drat
+</th>
+<th style="text-align:right;">
+wt
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Mazda RX4
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.620
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.875
+</td>
+</tr>
+<tr grouplength="3">
+<td colspan="7" style="background: repeating-linear-gradient(45deg, #d9230f, #d9230f 10px, #f96352 10px, #f96352 20px); color: #fff;">
+<strong>Group 1</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Datsun 710
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+3.85
+</td>
+<td style="text-align:right;">
+2.320
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Hornet 4 Drive
+</td>
+<td style="text-align:right;">
+21.4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.08
+</td>
+<td style="text-align:right;">
+3.215
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Hornet Sportabout
+</td>
+<td style="text-align:right;">
+18.7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+360
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+3.15
+</td>
+<td style="text-align:right;">
+3.440
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="kableextra包画图.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 行的缩进</span></span>
+<span id="cb102-2"><a href="kableextra包画图.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(dt, <span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb102-3"><a href="kableextra包画图.html#cb102-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>, <span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb102-4"><a href="kableextra包画图.html#cb102-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_indent</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>))</span></code></pre></div>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mpg
+</th>
+<th style="text-align:right;">
+cyl
+</th>
+<th style="text-align:right;">
+disp
+</th>
+<th style="text-align:right;">
+hp
+</th>
+<th style="text-align:right;">
+drat
+</th>
+<th style="text-align:right;">
+wt
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Mazda RX4
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.620
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+2.875
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Datsun 710
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+3.85
+</td>
+<td style="text-align:right;">
+2.320
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet 4 Drive
+</td>
+<td style="text-align:right;">
+21.4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.08
+</td>
+<td style="text-align:right;">
+3.215
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Hornet Sportabout
+</td>
+<td style="text-align:right;">
+18.7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+360
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+3.15
+</td>
+<td style="text-align:right;">
+3.440
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="kableextra包画图.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 合并行</span></span>
+<span id="cb103-2"><a href="kableextra包画图.html#cb103-2" aria-hidden="true" tabindex="-1"></a>collapse_rows_dt <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">C1 =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;a&quot;</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">&quot;b&quot;</span>, <span class="dv">5</span>)),</span>
+<span id="cb103-3"><a href="kableextra包画图.html#cb103-3" aria-hidden="true" tabindex="-1"></a>                               <span class="at">C2 =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;c&quot;</span>, <span class="dv">7</span>), <span class="fu">rep</span>(<span class="st">&quot;d&quot;</span>, <span class="dv">3</span>), <span class="fu">rep</span>(<span class="st">&quot;c&quot;</span>, <span class="dv">2</span>), <span class="fu">rep</span>(<span class="st">&quot;d&quot;</span>, <span class="dv">3</span>)),</span>
+<span id="cb103-4"><a href="kableextra包画图.html#cb103-4" aria-hidden="true" tabindex="-1"></a>                               <span class="at">C3 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>,</span>
+<span id="cb103-5"><a href="kableextra包画图.html#cb103-5" aria-hidden="true" tabindex="-1"></a>                               <span class="at">C4 =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dv">15</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb103-6"><a href="kableextra包画图.html#cb103-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(collapse_rows_dt, <span class="st">&quot;html&quot;</span>, <span class="at">align =</span> <span class="st">&quot;c&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb103-7"><a href="kableextra包画图.html#cb103-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb103-8"><a href="kableextra包画图.html#cb103-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb103-9"><a href="kableextra包画图.html#cb103-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collapse_rows</span>(<span class="at">columns =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code></pre></div>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+C1
+</th>
+<th style="text-align:center;">
+C2
+</th>
+<th style="text-align:center;">
+C3
+</th>
+<th style="text-align:center;">
+C4
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+a
+</td>
+<td style="text-align:center;">
+c
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+a
+</td>
+<td style="text-align:center;">
+c
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+a
+</td>
+<td style="text-align:center;">
+c
+</td>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+a
+</td>
+<td style="text-align:center;">
+c
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+a
+</td>
+<td style="text-align:center;">
+c
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+a
+</td>
+<td style="text-align:center;">
+c
+</td>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+a
+</td>
+<td style="text-align:center;">
+c
+</td>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+a
+</td>
+<td style="text-align:center;">
+d
+</td>
+<td style="text-align:center;">
+8
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+a
+</td>
+<td style="text-align:center;">
+d
+</td>
+<td style="text-align:center;">
+9
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+a
+</td>
+<td style="text-align:center;">
+d
+</td>
+<td style="text-align:center;">
+10
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+b
+</td>
+<td style="text-align:center;">
+c
+</td>
+<td style="text-align:center;">
+11
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+b
+</td>
+<td style="text-align:center;">
+c
+</td>
+<td style="text-align:center;">
+12
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+b
+</td>
+<td style="text-align:center;">
+d
+</td>
+<td style="text-align:center;">
+13
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+b
+</td>
+<td style="text-align:center;">
+d
+</td>
+<td style="text-align:center;">
+14
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+b
+</td>
+<td style="text-align:center;">
+d
+</td>
+<td style="text-align:center;">
+15
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="保存html表格" class="section level2 hasAnchor" number="7.7">
+<h2><span class="header-section-number">7.7</span> 保存HTML表格<a href="kableextra包画图.html#保存html表格" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="kableextra包画图.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(mtcars) <span class="sc">%&gt;%</span></span>
+<span id="cb104-2"><a href="kableextra包画图.html#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb104-3"><a href="kableextra包画图.html#cb104-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_kable</span>(<span class="at">file =</span> <span class="st">&quot;tables/table1.html&quot;</span>, <span class="at">self_contained =</span> T)</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="gt包画表.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/06-kableExtra.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
