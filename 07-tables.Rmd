@@ -1,0 +1,207 @@
+# 表格绘制
+
+[参考来源：公众号“Datacharm”，作者宁俊骐](https://mp.weixin.qq.com/s/NQDXkcQQSepiX0cjc8-ycw)
+
+## 单一的表格
+这一部分可能有很多优秀的第三方包可以制作，这里介绍前3个优秀的表格制作包，分别为
+
+- [DT](https://rstudio.github.io/DT/)
+- [gt](https://gt.rstudio.com/index.html)
+- [sjPlot](https://strengejacke.github.io/sjPlot/index.html)
+- gtsummary
+- kableExtra
+- formattable
+- reactable
+- flextable
+
+### DT包
+
+```{r message=FALSE, warning=FALSE}
+## 可生成交互式HTML表格
+library(DT)
+datatable(iris)
+```
+
+```{r}
+# 定制表格
+datatable(iris) %>% 
+  formatStyle('Sepal.Length', fontWeight = styleInterval(5, c('normal', 'bold'))) %>%
+  formatStyle(
+    'Sepal.Width',
+    color = styleInterval(c(3.4, 3.8), c('white', 'blue', 'red')),
+    backgroundColor = styleInterval(3.4, c('gray', 'yellow'))
+  ) %>%
+  formatStyle(
+    'Petal.Length',
+    background = styleColorBar(iris$Petal.Length, 'steelblue'),
+    backgroundSize = '100% 90%',
+    backgroundRepeat = 'no-repeat',
+    backgroundPosition = 'center'
+  ) %>%
+  formatStyle(
+    'Species',
+    transform = 'rotateX(45deg) rotateY(20deg) rotateZ(30deg)',
+    backgroundColor = styleEqual(
+      unique(iris$Species), c('lightblue', 'lightgreen', 'lightpink')
+    ))
+```
+### gt包
+
+```{r message=FALSE, warning=FALSE}
+## 出版级别表格制作
+library(gt)
+library(tidyverse)
+library(glue)
+
+# Define the start and end dates for the data range
+start_date <- "2010-06-07"
+end_date <- "2010-06-14"
+
+# Create a gt table based on preprocessed
+# `sp500` table data
+sp500 %>%
+  filter(date >= start_date & date <= end_date) %>%
+  select(-adj_close) %>%
+  gt() %>%
+  tab_header(
+    title = "S&P 500",
+    subtitle = glue::glue("{start_date} to {end_date}")
+  ) %>%
+  fmt_date(
+    columns = date,
+    date_style = 3
+  ) %>%
+  fmt_currency(
+    columns = c(open, high, low, close),
+    currency = "USD"
+  ) %>%
+  fmt_number(
+    columns = volume,
+    suffixing = TRUE
+  )
+```
+
+### sjPlot包
+```{r message=FALSE, warning=FALSE}
+library(sjPlot)
+library(sjmisc)
+library(sjlabelled)
+
+# sample data
+data("efc")
+efc <- as_factor(efc, c161sex, c172code)
+
+m1 <- lm(barthtot ~ c160age + c12hour + c161sex + c172code, data = efc)
+tab_model(m1)
+```
+
+```{r}
+## 定制化绘制
+tab_model(
+  m1,
+  CSS = list(
+    css.depvarhead = 'color: red;',
+    css.centeralign = 'text-align: left;', 
+    css.firsttablecol = 'font-weight: bold;', 
+    css.summary = 'color: blue;'
+  )
+)
+```
+
+
+## 丰富的表格
+
+- [ggpubr](https://rpkgs.datanovia.com/ggpubr/reference/ggtexttable.html)
+- [ggpmisc](https://docs.r4photobiology.info/ggpmisc/reference/stat_fit_tb.html)
+
+### ggpubr
+R-ggpubr包在[统计绘图 | 一行代码教你绘制顶级期刊要求配图](https://mp.weixin.qq.com/s?__biz=Mzg3MDY4ODI3MQ==&mid=2247498006&idx=1&sn=671777e9d1061e8c1bcc5204a9e1a08d&source=41#wechat_redirect)有介绍其如何绘制科研图表，这里则重点介绍其绘制表格的函数，当然还是可以和ggplot2图表对象一起展示的。
+
+```{r}
+library(ggpubr)
+df <- head(iris)
+
+# Default table
+# Remove row names using rows = NULL
+ggtexttable(df, rows = NULL)
+```
+```{r}
+## 定制主题
+ggtexttable(df, rows = NULL, theme = ttheme("mBlue"))
+```
+
+```{r}
+## 自定义
+ggtexttable(df, rows = NULL,
+           theme = ttheme(
+             colnames.style = colnames_style(color = "white", fill = "#8cc257"),
+             tbody.style = tbody_style(color = "black", fill = c("#e8f3de", "#d3e8bb"))
+           )
+)
+```
+
+### ggpmisc
+
+R-ggpmisc包中绘制表格的函数为`stat_fit_tb()`,其功能主要是一些统计结果和拟合结果进行表格展示。
+
+```{r}
+library(ggpmisc)
+library(ggrepel)
+library(xts)
+library(lubridate)
+library(nlme)
+library(quantreg)
+library(broom)
+library(broom.mixed)
+library(hrbrthemes)
+set.seed(4321)
+# generate artificial data
+x <- 1:100
+y <- (x + x^2 + x^3) + rnorm(length(x), mean = 0, sd = mean(x^3) / 4)
+my.data <- data.frame(x, 
+                      y, 
+                      group = c("A", "B"), 
+                      y2 = y * c(0.5,2),
+                      block = c("a", "a", "b", "b"),
+                      wt = sqrt(x))
+
+```
+
+```{r}
+formula <- y ~ x + I(x^2) + I(x^3)
+plot04 <- ggplot(my.data, aes(x, y)) +
+  geom_point(shape=21,fill="#BC3C28",colour="black",size=3) +
+  geom_smooth(method = "lm", formula = formula) +
+  stat_fit_tb(method = "lm",
+              method.args = list(formula = formula),
+              tb.vars = c(Parameter = "term", 
+                          Estimate = "estimate", 
+                          "s.e." = "std.error", 
+                          "italic(t)" = "statistic", 
+                          "italic(P)" = "p.value"),
+              label.y = "top", label.x = "left",
+              parse = TRUE) +
+ labs(
+    title = "Example of <span style='color:#D20F26'>ggpmisc::stat_fit_tb function</span>",
+    subtitle = "processed charts with <span style='color:#1A73E8'>stat_fit_tb()</span>",
+    caption = "Visualization by <span style='color:#0057FF'>DataCharm</span>") +
+  hrbrthemes::theme_ipsum(base_family = "Roboto Condensed")  +
+theme(
+    plot.title = element_text(hjust = 0.5,vjust = .5,color = "black",
+                                  size = 20, margin = margin(t = 1, b = 12)),
+    plot.subtitle = element_text(hjust = 0,vjust = .5,size=15),
+    plot.caption = element_text(face = 'bold',size = 12)
+      )
+```
+
+
+
+
+
+
+
+
+
+
+
+

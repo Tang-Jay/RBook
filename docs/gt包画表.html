@@ -23,7 +23,7 @@
 <meta name="author" content="唐洁" />
 
 
-<meta name="date" content="2022-10-04" />
+<meta name="date" content="2022-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,6 +54,14 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.23/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -179,17 +187,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.1.1" data-path="qq图.html"><a href="qq图.html#r包绘制"><i class="fa fa-check"></i><b>5.1.1</b> R包绘制</a></li>
 <li class="chapter" data-level="5.1.2" data-path="qq图.html"><a href="qq图.html#手工绘制"><i class="fa fa-check"></i><b>5.1.2</b> 手工绘制</a></li>
+<li class="chapter" data-level="5.1.3" data-path="qq图.html"><a href="qq图.html#函数绘制正态qq图"><i class="fa fa-check"></i><b>5.1.3</b> 函数绘制正态qq图</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="qq图.html"><a href="qq图.html#一个例子"><i class="fa fa-check"></i><b>5.2</b> 一个例子</a>
-<ul>
-<li class="chapter" data-level="5.2.1" data-path="qq图.html"><a href="qq图.html#了解分位数"><i class="fa fa-check"></i><b>5.2.1</b> 了解分位数。</a></li>
-<li class="chapter" data-level="5.2.2" data-path="qq图.html"><a href="qq图.html#数据准备"><i class="fa fa-check"></i><b>5.2.2</b> 数据准备</a></li>
-<li class="chapter" data-level="5.2.3" data-path="qq图.html"><a href="qq图.html#三种分布的密度图"><i class="fa fa-check"></i><b>5.2.3</b> 三种分布的密度图</a></li>
-<li class="chapter" data-level="5.2.4" data-path="qq图.html"><a href="qq图.html#画出15个分位数"><i class="fa fa-check"></i><b>5.2.4</b> 画出15个分位数</a></li>
-<li class="chapter" data-level="5.2.5" data-path="qq图.html"><a href="qq图.html#绘制qq图-1"><i class="fa fa-check"></i><b>5.2.5</b> 绘制qq图</a></li>
-<li class="chapter" data-level="5.2.6" data-path="qq图.html"><a href="qq图.html#函数绘制正态qq图"><i class="fa fa-check"></i><b>5.2.6</b> 函数绘制正态qq图</a></li>
-</ul></li>
-<li class="chapter" data-level="5.3" data-path="qq图.html"><a href="qq图.html#参考资料"><i class="fa fa-check"></i><b>5.3</b> 参考资料</a></li>
+<li class="chapter" data-level="5.2" data-path="qq图.html"><a href="qq图.html#参考资料"><i class="fa fa-check"></i><b>5.2</b> 参考资料</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="gt包画表.html"><a href="gt包画表.html"><i class="fa fa-check"></i><b>6</b> gt包画表</a>
 <ul>
@@ -208,9 +208,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="kableextra包画图.html"><a href="kableextra包画图.html#渲染表格"><i class="fa fa-check"></i><b>7.2</b> 渲染表格</a></li>
 <li class="chapter" data-level="7.3" data-path="kableextra包画图.html"><a href="kableextra包画图.html#搭配dplyr"><i class="fa fa-check"></i><b>7.3</b> 搭配dplyr</a></li>
 <li class="chapter" data-level="7.4" data-path="kableextra包画图.html"><a href="kableextra包画图.html#搭配formattable"><i class="fa fa-check"></i><b>7.4</b> 搭配formattable</a></li>
-<li class="chapter" data-level="7.5" data-path="kableextra包画图.html"><a href="kableextra包画图.html#列祖"><i class="fa fa-check"></i><b>7.5</b> 列祖</a></li>
+<li class="chapter" data-level="7.5" data-path="kableextra包画图.html"><a href="kableextra包画图.html#列组"><i class="fa fa-check"></i><b>7.5</b> 列组</a></li>
 <li class="chapter" data-level="7.6" data-path="kableextra包画图.html"><a href="kableextra包画图.html#行组"><i class="fa fa-check"></i><b>7.6</b> 行组</a></li>
 <li class="chapter" data-level="7.7" data-path="kableextra包画图.html"><a href="kableextra包画图.html#保存html表格"><i class="fa fa-check"></i><b>7.7</b> 保存HTML表格</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="表格绘制.html"><a href="表格绘制.html"><i class="fa fa-check"></i><b>8</b> 表格绘制</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="表格绘制.html"><a href="表格绘制.html#单一的表格"><i class="fa fa-check"></i><b>8.1</b> 单一的表格</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="表格绘制.html"><a href="表格绘制.html#dt包"><i class="fa fa-check"></i><b>8.1.1</b> DT包</a></li>
+<li class="chapter" data-level="8.1.2" data-path="表格绘制.html"><a href="表格绘制.html#gt包"><i class="fa fa-check"></i><b>8.1.2</b> gt包</a></li>
+<li class="chapter" data-level="8.1.3" data-path="表格绘制.html"><a href="表格绘制.html#sjplot包"><i class="fa fa-check"></i><b>8.1.3</b> sjPlot包</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="表格绘制.html"><a href="表格绘制.html#丰富的表格"><i class="fa fa-check"></i><b>8.2</b> 丰富的表格</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="表格绘制.html"><a href="表格绘制.html#ggpubr"><i class="fa fa-check"></i><b>8.2.1</b> ggpubr</a></li>
+<li class="chapter" data-level="8.2.2" data-path="表格绘制.html"><a href="表格绘制.html#ggpmisc"><i class="fa fa-check"></i><b>8.2.2</b> ggpmisc</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="变化趋势图.html"><a href="变化趋势图.html"><i class="fa fa-check"></i><b>9</b> 变化趋势图</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="变化趋势图.html"><a href="变化趋势图.html#时间序列图"><i class="fa fa-check"></i><b>9.1</b> 时间序列图</a></li>
+<li class="chapter" data-level="9.2" data-path="变化趋势图.html"><a href="变化趋势图.html#堆叠面积图"><i class="fa fa-check"></i><b>9.2</b> 堆叠面积图</a></li>
+<li class="chapter" data-level="9.3" data-path="变化趋势图.html"><a href="变化趋势图.html#日历热力图"><i class="fa fa-check"></i><b>9.3</b> 日历热力图</a></li>
+<li class="chapter" data-level="9.4" data-path="变化趋势图.html"><a href="变化趋势图.html#坡度图"><i class="fa fa-check"></i><b>9.4</b> 坡度图</a></li>
+<li class="chapter" data-level="9.5" data-path="变化趋势图.html"><a href="变化趋势图.html#季节图"><i class="fa fa-check"></i><b>9.5</b> 季节图</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="explore包.html"><a href="explore包.html"><i class="fa fa-check"></i><b>10</b> explore包</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="explore包.html"><a href="explore包.html#包的使用"><i class="fa fa-check"></i><b>10.1</b> 包的使用</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="colorspace包.html"><a href="colorspace包.html"><i class="fa fa-check"></i><b>11</b> colorspace包</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="colorspace包.html"><a href="colorspace包.html#提取颜色"><i class="fa fa-check"></i><b>11.1</b> 提取颜色</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="colorspace包.html"><a href="colorspace包.html#plot配色"><i class="fa fa-check"></i><b>11.1.1</b> plot配色</a></li>
+<li class="chapter" data-level="11.1.2" data-path="colorspace包.html"><a href="colorspace包.html#barplot配色"><i class="fa fa-check"></i><b>11.1.2</b> barplot配色</a></li>
+<li class="chapter" data-level="11.1.3" data-path="colorspace包.html"><a href="colorspace包.html#ggplot2配色"><i class="fa fa-check"></i><b>11.1.3</b> ggplot2配色</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="colorspace包.html"><a href="colorspace包.html#将颜色回归hcl"><i class="fa fa-check"></i><b>11.2</b> 将颜色回归HCL</a></li>
+<li class="chapter" data-level="11.3" data-path="colorspace包.html"><a href="colorspace包.html#不同图配色"><i class="fa fa-check"></i><b>11.3</b> 不同图配色</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="地图.html"><a href="地图.html"><i class="fa fa-check"></i><b>12</b> 地图</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="地图.html"><a href="地图.html#获取地图数据"><i class="fa fa-check"></i><b>12.1</b> 获取地图数据</a></li>
+<li class="chapter" data-level="12.2" data-path="地图.html"><a href="地图.html#绘制中国地图"><i class="fa fa-check"></i><b>12.2</b> 绘制中国地图</a></li>
+<li class="chapter" data-level="12.3" data-path="地图.html"><a href="地图.html#给特定省份填色"><i class="fa fa-check"></i><b>12.3</b> 给特定省份填色</a></li>
+<li class="chapter" data-level="12.4" data-path="地图.html"><a href="地图.html#其他参考"><i class="fa fa-check"></i><b>12.4</b> 其他参考</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
@@ -234,40 +278,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="gt包画表" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">第 6 章</span> gt包画表<a href="gt包画表.html#gt包画表" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="gt包画表.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 安装</span></span>
-<span id="cb75-2"><a href="gt包画表.html#cb75-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;rstudio/gt&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="gt包画表.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;gt&#39;</span>)</span>
-<span id="cb76-2"><a href="gt包画表.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;dplyr&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="gt包画表.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 安装</span></span>
+<span id="cb65-2"><a href="gt包画表.html#cb65-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;rstudio/gt&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="gt包画表.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;gt&#39;</span>)</span>
+<span id="cb66-2"><a href="gt包画表.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;dplyr&#39;</span>)</span></code></pre></div>
 <div id="获取数据" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> 获取数据<a href="gt包画表.html#获取数据" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="gt包画表.html#cb77-1" aria-hidden="true" tabindex="-1"></a>islands_tbl <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">name=</span><span class="fu">names</span>(islands),<span class="at">size =</span> islands) <span class="sc">%&gt;%</span></span>
-<span id="cb77-2"><a href="gt包画表.html#cb77-2" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="fu">desc</span>(size)) <span class="sc">%&gt;%</span></span>
-<span id="cb77-3"><a href="gt包画表.html#cb77-3" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb77-4"><a href="gt包画表.html#cb77-4" aria-hidden="true" tabindex="-1"></a>islands_tbl</span>
-<span id="cb77-5"><a href="gt包画表.html#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 10 × 2</span></span>
-<span id="cb77-6"><a href="gt包画表.html#cb77-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    name           size</span></span>
-<span id="cb77-7"><a href="gt包画表.html#cb77-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;         &lt;dbl&gt;</span></span>
-<span id="cb77-8"><a href="gt包画表.html#cb77-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Asia          16988</span></span>
-<span id="cb77-9"><a href="gt包画表.html#cb77-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Africa        11506</span></span>
-<span id="cb77-10"><a href="gt包画表.html#cb77-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 North America  9390</span></span>
-<span id="cb77-11"><a href="gt包画表.html#cb77-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 South America  6795</span></span>
-<span id="cb77-12"><a href="gt包画表.html#cb77-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Antarctica     5500</span></span>
-<span id="cb77-13"><a href="gt包画表.html#cb77-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Europe         3745</span></span>
-<span id="cb77-14"><a href="gt包画表.html#cb77-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Australia      2968</span></span>
-<span id="cb77-15"><a href="gt包画表.html#cb77-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Greenland       840</span></span>
-<span id="cb77-16"><a href="gt包画表.html#cb77-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 New Guinea      306</span></span>
-<span id="cb77-17"><a href="gt包画表.html#cb77-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Borneo          280</span></span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="gt包画表.html#cb67-1" aria-hidden="true" tabindex="-1"></a>islands_tbl <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">name=</span><span class="fu">names</span>(islands),<span class="at">size =</span> islands) <span class="sc">%&gt;%</span></span>
+<span id="cb67-2"><a href="gt包画表.html#cb67-2" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="fu">desc</span>(size)) <span class="sc">%&gt;%</span></span>
+<span id="cb67-3"><a href="gt包画表.html#cb67-3" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb67-4"><a href="gt包画表.html#cb67-4" aria-hidden="true" tabindex="-1"></a>islands_tbl</span>
+<span id="cb67-5"><a href="gt包画表.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 10 × 2</span></span>
+<span id="cb67-6"><a href="gt包画表.html#cb67-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    name           size</span></span>
+<span id="cb67-7"><a href="gt包画表.html#cb67-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;         &lt;dbl&gt;</span></span>
+<span id="cb67-8"><a href="gt包画表.html#cb67-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Asia          16988</span></span>
+<span id="cb67-9"><a href="gt包画表.html#cb67-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Africa        11506</span></span>
+<span id="cb67-10"><a href="gt包画表.html#cb67-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 North America  9390</span></span>
+<span id="cb67-11"><a href="gt包画表.html#cb67-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 South America  6795</span></span>
+<span id="cb67-12"><a href="gt包画表.html#cb67-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Antarctica     5500</span></span>
+<span id="cb67-13"><a href="gt包画表.html#cb67-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Europe         3745</span></span>
+<span id="cb67-14"><a href="gt包画表.html#cb67-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Australia      2968</span></span>
+<span id="cb67-15"><a href="gt包画表.html#cb67-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Greenland       840</span></span>
+<span id="cb67-16"><a href="gt包画表.html#cb67-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 New Guinea      306</span></span>
+<span id="cb67-17"><a href="gt包画表.html#cb67-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Borneo          280</span></span></code></pre></div>
 </div>
 <div id="创建gt表格" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> 创建gt表格<a href="gt包画表.html#创建gt表格" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="gt包画表.html#cb78-1" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> <span class="fu">gt</span>(<span class="at">data =</span> islands_tbl)</span>
-<span id="cb78-2"><a href="gt包画表.html#cb78-2" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
-<div id="izjjlrwkgh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="gt包画表.html#cb68-1" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> <span class="fu">gt</span>(<span class="at">data =</span> islands_tbl)</span>
+<span id="cb68-2"><a href="gt包画表.html#cb68-2" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
+<div id="fivqumdncs" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#izjjlrwkgh .gt_table {
+#fivqumdncs .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -292,7 +336,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#izjjlrwkgh .gt_heading {
+#fivqumdncs .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -304,7 +348,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#izjjlrwkgh .gt_title {
+#fivqumdncs .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -316,7 +360,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#izjjlrwkgh .gt_subtitle {
+#fivqumdncs .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -328,13 +372,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#izjjlrwkgh .gt_bottom_border {
+#fivqumdncs .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#izjjlrwkgh .gt_col_headings {
+#fivqumdncs .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -349,7 +393,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#izjjlrwkgh .gt_col_heading {
+#fivqumdncs .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -369,7 +413,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#izjjlrwkgh .gt_column_spanner_outer {
+#fivqumdncs .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -381,15 +425,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#izjjlrwkgh .gt_column_spanner_outer:first-child {
+#fivqumdncs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#izjjlrwkgh .gt_column_spanner_outer:last-child {
+#fivqumdncs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#izjjlrwkgh .gt_column_spanner {
+#fivqumdncs .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -401,7 +445,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#izjjlrwkgh .gt_group_heading {
+#fivqumdncs .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -427,7 +471,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   text-align: left;
 }
 
-#izjjlrwkgh .gt_empty_group_heading {
+#fivqumdncs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -442,15 +486,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#izjjlrwkgh .gt_from_md > :first-child {
+#fivqumdncs .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#izjjlrwkgh .gt_from_md > :last-child {
+#fivqumdncs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#izjjlrwkgh .gt_row {
+#fivqumdncs .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -469,7 +513,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#izjjlrwkgh .gt_stub {
+#fivqumdncs .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -482,7 +526,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#izjjlrwkgh .gt_stub_row_group {
+#fivqumdncs .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -496,11 +540,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#izjjlrwkgh .gt_row_group_first td {
+#fivqumdncs .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#izjjlrwkgh .gt_summary_row {
+#fivqumdncs .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -510,16 +554,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#izjjlrwkgh .gt_first_summary_row {
+#fivqumdncs .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#izjjlrwkgh .gt_first_summary_row.thick {
+#fivqumdncs .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#izjjlrwkgh .gt_last_summary_row {
+#fivqumdncs .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -529,7 +573,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#izjjlrwkgh .gt_grand_summary_row {
+#fivqumdncs .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -539,7 +583,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#izjjlrwkgh .gt_first_grand_summary_row {
+#fivqumdncs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -549,11 +593,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#izjjlrwkgh .gt_striped {
+#fivqumdncs .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#izjjlrwkgh .gt_table_body {
+#fivqumdncs .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -562,7 +606,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#izjjlrwkgh .gt_footnotes {
+#fivqumdncs .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -576,7 +620,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#izjjlrwkgh .gt_footnote {
+#fivqumdncs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -585,7 +629,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#izjjlrwkgh .gt_sourcenotes {
+#fivqumdncs .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -599,7 +643,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#izjjlrwkgh .gt_sourcenote {
+#fivqumdncs .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -607,64 +651,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#izjjlrwkgh .gt_left {
+#fivqumdncs .gt_left {
   text-align: left;
 }
 
-#izjjlrwkgh .gt_center {
+#fivqumdncs .gt_center {
   text-align: center;
 }
 
-#izjjlrwkgh .gt_right {
+#fivqumdncs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#izjjlrwkgh .gt_font_normal {
+#fivqumdncs .gt_font_normal {
   font-weight: normal;
 }
 
-#izjjlrwkgh .gt_font_bold {
+#fivqumdncs .gt_font_bold {
   font-weight: bold;
 }
 
-#izjjlrwkgh .gt_font_italic {
+#fivqumdncs .gt_font_italic {
   font-style: italic;
 }
 
-#izjjlrwkgh .gt_super {
+#fivqumdncs .gt_super {
   font-size: 65%;
 }
 
-#izjjlrwkgh .gt_footnote_marks {
+#fivqumdncs .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#izjjlrwkgh .gt_asterisk {
+#fivqumdncs .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#izjjlrwkgh .gt_indent_1 {
+#fivqumdncs .gt_indent_1 {
   text-indent: 5px;
 }
 
-#izjjlrwkgh .gt_indent_2 {
+#fivqumdncs .gt_indent_2 {
   text-indent: 10px;
 }
 
-#izjjlrwkgh .gt_indent_3 {
+#fivqumdncs .gt_indent_3 {
   text-indent: 15px;
 }
 
-#izjjlrwkgh .gt_indent_4 {
+#fivqumdncs .gt_indent_4 {
   text-indent: 20px;
 }
 
-#izjjlrwkgh .gt_indent_5 {
+#fivqumdncs .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -705,18 +749,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="添加标题" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> 添加标题<a href="gt包画表.html#添加标题" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="gt包画表.html#cb79-1" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> gt_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb79-2"><a href="gt包画表.html#cb79-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb79-3"><a href="gt包画表.html#cb79-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Large Landmasses of the World&quot;</span>,</span>
-<span id="cb79-4"><a href="gt包画表.html#cb79-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;The top ten largest are presented&quot;</span></span>
-<span id="cb79-5"><a href="gt包画表.html#cb79-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb79-6"><a href="gt包画表.html#cb79-6" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
-<div id="dwyflxgqmx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="gt包画表.html#cb69-1" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> gt_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb69-2"><a href="gt包画表.html#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb69-3"><a href="gt包画表.html#cb69-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Large Landmasses of the World&quot;</span>,</span>
+<span id="cb69-4"><a href="gt包画表.html#cb69-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;The top ten largest are presented&quot;</span></span>
+<span id="cb69-5"><a href="gt包画表.html#cb69-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb69-6"><a href="gt包画表.html#cb69-6" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
+<div id="xxetzpumbv" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#dwyflxgqmx .gt_table {
+#xxetzpumbv .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -741,7 +785,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#dwyflxgqmx .gt_heading {
+#xxetzpumbv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -753,7 +797,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#dwyflxgqmx .gt_title {
+#xxetzpumbv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -765,7 +809,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#dwyflxgqmx .gt_subtitle {
+#xxetzpumbv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -777,13 +821,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#dwyflxgqmx .gt_bottom_border {
+#xxetzpumbv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dwyflxgqmx .gt_col_headings {
+#xxetzpumbv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -798,7 +842,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#dwyflxgqmx .gt_col_heading {
+#xxetzpumbv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -818,7 +862,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#dwyflxgqmx .gt_column_spanner_outer {
+#xxetzpumbv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -830,15 +874,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#dwyflxgqmx .gt_column_spanner_outer:first-child {
+#xxetzpumbv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dwyflxgqmx .gt_column_spanner_outer:last-child {
+#xxetzpumbv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dwyflxgqmx .gt_column_spanner {
+#xxetzpumbv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -850,7 +894,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#dwyflxgqmx .gt_group_heading {
+#xxetzpumbv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -876,7 +920,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   text-align: left;
 }
 
-#dwyflxgqmx .gt_empty_group_heading {
+#xxetzpumbv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -891,15 +935,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#dwyflxgqmx .gt_from_md > :first-child {
+#xxetzpumbv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dwyflxgqmx .gt_from_md > :last-child {
+#xxetzpumbv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dwyflxgqmx .gt_row {
+#xxetzpumbv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -918,7 +962,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#dwyflxgqmx .gt_stub {
+#xxetzpumbv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -931,7 +975,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#dwyflxgqmx .gt_stub_row_group {
+#xxetzpumbv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -945,11 +989,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#dwyflxgqmx .gt_row_group_first td {
+#xxetzpumbv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dwyflxgqmx .gt_summary_row {
+#xxetzpumbv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -959,16 +1003,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#dwyflxgqmx .gt_first_summary_row {
+#xxetzpumbv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dwyflxgqmx .gt_first_summary_row.thick {
+#xxetzpumbv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dwyflxgqmx .gt_last_summary_row {
+#xxetzpumbv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -978,7 +1022,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#dwyflxgqmx .gt_grand_summary_row {
+#xxetzpumbv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -988,7 +1032,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#dwyflxgqmx .gt_first_grand_summary_row {
+#xxetzpumbv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -998,11 +1042,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#dwyflxgqmx .gt_striped {
+#xxetzpumbv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dwyflxgqmx .gt_table_body {
+#xxetzpumbv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1011,7 +1055,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#dwyflxgqmx .gt_footnotes {
+#xxetzpumbv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1025,7 +1069,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#dwyflxgqmx .gt_footnote {
+#xxetzpumbv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1034,7 +1078,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#dwyflxgqmx .gt_sourcenotes {
+#xxetzpumbv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1048,7 +1092,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#dwyflxgqmx .gt_sourcenote {
+#xxetzpumbv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1056,64 +1100,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#dwyflxgqmx .gt_left {
+#xxetzpumbv .gt_left {
   text-align: left;
 }
 
-#dwyflxgqmx .gt_center {
+#xxetzpumbv .gt_center {
   text-align: center;
 }
 
-#dwyflxgqmx .gt_right {
+#xxetzpumbv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dwyflxgqmx .gt_font_normal {
+#xxetzpumbv .gt_font_normal {
   font-weight: normal;
 }
 
-#dwyflxgqmx .gt_font_bold {
+#xxetzpumbv .gt_font_bold {
   font-weight: bold;
 }
 
-#dwyflxgqmx .gt_font_italic {
+#xxetzpumbv .gt_font_italic {
   font-style: italic;
 }
 
-#dwyflxgqmx .gt_super {
+#xxetzpumbv .gt_super {
   font-size: 65%;
 }
 
-#dwyflxgqmx .gt_footnote_marks {
+#xxetzpumbv .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#dwyflxgqmx .gt_asterisk {
+#xxetzpumbv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dwyflxgqmx .gt_indent_1 {
+#xxetzpumbv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dwyflxgqmx .gt_indent_2 {
+#xxetzpumbv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dwyflxgqmx .gt_indent_3 {
+#xxetzpumbv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dwyflxgqmx .gt_indent_4 {
+#xxetzpumbv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dwyflxgqmx .gt_indent_5 {
+#xxetzpumbv .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1158,18 +1202,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
 </table>
 </div>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="gt包画表.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用markdown将标题和子标题分别加粗和斜体化</span></span>
-<span id="cb80-2"><a href="gt包画表.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(islands_tbl[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,]) <span class="sc">%&gt;%</span></span>
-<span id="cb80-3"><a href="gt包画表.html#cb80-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb80-4"><a href="gt包画表.html#cb80-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">md</span>(<span class="st">&quot;**Large Landmasses of the World**&quot;</span>),</span>
-<span id="cb80-5"><a href="gt包画表.html#cb80-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">md</span>(<span class="st">&quot;The *top two* largest are presented&quot;</span>)</span>
-<span id="cb80-6"><a href="gt包画表.html#cb80-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<div id="vsvxcftgjs" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="gt包画表.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用markdown将标题和子标题分别加粗和斜体化</span></span>
+<span id="cb70-2"><a href="gt包画表.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(islands_tbl[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,]) <span class="sc">%&gt;%</span></span>
+<span id="cb70-3"><a href="gt包画表.html#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb70-4"><a href="gt包画表.html#cb70-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">md</span>(<span class="st">&quot;**Large Landmasses of the World**&quot;</span>),</span>
+<span id="cb70-5"><a href="gt包画表.html#cb70-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">md</span>(<span class="st">&quot;The *top two* largest are presented&quot;</span>)</span>
+<span id="cb70-6"><a href="gt包画表.html#cb70-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div id="gfrhicdosm" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#vsvxcftgjs .gt_table {
+#gfrhicdosm .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1194,7 +1238,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#vsvxcftgjs .gt_heading {
+#gfrhicdosm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1206,7 +1250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#vsvxcftgjs .gt_title {
+#gfrhicdosm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1218,7 +1262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#vsvxcftgjs .gt_subtitle {
+#gfrhicdosm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1230,13 +1274,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#vsvxcftgjs .gt_bottom_border {
+#gfrhicdosm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vsvxcftgjs .gt_col_headings {
+#gfrhicdosm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1251,7 +1295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#vsvxcftgjs .gt_col_heading {
+#gfrhicdosm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1271,7 +1315,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#vsvxcftgjs .gt_column_spanner_outer {
+#gfrhicdosm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1283,15 +1327,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#vsvxcftgjs .gt_column_spanner_outer:first-child {
+#gfrhicdosm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vsvxcftgjs .gt_column_spanner_outer:last-child {
+#gfrhicdosm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vsvxcftgjs .gt_column_spanner {
+#gfrhicdosm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1303,7 +1347,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#vsvxcftgjs .gt_group_heading {
+#gfrhicdosm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1329,7 +1373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   text-align: left;
 }
 
-#vsvxcftgjs .gt_empty_group_heading {
+#gfrhicdosm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1344,15 +1388,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#vsvxcftgjs .gt_from_md > :first-child {
+#gfrhicdosm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vsvxcftgjs .gt_from_md > :last-child {
+#gfrhicdosm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vsvxcftgjs .gt_row {
+#gfrhicdosm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1371,7 +1415,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#vsvxcftgjs .gt_stub {
+#gfrhicdosm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1384,7 +1428,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#vsvxcftgjs .gt_stub_row_group {
+#gfrhicdosm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1398,11 +1442,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#vsvxcftgjs .gt_row_group_first td {
+#gfrhicdosm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vsvxcftgjs .gt_summary_row {
+#gfrhicdosm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1412,16 +1456,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#vsvxcftgjs .gt_first_summary_row {
+#gfrhicdosm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vsvxcftgjs .gt_first_summary_row.thick {
+#gfrhicdosm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vsvxcftgjs .gt_last_summary_row {
+#gfrhicdosm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1431,7 +1475,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#vsvxcftgjs .gt_grand_summary_row {
+#gfrhicdosm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1441,7 +1485,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#vsvxcftgjs .gt_first_grand_summary_row {
+#gfrhicdosm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1451,11 +1495,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#vsvxcftgjs .gt_striped {
+#gfrhicdosm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vsvxcftgjs .gt_table_body {
+#gfrhicdosm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1464,7 +1508,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#vsvxcftgjs .gt_footnotes {
+#gfrhicdosm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1478,7 +1522,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#vsvxcftgjs .gt_footnote {
+#gfrhicdosm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1487,7 +1531,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#vsvxcftgjs .gt_sourcenotes {
+#gfrhicdosm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1501,7 +1545,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#vsvxcftgjs .gt_sourcenote {
+#gfrhicdosm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1509,64 +1553,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#vsvxcftgjs .gt_left {
+#gfrhicdosm .gt_left {
   text-align: left;
 }
 
-#vsvxcftgjs .gt_center {
+#gfrhicdosm .gt_center {
   text-align: center;
 }
 
-#vsvxcftgjs .gt_right {
+#gfrhicdosm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vsvxcftgjs .gt_font_normal {
+#gfrhicdosm .gt_font_normal {
   font-weight: normal;
 }
 
-#vsvxcftgjs .gt_font_bold {
+#gfrhicdosm .gt_font_bold {
   font-weight: bold;
 }
 
-#vsvxcftgjs .gt_font_italic {
+#gfrhicdosm .gt_font_italic {
   font-style: italic;
 }
 
-#vsvxcftgjs .gt_super {
+#gfrhicdosm .gt_super {
   font-size: 65%;
 }
 
-#vsvxcftgjs .gt_footnote_marks {
+#gfrhicdosm .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#vsvxcftgjs .gt_asterisk {
+#gfrhicdosm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vsvxcftgjs .gt_indent_1 {
+#gfrhicdosm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vsvxcftgjs .gt_indent_2 {
+#gfrhicdosm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vsvxcftgjs .gt_indent_3 {
+#gfrhicdosm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vsvxcftgjs .gt_indent_4 {
+#gfrhicdosm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vsvxcftgjs .gt_indent_5 {
+#gfrhicdosm .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1595,22 +1639,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
 </table>
 </div>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="gt包画表.html#cb81-1" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> </span>
-<span id="cb81-2"><a href="gt包画表.html#cb81-2" aria-hidden="true" tabindex="-1"></a>  gt_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb81-3"><a href="gt包画表.html#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
-<span id="cb81-4"><a href="gt包画表.html#cb81-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="st">&quot;Source: The World Almanac and Book of Facts, 1975, page 406.&quot;</span></span>
-<span id="cb81-5"><a href="gt包画表.html#cb81-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb81-6"><a href="gt包画表.html#cb81-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
-<span id="cb81-7"><a href="gt包画表.html#cb81-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">&quot;Reference: McNeil, D. R. (1977) *Interactive Data Analysis*. Wiley.&quot;</span>)</span>
-<span id="cb81-8"><a href="gt包画表.html#cb81-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb81-9"><a href="gt包画表.html#cb81-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-10"><a href="gt包画表.html#cb81-10" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
-<div id="gysdqmalhz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="gt包画表.html#cb71-1" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> </span>
+<span id="cb71-2"><a href="gt包画表.html#cb71-2" aria-hidden="true" tabindex="-1"></a>  gt_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb71-3"><a href="gt包画表.html#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
+<span id="cb71-4"><a href="gt包画表.html#cb71-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="st">&quot;Source: The World Almanac and Book of Facts, 1975, page 406.&quot;</span></span>
+<span id="cb71-5"><a href="gt包画表.html#cb71-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb71-6"><a href="gt包画表.html#cb71-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
+<span id="cb71-7"><a href="gt包画表.html#cb71-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">&quot;Reference: McNeil, D. R. (1977) *Interactive Data Analysis*. Wiley.&quot;</span>)</span>
+<span id="cb71-8"><a href="gt包画表.html#cb71-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb71-9"><a href="gt包画表.html#cb71-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-10"><a href="gt包画表.html#cb71-10" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
+<div id="rsughcufke" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#gysdqmalhz .gt_table {
+#rsughcufke .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1635,7 +1679,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#gysdqmalhz .gt_heading {
+#rsughcufke .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1647,7 +1691,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#gysdqmalhz .gt_title {
+#rsughcufke .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1659,7 +1703,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#gysdqmalhz .gt_subtitle {
+#rsughcufke .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1671,13 +1715,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#gysdqmalhz .gt_bottom_border {
+#rsughcufke .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gysdqmalhz .gt_col_headings {
+#rsughcufke .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1692,7 +1736,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#gysdqmalhz .gt_col_heading {
+#rsughcufke .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1712,7 +1756,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#gysdqmalhz .gt_column_spanner_outer {
+#rsughcufke .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1724,15 +1768,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#gysdqmalhz .gt_column_spanner_outer:first-child {
+#rsughcufke .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gysdqmalhz .gt_column_spanner_outer:last-child {
+#rsughcufke .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gysdqmalhz .gt_column_spanner {
+#rsughcufke .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1744,7 +1788,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#gysdqmalhz .gt_group_heading {
+#rsughcufke .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1770,7 +1814,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   text-align: left;
 }
 
-#gysdqmalhz .gt_empty_group_heading {
+#rsughcufke .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1785,15 +1829,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#gysdqmalhz .gt_from_md > :first-child {
+#rsughcufke .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gysdqmalhz .gt_from_md > :last-child {
+#rsughcufke .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gysdqmalhz .gt_row {
+#rsughcufke .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1812,7 +1856,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#gysdqmalhz .gt_stub {
+#rsughcufke .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1825,7 +1869,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#gysdqmalhz .gt_stub_row_group {
+#rsughcufke .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1839,11 +1883,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#gysdqmalhz .gt_row_group_first td {
+#rsughcufke .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gysdqmalhz .gt_summary_row {
+#rsughcufke .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1853,16 +1897,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#gysdqmalhz .gt_first_summary_row {
+#rsughcufke .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gysdqmalhz .gt_first_summary_row.thick {
+#rsughcufke .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gysdqmalhz .gt_last_summary_row {
+#rsughcufke .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1872,7 +1916,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#gysdqmalhz .gt_grand_summary_row {
+#rsughcufke .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1882,7 +1926,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#gysdqmalhz .gt_first_grand_summary_row {
+#rsughcufke .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1892,11 +1936,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#gysdqmalhz .gt_striped {
+#rsughcufke .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gysdqmalhz .gt_table_body {
+#rsughcufke .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1905,7 +1949,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#gysdqmalhz .gt_footnotes {
+#rsughcufke .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1919,7 +1963,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#gysdqmalhz .gt_footnote {
+#rsughcufke .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1928,7 +1972,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#gysdqmalhz .gt_sourcenotes {
+#rsughcufke .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1942,7 +1986,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#gysdqmalhz .gt_sourcenote {
+#rsughcufke .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1950,64 +1994,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#gysdqmalhz .gt_left {
+#rsughcufke .gt_left {
   text-align: left;
 }
 
-#gysdqmalhz .gt_center {
+#rsughcufke .gt_center {
   text-align: center;
 }
 
-#gysdqmalhz .gt_right {
+#rsughcufke .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gysdqmalhz .gt_font_normal {
+#rsughcufke .gt_font_normal {
   font-weight: normal;
 }
 
-#gysdqmalhz .gt_font_bold {
+#rsughcufke .gt_font_bold {
   font-weight: bold;
 }
 
-#gysdqmalhz .gt_font_italic {
+#rsughcufke .gt_font_italic {
   font-style: italic;
 }
 
-#gysdqmalhz .gt_super {
+#rsughcufke .gt_super {
   font-size: 65%;
 }
 
-#gysdqmalhz .gt_footnote_marks {
+#rsughcufke .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#gysdqmalhz .gt_asterisk {
+#rsughcufke .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gysdqmalhz .gt_indent_1 {
+#rsughcufke .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gysdqmalhz .gt_indent_2 {
+#rsughcufke .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gysdqmalhz .gt_indent_3 {
+#rsughcufke .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gysdqmalhz .gt_indent_4 {
+#rsughcufke .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gysdqmalhz .gt_indent_5 {
+#rsughcufke .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2062,21 +2106,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="添加脚注" class="section level2 hasAnchor" number="6.4">
 <h2><span class="header-section-number">6.4</span> 添加脚注<a href="gt包画表.html#添加脚注" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="gt包画表.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加带交叉引用的脚注</span></span>
-<span id="cb82-2"><a href="gt包画表.html#cb82-2" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> </span>
-<span id="cb82-3"><a href="gt包画表.html#cb82-3" aria-hidden="true" tabindex="-1"></a>  gt_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb82-4"><a href="gt包画表.html#cb82-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(</span>
-<span id="cb82-5"><a href="gt包画表.html#cb82-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="st">&quot;The Americas.&quot;</span>,</span>
-<span id="cb82-6"><a href="gt包画表.html#cb82-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">columns =</span> name, <span class="at">rows =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>) <span class="co"># 在第3/4行，name这一列添加角标</span></span>
-<span id="cb82-7"><a href="gt包画表.html#cb82-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb82-8"><a href="gt包画表.html#cb82-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-9"><a href="gt包画表.html#cb82-9" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
-<div id="wkssvrirwh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="gt包画表.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加带交叉引用的脚注</span></span>
+<span id="cb72-2"><a href="gt包画表.html#cb72-2" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> </span>
+<span id="cb72-3"><a href="gt包画表.html#cb72-3" aria-hidden="true" tabindex="-1"></a>  gt_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb72-4"><a href="gt包画表.html#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(</span>
+<span id="cb72-5"><a href="gt包画表.html#cb72-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="st">&quot;The Americas.&quot;</span>,</span>
+<span id="cb72-6"><a href="gt包画表.html#cb72-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">columns =</span> name, <span class="at">rows =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>) <span class="co"># 在第3/4行，name这一列添加角标</span></span>
+<span id="cb72-7"><a href="gt包画表.html#cb72-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb72-8"><a href="gt包画表.html#cb72-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-9"><a href="gt包画表.html#cb72-9" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
+<div id="jkqzytmqlg" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#wkssvrirwh .gt_table {
+#jkqzytmqlg .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2101,7 +2145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#wkssvrirwh .gt_heading {
+#jkqzytmqlg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2113,7 +2157,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#wkssvrirwh .gt_title {
+#jkqzytmqlg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2125,7 +2169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#wkssvrirwh .gt_subtitle {
+#jkqzytmqlg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2137,13 +2181,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#wkssvrirwh .gt_bottom_border {
+#jkqzytmqlg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wkssvrirwh .gt_col_headings {
+#jkqzytmqlg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2158,7 +2202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#wkssvrirwh .gt_col_heading {
+#jkqzytmqlg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2178,7 +2222,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#wkssvrirwh .gt_column_spanner_outer {
+#jkqzytmqlg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2190,15 +2234,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#wkssvrirwh .gt_column_spanner_outer:first-child {
+#jkqzytmqlg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wkssvrirwh .gt_column_spanner_outer:last-child {
+#jkqzytmqlg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wkssvrirwh .gt_column_spanner {
+#jkqzytmqlg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2210,7 +2254,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#wkssvrirwh .gt_group_heading {
+#jkqzytmqlg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2236,7 +2280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   text-align: left;
 }
 
-#wkssvrirwh .gt_empty_group_heading {
+#jkqzytmqlg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2251,15 +2295,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#wkssvrirwh .gt_from_md > :first-child {
+#jkqzytmqlg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wkssvrirwh .gt_from_md > :last-child {
+#jkqzytmqlg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wkssvrirwh .gt_row {
+#jkqzytmqlg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2278,7 +2322,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#wkssvrirwh .gt_stub {
+#jkqzytmqlg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2291,7 +2335,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#wkssvrirwh .gt_stub_row_group {
+#jkqzytmqlg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2305,11 +2349,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#wkssvrirwh .gt_row_group_first td {
+#jkqzytmqlg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wkssvrirwh .gt_summary_row {
+#jkqzytmqlg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2319,16 +2363,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#wkssvrirwh .gt_first_summary_row {
+#jkqzytmqlg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wkssvrirwh .gt_first_summary_row.thick {
+#jkqzytmqlg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wkssvrirwh .gt_last_summary_row {
+#jkqzytmqlg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2338,7 +2382,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#wkssvrirwh .gt_grand_summary_row {
+#jkqzytmqlg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2348,7 +2392,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#wkssvrirwh .gt_first_grand_summary_row {
+#jkqzytmqlg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2358,11 +2402,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#wkssvrirwh .gt_striped {
+#jkqzytmqlg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wkssvrirwh .gt_table_body {
+#jkqzytmqlg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2371,7 +2415,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#wkssvrirwh .gt_footnotes {
+#jkqzytmqlg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2385,7 +2429,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#wkssvrirwh .gt_footnote {
+#jkqzytmqlg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -2394,7 +2438,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#wkssvrirwh .gt_sourcenotes {
+#jkqzytmqlg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2408,7 +2452,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#wkssvrirwh .gt_sourcenote {
+#jkqzytmqlg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2416,64 +2460,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#wkssvrirwh .gt_left {
+#jkqzytmqlg .gt_left {
   text-align: left;
 }
 
-#wkssvrirwh .gt_center {
+#jkqzytmqlg .gt_center {
   text-align: center;
 }
 
-#wkssvrirwh .gt_right {
+#jkqzytmqlg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wkssvrirwh .gt_font_normal {
+#jkqzytmqlg .gt_font_normal {
   font-weight: normal;
 }
 
-#wkssvrirwh .gt_font_bold {
+#jkqzytmqlg .gt_font_bold {
   font-weight: bold;
 }
 
-#wkssvrirwh .gt_font_italic {
+#jkqzytmqlg .gt_font_italic {
   font-style: italic;
 }
 
-#wkssvrirwh .gt_super {
+#jkqzytmqlg .gt_super {
   font-size: 65%;
 }
 
-#wkssvrirwh .gt_footnote_marks {
+#jkqzytmqlg .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#wkssvrirwh .gt_asterisk {
+#jkqzytmqlg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wkssvrirwh .gt_indent_1 {
+#jkqzytmqlg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wkssvrirwh .gt_indent_2 {
+#jkqzytmqlg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wkssvrirwh .gt_indent_3 {
+#jkqzytmqlg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wkssvrirwh .gt_indent_4 {
+#jkqzytmqlg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wkssvrirwh .gt_indent_5 {
+#jkqzytmqlg .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2532,17 +2576,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="添加左侧边栏" class="section level2 hasAnchor" number="6.5">
 <h2><span class="header-section-number">6.5</span> 添加左侧边栏<a href="gt包画表.html#添加左侧边栏" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="gt包画表.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加左侧边栏</span></span>
-<span id="cb83-2"><a href="gt包画表.html#cb83-2" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> islands_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb83-3"><a href="gt包画表.html#cb83-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">&quot;name&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># 使用name这一列作为左侧边栏</span></span>
-<span id="cb83-4"><a href="gt包画表.html#cb83-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_stubhead</span>(<span class="at">label =</span> <span class="st">&quot;landmass&quot;</span>) <span class="co"># 添加左侧边栏的标题</span></span>
-<span id="cb83-5"><a href="gt包画表.html#cb83-5" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
-<div id="bphydfrxsx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="gt包画表.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加左侧边栏</span></span>
+<span id="cb73-2"><a href="gt包画表.html#cb73-2" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> islands_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb73-3"><a href="gt包画表.html#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">&quot;name&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># 使用name这一列作为左侧边栏</span></span>
+<span id="cb73-4"><a href="gt包画表.html#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_stubhead</span>(<span class="at">label =</span> <span class="st">&quot;landmass&quot;</span>) <span class="co"># 添加左侧边栏的标题</span></span>
+<span id="cb73-5"><a href="gt包画表.html#cb73-5" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
+<div id="yxzjzuxkyn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#bphydfrxsx .gt_table {
+#yxzjzuxkyn .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2567,7 +2611,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#bphydfrxsx .gt_heading {
+#yxzjzuxkyn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2579,7 +2623,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#bphydfrxsx .gt_title {
+#yxzjzuxkyn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2591,7 +2635,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#bphydfrxsx .gt_subtitle {
+#yxzjzuxkyn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2603,13 +2647,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#bphydfrxsx .gt_bottom_border {
+#yxzjzuxkyn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bphydfrxsx .gt_col_headings {
+#yxzjzuxkyn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2624,7 +2668,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#bphydfrxsx .gt_col_heading {
+#yxzjzuxkyn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2644,7 +2688,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#bphydfrxsx .gt_column_spanner_outer {
+#yxzjzuxkyn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2656,15 +2700,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#bphydfrxsx .gt_column_spanner_outer:first-child {
+#yxzjzuxkyn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bphydfrxsx .gt_column_spanner_outer:last-child {
+#yxzjzuxkyn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bphydfrxsx .gt_column_spanner {
+#yxzjzuxkyn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2676,7 +2720,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#bphydfrxsx .gt_group_heading {
+#yxzjzuxkyn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2702,7 +2746,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   text-align: left;
 }
 
-#bphydfrxsx .gt_empty_group_heading {
+#yxzjzuxkyn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2717,15 +2761,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#bphydfrxsx .gt_from_md > :first-child {
+#yxzjzuxkyn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bphydfrxsx .gt_from_md > :last-child {
+#yxzjzuxkyn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bphydfrxsx .gt_row {
+#yxzjzuxkyn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2744,7 +2788,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#bphydfrxsx .gt_stub {
+#yxzjzuxkyn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2757,7 +2801,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#bphydfrxsx .gt_stub_row_group {
+#yxzjzuxkyn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2771,11 +2815,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#bphydfrxsx .gt_row_group_first td {
+#yxzjzuxkyn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bphydfrxsx .gt_summary_row {
+#yxzjzuxkyn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2785,16 +2829,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#bphydfrxsx .gt_first_summary_row {
+#yxzjzuxkyn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bphydfrxsx .gt_first_summary_row.thick {
+#yxzjzuxkyn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bphydfrxsx .gt_last_summary_row {
+#yxzjzuxkyn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2804,7 +2848,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#bphydfrxsx .gt_grand_summary_row {
+#yxzjzuxkyn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2814,7 +2858,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#bphydfrxsx .gt_first_grand_summary_row {
+#yxzjzuxkyn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2824,11 +2868,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#bphydfrxsx .gt_striped {
+#yxzjzuxkyn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bphydfrxsx .gt_table_body {
+#yxzjzuxkyn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2837,7 +2881,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#bphydfrxsx .gt_footnotes {
+#yxzjzuxkyn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2851,7 +2895,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#bphydfrxsx .gt_footnote {
+#yxzjzuxkyn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -2860,7 +2904,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#bphydfrxsx .gt_sourcenotes {
+#yxzjzuxkyn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2874,7 +2918,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#bphydfrxsx .gt_sourcenote {
+#yxzjzuxkyn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2882,64 +2926,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#bphydfrxsx .gt_left {
+#yxzjzuxkyn .gt_left {
   text-align: left;
 }
 
-#bphydfrxsx .gt_center {
+#yxzjzuxkyn .gt_center {
   text-align: center;
 }
 
-#bphydfrxsx .gt_right {
+#yxzjzuxkyn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bphydfrxsx .gt_font_normal {
+#yxzjzuxkyn .gt_font_normal {
   font-weight: normal;
 }
 
-#bphydfrxsx .gt_font_bold {
+#yxzjzuxkyn .gt_font_bold {
   font-weight: bold;
 }
 
-#bphydfrxsx .gt_font_italic {
+#yxzjzuxkyn .gt_font_italic {
   font-style: italic;
 }
 
-#bphydfrxsx .gt_super {
+#yxzjzuxkyn .gt_super {
   font-size: 65%;
 }
 
-#bphydfrxsx .gt_footnote_marks {
+#yxzjzuxkyn .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#bphydfrxsx .gt_asterisk {
+#yxzjzuxkyn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bphydfrxsx .gt_indent_1 {
+#yxzjzuxkyn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bphydfrxsx .gt_indent_2 {
+#yxzjzuxkyn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bphydfrxsx .gt_indent_3 {
+#yxzjzuxkyn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bphydfrxsx .gt_indent_4 {
+#yxzjzuxkyn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bphydfrxsx .gt_indent_5 {
+#yxzjzuxkyn .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2980,28 +3024,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="分组" class="section level2 hasAnchor" number="6.6">
 <h2><span class="header-section-number">6.6</span> 分组<a href="gt包画表.html#分组" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="gt包画表.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 分组</span></span>
-<span id="cb84-2"><a href="gt包画表.html#cb84-2" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> gt_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb84-3"><a href="gt包画表.html#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_row_group</span>( </span>
-<span id="cb84-4"><a href="gt包画表.html#cb84-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;continent&quot;</span>,</span>
-<span id="cb84-5"><a href="gt包画表.html#cb84-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">rows =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span> <span class="co"># 1-6行是大洲</span></span>
-<span id="cb84-6"><a href="gt包画表.html#cb84-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb84-7"><a href="gt包画表.html#cb84-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_row_group</span>(</span>
-<span id="cb84-8"><a href="gt包画表.html#cb84-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;country&quot;</span>,</span>
-<span id="cb84-9"><a href="gt包画表.html#cb84-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">rows =</span> <span class="fu">c</span>(<span class="st">&quot;Australia&quot;</span>, <span class="st">&quot;Greenland&quot;</span>)</span>
-<span id="cb84-10"><a href="gt包画表.html#cb84-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb84-11"><a href="gt包画表.html#cb84-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_row_group</span>(</span>
-<span id="cb84-12"><a href="gt包画表.html#cb84-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;subregion&quot;</span>,</span>
-<span id="cb84-13"><a href="gt包画表.html#cb84-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">rows =</span> <span class="fu">c</span>(<span class="st">&quot;New Guinea&quot;</span>, <span class="st">&quot;Borneo&quot;</span>)</span>
-<span id="cb84-14"><a href="gt包画表.html#cb84-14" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb84-15"><a href="gt包画表.html#cb84-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb84-16"><a href="gt包画表.html#cb84-16" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
-<div id="mmcizchjef" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="gt包画表.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 分组</span></span>
+<span id="cb74-2"><a href="gt包画表.html#cb74-2" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> gt_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb74-3"><a href="gt包画表.html#cb74-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_row_group</span>( </span>
+<span id="cb74-4"><a href="gt包画表.html#cb74-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;continent&quot;</span>,</span>
+<span id="cb74-5"><a href="gt包画表.html#cb74-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">rows =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span> <span class="co"># 1-6行是大洲</span></span>
+<span id="cb74-6"><a href="gt包画表.html#cb74-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb74-7"><a href="gt包画表.html#cb74-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_row_group</span>(</span>
+<span id="cb74-8"><a href="gt包画表.html#cb74-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;country&quot;</span>,</span>
+<span id="cb74-9"><a href="gt包画表.html#cb74-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">rows =</span> <span class="fu">c</span>(<span class="st">&quot;Australia&quot;</span>, <span class="st">&quot;Greenland&quot;</span>)</span>
+<span id="cb74-10"><a href="gt包画表.html#cb74-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb74-11"><a href="gt包画表.html#cb74-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_row_group</span>(</span>
+<span id="cb74-12"><a href="gt包画表.html#cb74-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;subregion&quot;</span>,</span>
+<span id="cb74-13"><a href="gt包画表.html#cb74-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">rows =</span> <span class="fu">c</span>(<span class="st">&quot;New Guinea&quot;</span>, <span class="st">&quot;Borneo&quot;</span>)</span>
+<span id="cb74-14"><a href="gt包画表.html#cb74-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb74-15"><a href="gt包画表.html#cb74-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-16"><a href="gt包画表.html#cb74-16" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
+<div id="pmkdfxbxik" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#mmcizchjef .gt_table {
+#pmkdfxbxik .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3026,7 +3070,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#mmcizchjef .gt_heading {
+#pmkdfxbxik .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3038,7 +3082,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#mmcizchjef .gt_title {
+#pmkdfxbxik .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3050,7 +3094,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#mmcizchjef .gt_subtitle {
+#pmkdfxbxik .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3062,13 +3106,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#mmcizchjef .gt_bottom_border {
+#pmkdfxbxik .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mmcizchjef .gt_col_headings {
+#pmkdfxbxik .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3083,7 +3127,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#mmcizchjef .gt_col_heading {
+#pmkdfxbxik .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3103,7 +3147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#mmcizchjef .gt_column_spanner_outer {
+#pmkdfxbxik .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3115,15 +3159,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#mmcizchjef .gt_column_spanner_outer:first-child {
+#pmkdfxbxik .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mmcizchjef .gt_column_spanner_outer:last-child {
+#pmkdfxbxik .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mmcizchjef .gt_column_spanner {
+#pmkdfxbxik .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3135,7 +3179,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#mmcizchjef .gt_group_heading {
+#pmkdfxbxik .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3161,7 +3205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   text-align: left;
 }
 
-#mmcizchjef .gt_empty_group_heading {
+#pmkdfxbxik .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3176,15 +3220,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#mmcizchjef .gt_from_md > :first-child {
+#pmkdfxbxik .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mmcizchjef .gt_from_md > :last-child {
+#pmkdfxbxik .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mmcizchjef .gt_row {
+#pmkdfxbxik .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3203,7 +3247,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#mmcizchjef .gt_stub {
+#pmkdfxbxik .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3216,7 +3260,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#mmcizchjef .gt_stub_row_group {
+#pmkdfxbxik .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3230,11 +3274,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#mmcizchjef .gt_row_group_first td {
+#pmkdfxbxik .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mmcizchjef .gt_summary_row {
+#pmkdfxbxik .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3244,16 +3288,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#mmcizchjef .gt_first_summary_row {
+#pmkdfxbxik .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mmcizchjef .gt_first_summary_row.thick {
+#pmkdfxbxik .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mmcizchjef .gt_last_summary_row {
+#pmkdfxbxik .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3263,7 +3307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#mmcizchjef .gt_grand_summary_row {
+#pmkdfxbxik .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3273,7 +3317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#mmcizchjef .gt_first_grand_summary_row {
+#pmkdfxbxik .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3283,11 +3327,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#mmcizchjef .gt_striped {
+#pmkdfxbxik .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mmcizchjef .gt_table_body {
+#pmkdfxbxik .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3296,7 +3340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#mmcizchjef .gt_footnotes {
+#pmkdfxbxik .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3310,7 +3354,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#mmcizchjef .gt_footnote {
+#pmkdfxbxik .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -3319,7 +3363,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#mmcizchjef .gt_sourcenotes {
+#pmkdfxbxik .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3333,7 +3377,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#mmcizchjef .gt_sourcenote {
+#pmkdfxbxik .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3341,64 +3385,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#mmcizchjef .gt_left {
+#pmkdfxbxik .gt_left {
   text-align: left;
 }
 
-#mmcizchjef .gt_center {
+#pmkdfxbxik .gt_center {
   text-align: center;
 }
 
-#mmcizchjef .gt_right {
+#pmkdfxbxik .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mmcizchjef .gt_font_normal {
+#pmkdfxbxik .gt_font_normal {
   font-weight: normal;
 }
 
-#mmcizchjef .gt_font_bold {
+#pmkdfxbxik .gt_font_bold {
   font-weight: bold;
 }
 
-#mmcizchjef .gt_font_italic {
+#pmkdfxbxik .gt_font_italic {
   font-style: italic;
 }
 
-#mmcizchjef .gt_super {
+#pmkdfxbxik .gt_super {
   font-size: 65%;
 }
 
-#mmcizchjef .gt_footnote_marks {
+#pmkdfxbxik .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#mmcizchjef .gt_asterisk {
+#pmkdfxbxik .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mmcizchjef .gt_indent_1 {
+#pmkdfxbxik .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mmcizchjef .gt_indent_2 {
+#pmkdfxbxik .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mmcizchjef .gt_indent_3 {
+#pmkdfxbxik .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mmcizchjef .gt_indent_4 {
+#pmkdfxbxik .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mmcizchjef .gt_indent_5 {
+#pmkdfxbxik .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -3448,52 +3492,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="总体呈现" class="section level2 hasAnchor" number="6.7">
 <h2><span class="header-section-number">6.7</span> 总体呈现<a href="gt包画表.html#总体呈现" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="gt包画表.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 全部放入一起</span></span>
-<span id="cb85-2"><a href="gt包画表.html#cb85-2" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> islands_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb85-3"><a href="gt包画表.html#cb85-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">&quot;name&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb85-4"><a href="gt包画表.html#cb85-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_stubhead</span>(<span class="at">label =</span> <span class="st">&quot;landmass&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb85-5"><a href="gt包画表.html#cb85-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_row_group</span>(</span>
-<span id="cb85-6"><a href="gt包画表.html#cb85-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;continent&quot;</span>,</span>
-<span id="cb85-7"><a href="gt包画表.html#cb85-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">rows =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
-<span id="cb85-8"><a href="gt包画表.html#cb85-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb85-9"><a href="gt包画表.html#cb85-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_row_group</span>(</span>
-<span id="cb85-10"><a href="gt包画表.html#cb85-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;country&quot;</span>,</span>
-<span id="cb85-11"><a href="gt包画表.html#cb85-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">rows =</span> <span class="fu">c</span>(<span class="st">&quot;Australia&quot;</span>, <span class="st">&quot;Greenland&quot;</span>)</span>
-<span id="cb85-12"><a href="gt包画表.html#cb85-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb85-13"><a href="gt包画表.html#cb85-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_row_group</span>(</span>
-<span id="cb85-14"><a href="gt包画表.html#cb85-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;subregion&quot;</span>,</span>
-<span id="cb85-15"><a href="gt包画表.html#cb85-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">rows =</span> <span class="fu">c</span>(<span class="st">&quot;New Guinea&quot;</span>, <span class="st">&quot;Borneo&quot;</span>)</span>
-<span id="cb85-16"><a href="gt包画表.html#cb85-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb85-17"><a href="gt包画表.html#cb85-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb85-18"><a href="gt包画表.html#cb85-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Large Landmasses of the World&quot;</span>,</span>
-<span id="cb85-19"><a href="gt包画表.html#cb85-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;The top ten largest are presented&quot;</span></span>
-<span id="cb85-20"><a href="gt包画表.html#cb85-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb85-21"><a href="gt包画表.html#cb85-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
-<span id="cb85-22"><a href="gt包画表.html#cb85-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="st">&quot;Source: The World Almanac and Book of Facts, 1975, page 406.&quot;</span></span>
-<span id="cb85-23"><a href="gt包画表.html#cb85-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb85-24"><a href="gt包画表.html#cb85-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
-<span id="cb85-25"><a href="gt包画表.html#cb85-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">&quot;Reference: McNeil, D. R. (1977) *Interactive Data Analysis*. Wiley.&quot;</span>)</span>
-<span id="cb85-26"><a href="gt包画表.html#cb85-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb85-27"><a href="gt包画表.html#cb85-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(</span>
-<span id="cb85-28"><a href="gt包画表.html#cb85-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="fu">md</span>(<span class="st">&quot;The **largest** by area.&quot;</span>),</span>
-<span id="cb85-29"><a href="gt包画表.html#cb85-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
-<span id="cb85-30"><a href="gt包画表.html#cb85-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> size, <span class="at">rows =</span> <span class="dv">1</span></span>
-<span id="cb85-31"><a href="gt包画表.html#cb85-31" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb85-32"><a href="gt包画表.html#cb85-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb85-33"><a href="gt包画表.html#cb85-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(</span>
-<span id="cb85-34"><a href="gt包画表.html#cb85-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="st">&quot;The lowest by population.&quot;</span>,</span>
-<span id="cb85-35"><a href="gt包画表.html#cb85-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
-<span id="cb85-36"><a href="gt包画表.html#cb85-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> size, <span class="at">rows =</span> <span class="fu">contains</span>(<span class="st">&quot;arc&quot;</span>)</span>
-<span id="cb85-37"><a href="gt包画表.html#cb85-37" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb85-38"><a href="gt包画表.html#cb85-38" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb85-39"><a href="gt包画表.html#cb85-39" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb85-40"><a href="gt包画表.html#cb85-40" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
-<div id="bfhhpyozag" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="gt包画表.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 全部放入一起</span></span>
+<span id="cb75-2"><a href="gt包画表.html#cb75-2" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> islands_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb75-3"><a href="gt包画表.html#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">&quot;name&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-4"><a href="gt包画表.html#cb75-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_stubhead</span>(<span class="at">label =</span> <span class="st">&quot;landmass&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-5"><a href="gt包画表.html#cb75-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_row_group</span>(</span>
+<span id="cb75-6"><a href="gt包画表.html#cb75-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;continent&quot;</span>,</span>
+<span id="cb75-7"><a href="gt包画表.html#cb75-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">rows =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb75-8"><a href="gt包画表.html#cb75-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb75-9"><a href="gt包画表.html#cb75-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_row_group</span>(</span>
+<span id="cb75-10"><a href="gt包画表.html#cb75-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;country&quot;</span>,</span>
+<span id="cb75-11"><a href="gt包画表.html#cb75-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">rows =</span> <span class="fu">c</span>(<span class="st">&quot;Australia&quot;</span>, <span class="st">&quot;Greenland&quot;</span>)</span>
+<span id="cb75-12"><a href="gt包画表.html#cb75-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb75-13"><a href="gt包画表.html#cb75-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_row_group</span>(</span>
+<span id="cb75-14"><a href="gt包画表.html#cb75-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;subregion&quot;</span>,</span>
+<span id="cb75-15"><a href="gt包画表.html#cb75-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">rows =</span> <span class="fu">c</span>(<span class="st">&quot;New Guinea&quot;</span>, <span class="st">&quot;Borneo&quot;</span>)</span>
+<span id="cb75-16"><a href="gt包画表.html#cb75-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-17"><a href="gt包画表.html#cb75-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb75-18"><a href="gt包画表.html#cb75-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Large Landmasses of the World&quot;</span>,</span>
+<span id="cb75-19"><a href="gt包画表.html#cb75-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;The top ten largest are presented&quot;</span></span>
+<span id="cb75-20"><a href="gt包画表.html#cb75-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb75-21"><a href="gt包画表.html#cb75-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
+<span id="cb75-22"><a href="gt包画表.html#cb75-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="st">&quot;Source: The World Almanac and Book of Facts, 1975, page 406.&quot;</span></span>
+<span id="cb75-23"><a href="gt包画表.html#cb75-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb75-24"><a href="gt包画表.html#cb75-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
+<span id="cb75-25"><a href="gt包画表.html#cb75-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">&quot;Reference: McNeil, D. R. (1977) *Interactive Data Analysis*. Wiley.&quot;</span>)</span>
+<span id="cb75-26"><a href="gt包画表.html#cb75-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb75-27"><a href="gt包画表.html#cb75-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(</span>
+<span id="cb75-28"><a href="gt包画表.html#cb75-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="fu">md</span>(<span class="st">&quot;The **largest** by area.&quot;</span>),</span>
+<span id="cb75-29"><a href="gt包画表.html#cb75-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb75-30"><a href="gt包画表.html#cb75-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> size, <span class="at">rows =</span> <span class="dv">1</span></span>
+<span id="cb75-31"><a href="gt包画表.html#cb75-31" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb75-32"><a href="gt包画表.html#cb75-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb75-33"><a href="gt包画表.html#cb75-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(</span>
+<span id="cb75-34"><a href="gt包画表.html#cb75-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">footnote =</span> <span class="st">&quot;The lowest by population.&quot;</span>,</span>
+<span id="cb75-35"><a href="gt包画表.html#cb75-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb75-36"><a href="gt包画表.html#cb75-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> size, <span class="at">rows =</span> <span class="fu">contains</span>(<span class="st">&quot;arc&quot;</span>)</span>
+<span id="cb75-37"><a href="gt包画表.html#cb75-37" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb75-38"><a href="gt包画表.html#cb75-38" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb75-39"><a href="gt包画表.html#cb75-39" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb75-40"><a href="gt包画表.html#cb75-40" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
+<div id="xowvciqbuu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#bfhhpyozag .gt_table {
+#xowvciqbuu .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3518,7 +3562,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#bfhhpyozag .gt_heading {
+#xowvciqbuu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3530,7 +3574,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#bfhhpyozag .gt_title {
+#xowvciqbuu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3542,7 +3586,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#bfhhpyozag .gt_subtitle {
+#xowvciqbuu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3554,13 +3598,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#bfhhpyozag .gt_bottom_border {
+#xowvciqbuu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bfhhpyozag .gt_col_headings {
+#xowvciqbuu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3575,7 +3619,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#bfhhpyozag .gt_col_heading {
+#xowvciqbuu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3595,7 +3639,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#bfhhpyozag .gt_column_spanner_outer {
+#xowvciqbuu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3607,15 +3651,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#bfhhpyozag .gt_column_spanner_outer:first-child {
+#xowvciqbuu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bfhhpyozag .gt_column_spanner_outer:last-child {
+#xowvciqbuu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bfhhpyozag .gt_column_spanner {
+#xowvciqbuu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3627,7 +3671,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#bfhhpyozag .gt_group_heading {
+#xowvciqbuu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3653,7 +3697,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   text-align: left;
 }
 
-#bfhhpyozag .gt_empty_group_heading {
+#xowvciqbuu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3668,15 +3712,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#bfhhpyozag .gt_from_md > :first-child {
+#xowvciqbuu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bfhhpyozag .gt_from_md > :last-child {
+#xowvciqbuu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bfhhpyozag .gt_row {
+#xowvciqbuu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3695,7 +3739,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#bfhhpyozag .gt_stub {
+#xowvciqbuu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3708,7 +3752,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#bfhhpyozag .gt_stub_row_group {
+#xowvciqbuu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3722,11 +3766,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#bfhhpyozag .gt_row_group_first td {
+#xowvciqbuu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bfhhpyozag .gt_summary_row {
+#xowvciqbuu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3736,16 +3780,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#bfhhpyozag .gt_first_summary_row {
+#xowvciqbuu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bfhhpyozag .gt_first_summary_row.thick {
+#xowvciqbuu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bfhhpyozag .gt_last_summary_row {
+#xowvciqbuu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3755,7 +3799,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#bfhhpyozag .gt_grand_summary_row {
+#xowvciqbuu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3765,7 +3809,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#bfhhpyozag .gt_first_grand_summary_row {
+#xowvciqbuu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3775,11 +3819,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#bfhhpyozag .gt_striped {
+#xowvciqbuu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bfhhpyozag .gt_table_body {
+#xowvciqbuu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3788,7 +3832,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#bfhhpyozag .gt_footnotes {
+#xowvciqbuu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3802,7 +3846,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#bfhhpyozag .gt_footnote {
+#xowvciqbuu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -3811,7 +3855,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#bfhhpyozag .gt_sourcenotes {
+#xowvciqbuu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3825,7 +3869,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#bfhhpyozag .gt_sourcenote {
+#xowvciqbuu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3833,64 +3877,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#bfhhpyozag .gt_left {
+#xowvciqbuu .gt_left {
   text-align: left;
 }
 
-#bfhhpyozag .gt_center {
+#xowvciqbuu .gt_center {
   text-align: center;
 }
 
-#bfhhpyozag .gt_right {
+#xowvciqbuu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bfhhpyozag .gt_font_normal {
+#xowvciqbuu .gt_font_normal {
   font-weight: normal;
 }
 
-#bfhhpyozag .gt_font_bold {
+#xowvciqbuu .gt_font_bold {
   font-weight: bold;
 }
 
-#bfhhpyozag .gt_font_italic {
+#xowvciqbuu .gt_font_italic {
   font-style: italic;
 }
 
-#bfhhpyozag .gt_super {
+#xowvciqbuu .gt_super {
   font-size: 65%;
 }
 
-#bfhhpyozag .gt_footnote_marks {
+#xowvciqbuu .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#bfhhpyozag .gt_asterisk {
+#xowvciqbuu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bfhhpyozag .gt_indent_1 {
+#xowvciqbuu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bfhhpyozag .gt_indent_2 {
+#xowvciqbuu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bfhhpyozag .gt_indent_3 {
+#xowvciqbuu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bfhhpyozag .gt_indent_4 {
+#xowvciqbuu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bfhhpyozag .gt_indent_5 {
+#xowvciqbuu .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -3961,29 +4005,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="其他" class="section level2 hasAnchor" number="6.8">
 <h2><span class="header-section-number">6.8</span> 其他<a href="gt包画表.html#其他" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="gt包画表.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 增加列组别</span></span>
-<span id="cb86-2"><a href="gt包画表.html#cb86-2" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> </span>
-<span id="cb86-3"><a href="gt包画表.html#cb86-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(airquality) <span class="sc">%&gt;%</span></span>
-<span id="cb86-4"><a href="gt包画表.html#cb86-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb86-5"><a href="gt包画表.html#cb86-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;New York Air Quality Measurements&quot;</span>,</span>
-<span id="cb86-6"><a href="gt包画表.html#cb86-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Daily measurements in New York City (May 1-10, 1973)&quot;</span></span>
-<span id="cb86-7"><a href="gt包画表.html#cb86-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb86-8"><a href="gt包画表.html#cb86-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
-<span id="cb86-9"><a href="gt包画表.html#cb86-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Time&quot;</span>,</span>
-<span id="cb86-10"><a href="gt包画表.html#cb86-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(Month, Day)</span>
-<span id="cb86-11"><a href="gt包画表.html#cb86-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb86-12"><a href="gt包画表.html#cb86-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
-<span id="cb86-13"><a href="gt包画表.html#cb86-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Measurement&quot;</span>,</span>
-<span id="cb86-14"><a href="gt包画表.html#cb86-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(Ozone, Solar.R, Wind, Temp)</span>
-<span id="cb86-15"><a href="gt包画表.html#cb86-15" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb86-16"><a href="gt包画表.html#cb86-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb86-17"><a href="gt包画表.html#cb86-17" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
-<div id="stjcwtwzhj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="gt包画表.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 增加列组别</span></span>
+<span id="cb76-2"><a href="gt包画表.html#cb76-2" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> </span>
+<span id="cb76-3"><a href="gt包画表.html#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(airquality) <span class="sc">%&gt;%</span></span>
+<span id="cb76-4"><a href="gt包画表.html#cb76-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb76-5"><a href="gt包画表.html#cb76-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;New York Air Quality Measurements&quot;</span>,</span>
+<span id="cb76-6"><a href="gt包画表.html#cb76-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Daily measurements in New York City (May 1-10, 1973)&quot;</span></span>
+<span id="cb76-7"><a href="gt包画表.html#cb76-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb76-8"><a href="gt包画表.html#cb76-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb76-9"><a href="gt包画表.html#cb76-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Time&quot;</span>,</span>
+<span id="cb76-10"><a href="gt包画表.html#cb76-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(Month, Day)</span>
+<span id="cb76-11"><a href="gt包画表.html#cb76-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb76-12"><a href="gt包画表.html#cb76-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb76-13"><a href="gt包画表.html#cb76-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Measurement&quot;</span>,</span>
+<span id="cb76-14"><a href="gt包画表.html#cb76-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(Ozone, Solar.R, Wind, Temp)</span>
+<span id="cb76-15"><a href="gt包画表.html#cb76-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb76-16"><a href="gt包画表.html#cb76-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-17"><a href="gt包画表.html#cb76-17" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
+<div id="ieijchyjpj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#stjcwtwzhj .gt_table {
+#ieijchyjpj .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -4008,7 +4052,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#stjcwtwzhj .gt_heading {
+#ieijchyjpj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4020,7 +4064,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#stjcwtwzhj .gt_title {
+#ieijchyjpj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4032,7 +4076,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#stjcwtwzhj .gt_subtitle {
+#ieijchyjpj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4044,13 +4088,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#stjcwtwzhj .gt_bottom_border {
+#ieijchyjpj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#stjcwtwzhj .gt_col_headings {
+#ieijchyjpj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4065,7 +4109,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#stjcwtwzhj .gt_col_heading {
+#ieijchyjpj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4085,7 +4129,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#stjcwtwzhj .gt_column_spanner_outer {
+#ieijchyjpj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4097,15 +4141,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#stjcwtwzhj .gt_column_spanner_outer:first-child {
+#ieijchyjpj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#stjcwtwzhj .gt_column_spanner_outer:last-child {
+#ieijchyjpj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#stjcwtwzhj .gt_column_spanner {
+#ieijchyjpj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4117,7 +4161,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#stjcwtwzhj .gt_group_heading {
+#ieijchyjpj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4143,7 +4187,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   text-align: left;
 }
 
-#stjcwtwzhj .gt_empty_group_heading {
+#ieijchyjpj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4158,15 +4202,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#stjcwtwzhj .gt_from_md > :first-child {
+#ieijchyjpj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#stjcwtwzhj .gt_from_md > :last-child {
+#ieijchyjpj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#stjcwtwzhj .gt_row {
+#ieijchyjpj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4185,7 +4229,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#stjcwtwzhj .gt_stub {
+#ieijchyjpj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4198,7 +4242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#stjcwtwzhj .gt_stub_row_group {
+#ieijchyjpj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4212,11 +4256,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#stjcwtwzhj .gt_row_group_first td {
+#ieijchyjpj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#stjcwtwzhj .gt_summary_row {
+#ieijchyjpj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4226,16 +4270,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#stjcwtwzhj .gt_first_summary_row {
+#ieijchyjpj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#stjcwtwzhj .gt_first_summary_row.thick {
+#ieijchyjpj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#stjcwtwzhj .gt_last_summary_row {
+#ieijchyjpj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4245,7 +4289,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#stjcwtwzhj .gt_grand_summary_row {
+#ieijchyjpj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4255,7 +4299,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#stjcwtwzhj .gt_first_grand_summary_row {
+#ieijchyjpj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4265,11 +4309,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#stjcwtwzhj .gt_striped {
+#ieijchyjpj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#stjcwtwzhj .gt_table_body {
+#ieijchyjpj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4278,7 +4322,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#stjcwtwzhj .gt_footnotes {
+#ieijchyjpj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4292,7 +4336,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#stjcwtwzhj .gt_footnote {
+#ieijchyjpj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -4301,7 +4345,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#stjcwtwzhj .gt_sourcenotes {
+#ieijchyjpj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4315,7 +4359,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#stjcwtwzhj .gt_sourcenote {
+#ieijchyjpj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4323,64 +4367,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#stjcwtwzhj .gt_left {
+#ieijchyjpj .gt_left {
   text-align: left;
 }
 
-#stjcwtwzhj .gt_center {
+#ieijchyjpj .gt_center {
   text-align: center;
 }
 
-#stjcwtwzhj .gt_right {
+#ieijchyjpj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#stjcwtwzhj .gt_font_normal {
+#ieijchyjpj .gt_font_normal {
   font-weight: normal;
 }
 
-#stjcwtwzhj .gt_font_bold {
+#ieijchyjpj .gt_font_bold {
   font-weight: bold;
 }
 
-#stjcwtwzhj .gt_font_italic {
+#ieijchyjpj .gt_font_italic {
   font-style: italic;
 }
 
-#stjcwtwzhj .gt_super {
+#ieijchyjpj .gt_super {
   font-size: 65%;
 }
 
-#stjcwtwzhj .gt_footnote_marks {
+#ieijchyjpj .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#stjcwtwzhj .gt_asterisk {
+#ieijchyjpj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#stjcwtwzhj .gt_indent_1 {
+#ieijchyjpj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#stjcwtwzhj .gt_indent_2 {
+#ieijchyjpj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#stjcwtwzhj .gt_indent_3 {
+#ieijchyjpj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#stjcwtwzhj .gt_indent_4 {
+#ieijchyjpj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#stjcwtwzhj .gt_indent_5 {
+#ieijchyjpj .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -5335,26 +5379,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
 </table>
 </div>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="gt包画表.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 支持随意更改列的位置以及HTML语法：</span></span>
-<span id="cb87-2"><a href="gt包画表.html#cb87-2" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> </span>
-<span id="cb87-3"><a href="gt包画表.html#cb87-3" aria-hidden="true" tabindex="-1"></a>  gt_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb87-4"><a href="gt包画表.html#cb87-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_move_to_start</span>( <span class="co"># 移到前面去</span></span>
-<span id="cb87-5"><a href="gt包画表.html#cb87-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(Month, Day)</span>
-<span id="cb87-6"><a href="gt包画表.html#cb87-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb87-7"><a href="gt包画表.html#cb87-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb87-8"><a href="gt包画表.html#cb87-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Ozone =</span> <span class="fu">html</span>(<span class="st">&quot;Ozone,&lt;br&gt;ppbV&quot;</span>),</span>
-<span id="cb87-9"><a href="gt包画表.html#cb87-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Solar.R =</span> <span class="fu">html</span>(<span class="st">&quot;Solar R.,&lt;br&gt;cal/m&lt;sup&gt;2&lt;/sup&gt;&quot;</span>),</span>
-<span id="cb87-10"><a href="gt包画表.html#cb87-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Wind =</span> <span class="fu">html</span>(<span class="st">&quot;Wind,&lt;br&gt;mph&quot;</span>),</span>
-<span id="cb87-11"><a href="gt包画表.html#cb87-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Temp =</span> <span class="fu">html</span>(<span class="st">&quot;Temp,&lt;br&gt;&amp;deg;F&quot;</span>)</span>
-<span id="cb87-12"><a href="gt包画表.html#cb87-12" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb87-13"><a href="gt包画表.html#cb87-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb87-14"><a href="gt包画表.html#cb87-14" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
-<div id="nwzonfuwln" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="gt包画表.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 支持随意更改列的位置以及HTML语法：</span></span>
+<span id="cb77-2"><a href="gt包画表.html#cb77-2" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span> </span>
+<span id="cb77-3"><a href="gt包画表.html#cb77-3" aria-hidden="true" tabindex="-1"></a>  gt_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb77-4"><a href="gt包画表.html#cb77-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_move_to_start</span>( <span class="co"># 移到前面去</span></span>
+<span id="cb77-5"><a href="gt包画表.html#cb77-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(Month, Day)</span>
+<span id="cb77-6"><a href="gt包画表.html#cb77-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb77-7"><a href="gt包画表.html#cb77-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb77-8"><a href="gt包画表.html#cb77-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Ozone =</span> <span class="fu">html</span>(<span class="st">&quot;Ozone,&lt;br&gt;ppbV&quot;</span>),</span>
+<span id="cb77-9"><a href="gt包画表.html#cb77-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Solar.R =</span> <span class="fu">html</span>(<span class="st">&quot;Solar R.,&lt;br&gt;cal/m&lt;sup&gt;2&lt;/sup&gt;&quot;</span>),</span>
+<span id="cb77-10"><a href="gt包画表.html#cb77-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Wind =</span> <span class="fu">html</span>(<span class="st">&quot;Wind,&lt;br&gt;mph&quot;</span>),</span>
+<span id="cb77-11"><a href="gt包画表.html#cb77-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Temp =</span> <span class="fu">html</span>(<span class="st">&quot;Temp,&lt;br&gt;&amp;deg;F&quot;</span>)</span>
+<span id="cb77-12"><a href="gt包画表.html#cb77-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb77-13"><a href="gt包画表.html#cb77-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-14"><a href="gt包画表.html#cb77-14" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
+<div id="tducppsqgd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#nwzonfuwln .gt_table {
+#tducppsqgd .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -5379,7 +5423,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#nwzonfuwln .gt_heading {
+#tducppsqgd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5391,7 +5435,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#nwzonfuwln .gt_title {
+#tducppsqgd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5403,7 +5447,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#nwzonfuwln .gt_subtitle {
+#tducppsqgd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5415,13 +5459,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#nwzonfuwln .gt_bottom_border {
+#tducppsqgd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nwzonfuwln .gt_col_headings {
+#tducppsqgd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5436,7 +5480,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#nwzonfuwln .gt_col_heading {
+#tducppsqgd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5456,7 +5500,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#nwzonfuwln .gt_column_spanner_outer {
+#tducppsqgd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5468,15 +5512,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#nwzonfuwln .gt_column_spanner_outer:first-child {
+#tducppsqgd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nwzonfuwln .gt_column_spanner_outer:last-child {
+#tducppsqgd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nwzonfuwln .gt_column_spanner {
+#tducppsqgd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5488,7 +5532,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#nwzonfuwln .gt_group_heading {
+#tducppsqgd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5514,7 +5558,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   text-align: left;
 }
 
-#nwzonfuwln .gt_empty_group_heading {
+#tducppsqgd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5529,15 +5573,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#nwzonfuwln .gt_from_md > :first-child {
+#tducppsqgd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nwzonfuwln .gt_from_md > :last-child {
+#tducppsqgd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nwzonfuwln .gt_row {
+#tducppsqgd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5556,7 +5600,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#nwzonfuwln .gt_stub {
+#tducppsqgd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5569,7 +5613,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#nwzonfuwln .gt_stub_row_group {
+#tducppsqgd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5583,11 +5627,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#nwzonfuwln .gt_row_group_first td {
+#tducppsqgd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nwzonfuwln .gt_summary_row {
+#tducppsqgd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5597,16 +5641,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#nwzonfuwln .gt_first_summary_row {
+#tducppsqgd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nwzonfuwln .gt_first_summary_row.thick {
+#tducppsqgd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nwzonfuwln .gt_last_summary_row {
+#tducppsqgd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5616,7 +5660,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#nwzonfuwln .gt_grand_summary_row {
+#tducppsqgd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5626,7 +5670,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#nwzonfuwln .gt_first_grand_summary_row {
+#tducppsqgd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5636,11 +5680,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#nwzonfuwln .gt_striped {
+#tducppsqgd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nwzonfuwln .gt_table_body {
+#tducppsqgd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5649,7 +5693,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#nwzonfuwln .gt_footnotes {
+#tducppsqgd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5663,7 +5707,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#nwzonfuwln .gt_footnote {
+#tducppsqgd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -5672,7 +5716,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#nwzonfuwln .gt_sourcenotes {
+#tducppsqgd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5686,7 +5730,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#nwzonfuwln .gt_sourcenote {
+#tducppsqgd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5694,64 +5738,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#nwzonfuwln .gt_left {
+#tducppsqgd .gt_left {
   text-align: left;
 }
 
-#nwzonfuwln .gt_center {
+#tducppsqgd .gt_center {
   text-align: center;
 }
 
-#nwzonfuwln .gt_right {
+#tducppsqgd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nwzonfuwln .gt_font_normal {
+#tducppsqgd .gt_font_normal {
   font-weight: normal;
 }
 
-#nwzonfuwln .gt_font_bold {
+#tducppsqgd .gt_font_bold {
   font-weight: bold;
 }
 
-#nwzonfuwln .gt_font_italic {
+#tducppsqgd .gt_font_italic {
   font-style: italic;
 }
 
-#nwzonfuwln .gt_super {
+#tducppsqgd .gt_super {
   font-size: 65%;
 }
 
-#nwzonfuwln .gt_footnote_marks {
+#tducppsqgd .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#nwzonfuwln .gt_asterisk {
+#tducppsqgd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nwzonfuwln .gt_indent_1 {
+#tducppsqgd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nwzonfuwln .gt_indent_2 {
+#tducppsqgd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nwzonfuwln .gt_indent_3 {
+#tducppsqgd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nwzonfuwln .gt_indent_4 {
+#tducppsqgd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nwzonfuwln .gt_indent_5 {
+#tducppsqgd .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -6706,18 +6750,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
 </table>
 </div>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="gt包画表.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建根</span></span>
-<span id="cb88-2"><a href="gt包画表.html#cb88-2" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span></span>
-<span id="cb88-3"><a href="gt包画表.html#cb88-3" aria-hidden="true" tabindex="-1"></a>islands_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb88-4"><a href="gt包画表.html#cb88-4" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">&quot;name&quot;</span>)</span>
-<span id="cb88-5"><a href="gt包画表.html#cb88-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 展示</span></span>
-<span id="cb88-6"><a href="gt包画表.html#cb88-6" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
-<div id="szsuwwlkxs" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="gt包画表.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建根</span></span>
+<span id="cb78-2"><a href="gt包画表.html#cb78-2" aria-hidden="true" tabindex="-1"></a>gt_tbl <span class="ot">&lt;-</span></span>
+<span id="cb78-3"><a href="gt包画表.html#cb78-3" aria-hidden="true" tabindex="-1"></a>islands_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb78-4"><a href="gt包画表.html#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">&quot;name&quot;</span>)</span>
+<span id="cb78-5"><a href="gt包画表.html#cb78-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 展示</span></span>
+<span id="cb78-6"><a href="gt包画表.html#cb78-6" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div>
+<div id="dabxxspuzx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#szsuwwlkxs .gt_table {
+#dabxxspuzx .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -6742,7 +6786,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#szsuwwlkxs .gt_heading {
+#dabxxspuzx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -6754,7 +6798,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#szsuwwlkxs .gt_title {
+#dabxxspuzx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -6766,7 +6810,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#szsuwwlkxs .gt_subtitle {
+#dabxxspuzx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -6778,13 +6822,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#szsuwwlkxs .gt_bottom_border {
+#dabxxspuzx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#szsuwwlkxs .gt_col_headings {
+#dabxxspuzx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6799,7 +6843,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#szsuwwlkxs .gt_col_heading {
+#dabxxspuzx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6819,7 +6863,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#szsuwwlkxs .gt_column_spanner_outer {
+#dabxxspuzx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6831,15 +6875,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#szsuwwlkxs .gt_column_spanner_outer:first-child {
+#dabxxspuzx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#szsuwwlkxs .gt_column_spanner_outer:last-child {
+#dabxxspuzx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#szsuwwlkxs .gt_column_spanner {
+#dabxxspuzx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -6851,7 +6895,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#szsuwwlkxs .gt_group_heading {
+#dabxxspuzx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6877,7 +6921,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   text-align: left;
 }
 
-#szsuwwlkxs .gt_empty_group_heading {
+#dabxxspuzx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -6892,15 +6936,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#szsuwwlkxs .gt_from_md > :first-child {
+#dabxxspuzx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#szsuwwlkxs .gt_from_md > :last-child {
+#dabxxspuzx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#szsuwwlkxs .gt_row {
+#dabxxspuzx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6919,7 +6963,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#szsuwwlkxs .gt_stub {
+#dabxxspuzx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6932,7 +6976,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#szsuwwlkxs .gt_stub_row_group {
+#dabxxspuzx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6946,11 +6990,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#szsuwwlkxs .gt_row_group_first td {
+#dabxxspuzx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#szsuwwlkxs .gt_summary_row {
+#dabxxspuzx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -6960,16 +7004,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#szsuwwlkxs .gt_first_summary_row {
+#dabxxspuzx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#szsuwwlkxs .gt_first_summary_row.thick {
+#dabxxspuzx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#szsuwwlkxs .gt_last_summary_row {
+#dabxxspuzx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6979,7 +7023,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#szsuwwlkxs .gt_grand_summary_row {
+#dabxxspuzx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -6989,7 +7033,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#szsuwwlkxs .gt_first_grand_summary_row {
+#dabxxspuzx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6999,11 +7043,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#szsuwwlkxs .gt_striped {
+#dabxxspuzx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#szsuwwlkxs .gt_table_body {
+#dabxxspuzx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -7012,7 +7056,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#szsuwwlkxs .gt_footnotes {
+#dabxxspuzx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7026,7 +7070,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#szsuwwlkxs .gt_footnote {
+#dabxxspuzx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -7035,7 +7079,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#szsuwwlkxs .gt_sourcenotes {
+#dabxxspuzx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7049,7 +7093,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#szsuwwlkxs .gt_sourcenote {
+#dabxxspuzx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -7057,64 +7101,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#szsuwwlkxs .gt_left {
+#dabxxspuzx .gt_left {
   text-align: left;
 }
 
-#szsuwwlkxs .gt_center {
+#dabxxspuzx .gt_center {
   text-align: center;
 }
 
-#szsuwwlkxs .gt_right {
+#dabxxspuzx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#szsuwwlkxs .gt_font_normal {
+#dabxxspuzx .gt_font_normal {
   font-weight: normal;
 }
 
-#szsuwwlkxs .gt_font_bold {
+#dabxxspuzx .gt_font_bold {
   font-weight: bold;
 }
 
-#szsuwwlkxs .gt_font_italic {
+#dabxxspuzx .gt_font_italic {
   font-style: italic;
 }
 
-#szsuwwlkxs .gt_super {
+#dabxxspuzx .gt_super {
   font-size: 65%;
 }
 
-#szsuwwlkxs .gt_footnote_marks {
+#dabxxspuzx .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#szsuwwlkxs .gt_asterisk {
+#dabxxspuzx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#szsuwwlkxs .gt_indent_1 {
+#dabxxspuzx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#szsuwwlkxs .gt_indent_2 {
+#dabxxspuzx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#szsuwwlkxs .gt_indent_3 {
+#dabxxspuzx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#szsuwwlkxs .gt_indent_4 {
+#dabxxspuzx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#szsuwwlkxs .gt_indent_5 {
+#dabxxspuzx .gt_indent_5 {
   text-indent: 25px;
 }
 </style>

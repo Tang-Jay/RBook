@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 10 章 explore包 | R语言画图</title>
+  <meta name="description" content="第 10 章 explore包 | R语言画图" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 10 章 explore包 | R语言画图" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 10 章 explore包 | R语言画图" />
+  
+  
+  
+
+<meta name="author" content="唐洁" />
+
+
+<meta name="date" content="2022-10-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="变化趋势图.html"/>
+<link rel="next" href="colorspace包.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.23/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R语言画图</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 前言</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i><b>1.1</b> 致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="图形参数设置.html"><a href="图形参数设置.html"><i class="fa fa-check"></i><b>2</b> 图形参数设置</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="图形参数设置.html"><a href="图形参数设置.html#颜色"><i class="fa fa-check"></i><b>2.1</b> 颜色</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="图形参数设置.html"><a href="图形参数设置.html#固有颜色"><i class="fa fa-check"></i><b>2.1.1</b> 固有颜色</a></li>
+<li class="chapter" data-level="2.1.2" data-path="图形参数设置.html"><a href="图形参数设置.html#自助调色"><i class="fa fa-check"></i><b>2.1.2</b> 自助调色</a></li>
+<li class="chapter" data-level="2.1.3" data-path="图形参数设置.html"><a href="图形参数设置.html#主题调色板"><i class="fa fa-check"></i><b>2.1.3</b> 主题调色板</a></li>
+<li class="chapter" data-level="2.1.4" data-path="图形参数设置.html"><a href="图形参数设置.html#其他主题配色函数"><i class="fa fa-check"></i><b>2.1.4</b> 其他主题配色函数</a></li>
+<li class="chapter" data-level="2.1.5" data-path="图形参数设置.html"><a href="图形参数设置.html#颜色扩展包"><i class="fa fa-check"></i><b>2.1.5</b> 颜色扩展包</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="图形参数设置.html"><a href="图形参数设置.html#文字"><i class="fa fa-check"></i><b>2.2</b> 文字</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="图形参数设置.html"><a href="图形参数设置.html#字体"><i class="fa fa-check"></i><b>2.2.1</b> 字体</a></li>
+<li class="chapter" data-level="2.2.2" data-path="图形参数设置.html"><a href="图形参数设置.html#大小"><i class="fa fa-check"></i><b>2.2.2</b> 大小</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="图形参数设置.html"><a href="图形参数设置.html#点"><i class="fa fa-check"></i><b>2.3</b> 点</a></li>
+<li class="chapter" data-level="2.4" data-path="图形参数设置.html"><a href="图形参数设置.html#线"><i class="fa fa-check"></i><b>2.4</b> 线</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="低级绘图函数.html"><a href="低级绘图函数.html"><i class="fa fa-check"></i><b>3</b> 低级绘图函数</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="低级绘图函数.html"><a href="低级绘图函数.html#标题"><i class="fa fa-check"></i><b>3.1</b> 标题</a></li>
+<li class="chapter" data-level="3.2" data-path="低级绘图函数.html"><a href="低级绘图函数.html#图例"><i class="fa fa-check"></i><b>3.2</b> 图例</a></li>
+<li class="chapter" data-level="3.3" data-path="低级绘图函数.html"><a href="低级绘图函数.html#坐标轴"><i class="fa fa-check"></i><b>3.3</b> 坐标轴</a></li>
+<li class="chapter" data-level="3.4" data-path="低级绘图函数.html"><a href="低级绘图函数.html#网格线"><i class="fa fa-check"></i><b>3.4</b> 网格线</a></li>
+<li class="chapter" data-level="3.5" data-path="低级绘图函数.html"><a href="低级绘图函数.html#点-1"><i class="fa fa-check"></i><b>3.5</b> 点</a></li>
+<li class="chapter" data-level="3.6" data-path="低级绘图函数.html"><a href="低级绘图函数.html#线-1"><i class="fa fa-check"></i><b>3.6</b> 线</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="高级绘图函数.html"><a href="高级绘图函数.html"><i class="fa fa-check"></i><b>4</b> 高级绘图函数</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="高级绘图函数.html"><a href="高级绘图函数.html#饼图"><i class="fa fa-check"></i><b>4.1</b> 饼图</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="qq图.html"><a href="qq图.html"><i class="fa fa-check"></i><b>5</b> QQ图</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="qq图.html"><a href="qq图.html#绘制qq图"><i class="fa fa-check"></i><b>5.1</b> 绘制QQ图</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="qq图.html"><a href="qq图.html#r包绘制"><i class="fa fa-check"></i><b>5.1.1</b> R包绘制</a></li>
+<li class="chapter" data-level="5.1.2" data-path="qq图.html"><a href="qq图.html#手工绘制"><i class="fa fa-check"></i><b>5.1.2</b> 手工绘制</a></li>
+<li class="chapter" data-level="5.1.3" data-path="qq图.html"><a href="qq图.html#函数绘制正态qq图"><i class="fa fa-check"></i><b>5.1.3</b> 函数绘制正态qq图</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="qq图.html"><a href="qq图.html#参考资料"><i class="fa fa-check"></i><b>5.2</b> 参考资料</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="gt包画表.html"><a href="gt包画表.html"><i class="fa fa-check"></i><b>6</b> gt包画表</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="gt包画表.html"><a href="gt包画表.html#获取数据"><i class="fa fa-check"></i><b>6.1</b> 获取数据</a></li>
+<li class="chapter" data-level="6.2" data-path="gt包画表.html"><a href="gt包画表.html#创建gt表格"><i class="fa fa-check"></i><b>6.2</b> 创建gt表格</a></li>
+<li class="chapter" data-level="6.3" data-path="gt包画表.html"><a href="gt包画表.html#添加标题"><i class="fa fa-check"></i><b>6.3</b> 添加标题</a></li>
+<li class="chapter" data-level="6.4" data-path="gt包画表.html"><a href="gt包画表.html#添加脚注"><i class="fa fa-check"></i><b>6.4</b> 添加脚注</a></li>
+<li class="chapter" data-level="6.5" data-path="gt包画表.html"><a href="gt包画表.html#添加左侧边栏"><i class="fa fa-check"></i><b>6.5</b> 添加左侧边栏</a></li>
+<li class="chapter" data-level="6.6" data-path="gt包画表.html"><a href="gt包画表.html#分组"><i class="fa fa-check"></i><b>6.6</b> 分组</a></li>
+<li class="chapter" data-level="6.7" data-path="gt包画表.html"><a href="gt包画表.html#总体呈现"><i class="fa fa-check"></i><b>6.7</b> 总体呈现</a></li>
+<li class="chapter" data-level="6.8" data-path="gt包画表.html"><a href="gt包画表.html#其他"><i class="fa fa-check"></i><b>6.8</b> 其他</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="kableextra包画图.html"><a href="kableextra包画图.html"><i class="fa fa-check"></i><b>7</b> kableExtra包画图</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="kableextra包画图.html"><a href="kableextra包画图.html#生成html表格"><i class="fa fa-check"></i><b>7.1</b> 生成html表格</a></li>
+<li class="chapter" data-level="7.2" data-path="kableextra包画图.html"><a href="kableextra包画图.html#渲染表格"><i class="fa fa-check"></i><b>7.2</b> 渲染表格</a></li>
+<li class="chapter" data-level="7.3" data-path="kableextra包画图.html"><a href="kableextra包画图.html#搭配dplyr"><i class="fa fa-check"></i><b>7.3</b> 搭配dplyr</a></li>
+<li class="chapter" data-level="7.4" data-path="kableextra包画图.html"><a href="kableextra包画图.html#搭配formattable"><i class="fa fa-check"></i><b>7.4</b> 搭配formattable</a></li>
+<li class="chapter" data-level="7.5" data-path="kableextra包画图.html"><a href="kableextra包画图.html#列组"><i class="fa fa-check"></i><b>7.5</b> 列组</a></li>
+<li class="chapter" data-level="7.6" data-path="kableextra包画图.html"><a href="kableextra包画图.html#行组"><i class="fa fa-check"></i><b>7.6</b> 行组</a></li>
+<li class="chapter" data-level="7.7" data-path="kableextra包画图.html"><a href="kableextra包画图.html#保存html表格"><i class="fa fa-check"></i><b>7.7</b> 保存HTML表格</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="表格绘制.html"><a href="表格绘制.html"><i class="fa fa-check"></i><b>8</b> 表格绘制</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="表格绘制.html"><a href="表格绘制.html#单一的表格"><i class="fa fa-check"></i><b>8.1</b> 单一的表格</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="表格绘制.html"><a href="表格绘制.html#dt包"><i class="fa fa-check"></i><b>8.1.1</b> DT包</a></li>
+<li class="chapter" data-level="8.1.2" data-path="表格绘制.html"><a href="表格绘制.html#gt包"><i class="fa fa-check"></i><b>8.1.2</b> gt包</a></li>
+<li class="chapter" data-level="8.1.3" data-path="表格绘制.html"><a href="表格绘制.html#sjplot包"><i class="fa fa-check"></i><b>8.1.3</b> sjPlot包</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="表格绘制.html"><a href="表格绘制.html#丰富的表格"><i class="fa fa-check"></i><b>8.2</b> 丰富的表格</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="表格绘制.html"><a href="表格绘制.html#ggpubr"><i class="fa fa-check"></i><b>8.2.1</b> ggpubr</a></li>
+<li class="chapter" data-level="8.2.2" data-path="表格绘制.html"><a href="表格绘制.html#ggpmisc"><i class="fa fa-check"></i><b>8.2.2</b> ggpmisc</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="变化趋势图.html"><a href="变化趋势图.html"><i class="fa fa-check"></i><b>9</b> 变化趋势图</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="变化趋势图.html"><a href="变化趋势图.html#时间序列图"><i class="fa fa-check"></i><b>9.1</b> 时间序列图</a></li>
+<li class="chapter" data-level="9.2" data-path="变化趋势图.html"><a href="变化趋势图.html#堆叠面积图"><i class="fa fa-check"></i><b>9.2</b> 堆叠面积图</a></li>
+<li class="chapter" data-level="9.3" data-path="变化趋势图.html"><a href="变化趋势图.html#日历热力图"><i class="fa fa-check"></i><b>9.3</b> 日历热力图</a></li>
+<li class="chapter" data-level="9.4" data-path="变化趋势图.html"><a href="变化趋势图.html#坡度图"><i class="fa fa-check"></i><b>9.4</b> 坡度图</a></li>
+<li class="chapter" data-level="9.5" data-path="变化趋势图.html"><a href="变化趋势图.html#季节图"><i class="fa fa-check"></i><b>9.5</b> 季节图</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="explore包.html"><a href="explore包.html"><i class="fa fa-check"></i><b>10</b> explore包</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="explore包.html"><a href="explore包.html#包的使用"><i class="fa fa-check"></i><b>10.1</b> 包的使用</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="colorspace包.html"><a href="colorspace包.html"><i class="fa fa-check"></i><b>11</b> colorspace包</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="colorspace包.html"><a href="colorspace包.html#提取颜色"><i class="fa fa-check"></i><b>11.1</b> 提取颜色</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="colorspace包.html"><a href="colorspace包.html#plot配色"><i class="fa fa-check"></i><b>11.1.1</b> plot配色</a></li>
+<li class="chapter" data-level="11.1.2" data-path="colorspace包.html"><a href="colorspace包.html#barplot配色"><i class="fa fa-check"></i><b>11.1.2</b> barplot配色</a></li>
+<li class="chapter" data-level="11.1.3" data-path="colorspace包.html"><a href="colorspace包.html#ggplot2配色"><i class="fa fa-check"></i><b>11.1.3</b> ggplot2配色</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="colorspace包.html"><a href="colorspace包.html#将颜色回归hcl"><i class="fa fa-check"></i><b>11.2</b> 将颜色回归HCL</a></li>
+<li class="chapter" data-level="11.3" data-path="colorspace包.html"><a href="colorspace包.html#不同图配色"><i class="fa fa-check"></i><b>11.3</b> 不同图配色</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="地图.html"><a href="地图.html"><i class="fa fa-check"></i><b>12</b> 地图</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="地图.html"><a href="地图.html#获取地图数据"><i class="fa fa-check"></i><b>12.1</b> 获取地图数据</a></li>
+<li class="chapter" data-level="12.2" data-path="地图.html"><a href="地图.html#绘制中国地图"><i class="fa fa-check"></i><b>12.2</b> 绘制中国地图</a></li>
+<li class="chapter" data-level="12.3" data-path="地图.html"><a href="地图.html#给特定省份填色"><i class="fa fa-check"></i><b>12.3</b> 给特定省份填色</a></li>
+<li class="chapter" data-level="12.4" data-path="地图.html"><a href="地图.html#其他参考"><i class="fa fa-check"></i><b>12.4</b> 其他参考</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言画图</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="explore包" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">第 10 章</span> explore包<a href="explore包.html#explore包" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><a href="https://mp.weixin.qq.com/s/lltxM5b5Tik5kZSAEhlffA">参考来源：公众号“R语言统计与绘图”</a></p>
+<p>这个包可以用于简化探索性数据分析，并且可以在RStudio中以交互式的形式进行。</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="explore包.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;explore&quot;) </span></span>
+<span id="cb120-2"><a href="explore包.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span>
+<span id="cb120-3"><a href="explore包.html#cb120-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(explore)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="explore包.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris) <span class="co"># 加载数据集</span></span></code></pre></div>
+<div id="包的使用" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> 包的使用<a href="explore包.html#包的使用" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="explore包.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">explore</span>(iris) <span class="co"># 探索数据集</span></span></code></pre></div>
+<ul>
+<li><p><code>variable</code>是我们想要探索分析的变量，在右边会显示该变量数据的分布图，下面显示的是该变量的描述统计信息。</p></li>
+<li><p><code>report all</code>按钮可以在浏览器显示数据集中所有变量的统计描述信息，同样是图形和数据相结合。</p></li>
+<li><p><code>target</code>中添加变量，比如说添加<code>Species</code>变量，我们可以看到右边会显示两个变量之间的分布关系。</p></li>
+</ul>
+<p>运行下面的代码也能得到同样的结果。</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="explore包.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 会在电脑默认路径explore文件里生成一个report.html，打开即可</span></span>
+<span id="cb123-2"><a href="explore包.html#cb123-2" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">report</span>(<span class="at">output_file =</span> <span class="st">&quot;report.html&quot;</span>,</span>
+<span id="cb123-3"><a href="explore包.html#cb123-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">output_dir =</span> <span class="st">&quot;explore&quot;</span>)</span></code></pre></div>
+<p><a href="explore/report.html">生成网页报告</a></p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="explore包.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 显示数据集所有变量与Species变量的关系</span></span>
+<span id="cb124-2"><a href="explore包.html#cb124-2" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
+<span id="cb124-3"><a href="explore包.html#cb124-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">report</span>(<span class="at">output_file =</span> <span class="st">&quot;report2.html&quot;</span>, </span>
+<span id="cb124-4"><a href="explore包.html#cb124-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">output_dir =</span> <span class="st">&quot;explore&quot;</span>,</span>
+<span id="cb124-5"><a href="explore包.html#cb124-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">target =</span> Species)</span></code></pre></div>
+<p><a href="explore/report2.html">生成网页报告2</a></p>
+<p>target可以是连续变量，也可以是分类变量。如果和探索变量都是连续变量，可以分析相关性。</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="explore包.html#cb125-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">explore</span>(Sepal.Length, Petal.Length)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-125-1.png" width="100%" height="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="explore包.html#cb126-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">explore</span>(Sepal.Length, Petal.Length, </span>
+<span id="cb126-2"><a href="explore包.html#cb126-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">target =</span> Species)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-126-1.png" width="100%" height="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="explore包.html#cb127-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
+<span id="cb127-2"><a href="explore包.html#cb127-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Sepal.Length, Sepal.Width) <span class="sc">%&gt;%</span> <span class="co"># 选两个变量</span></span>
+<span id="cb127-3"><a href="explore包.html#cb127-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">explore_all</span>()</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-127-1.png" width="100%" height="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="explore包.html#cb128-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
+<span id="cb128-2"><a href="explore包.html#cb128-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Sepal.Length, Sepal.Width, Species) <span class="sc">%&gt;%</span> </span>
+<span id="cb128-3"><a href="explore包.html#cb128-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">explore_all</span>(<span class="at">target =</span> Species) <span class="co"># 添加target变量</span></span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-128-1.png" width="100%" height="100%" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="变化趋势图.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="colorspace包.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/09-explore.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

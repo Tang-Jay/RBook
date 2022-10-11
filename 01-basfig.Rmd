@@ -6,6 +6,8 @@ knitr::opts_chunk$set(results='hold', collapse = TRUE, warning = FALSE, message=
 # 图形参数设置
 ## 颜色
 
+- [一份好看的RGB颜色表](http://www.yini.org/liuyan/rgbcolor.htm)
+
 ### 固有颜色
 
 ```{r results='hide'}
@@ -30,7 +32,7 @@ points(2,5,col=28)
 
 ```{r message=FALSE, warning=FALSE}
 ## pdf查看固有颜色色板
-pdf("R固有颜色板.pdf",height=120)
+pdf("pdfs/R固有颜色板.pdf",height=120)
 par(mar=c(0,10,3,0)+0.1,yaxs='i')
 barplot(rep(1,length(colors())),col=rev(colors()),
         names.arg=rev(colors()),horiz=T,las=1,xaxt='n', # 名称+横向+间隔+不输出横轴

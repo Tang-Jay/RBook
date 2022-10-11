@@ -103,7 +103,7 @@ mtcars[1:5, 1:4] %>%
   add_header_above(c(" ", "Hello" = 2, "World" = 3))
 ```
 
-## 列祖
+## 列组
 
 ```{r}
 kable(dt, "html") %>%

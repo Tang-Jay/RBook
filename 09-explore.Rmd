@@ -1,0 +1,65 @@
+# explore包
+
+[参考来源：公众号“R语言统计与绘图”](https://mp.weixin.qq.com/s/lltxM5b5Tik5kZSAEhlffA)
+
+这个包可以用于简化探索性数据分析，并且可以在RStudio中以交互式的形式进行。
+
+```{r message=FALSE, warning=FALSE}
+# install.packages("explore") 
+library(dplyr) 
+library(explore)
+```
+
+```{r}
+data(iris) # 加载数据集
+```
+
+## 包的使用
+```{r eval=FALSE}
+explore(iris) # 探索数据集
+```
+- `variable`是我们想要探索分析的变量，在右边会显示该变量数据的分布图，下面显示的是该变量的描述统计信息。
+
+- `report all`按钮可以在浏览器显示数据集中所有变量的统计描述信息，同样是图形和数据相结合。
+
+- `target`中添加变量，比如说添加`Species`变量，我们可以看到右边会显示两个变量之间的分布关系。
+
+
+运行下面的代码也能得到同样的结果。
+
+```{r eval=FALSE}
+## 会在电脑默认路径explore文件里生成一个report.html，打开即可
+iris %>% report(output_file = "report.html",
+                output_dir = "explore")
+```
+[生成网页报告](explore/report.html)
+
+```{r message=FALSE, warning=FALSE,eval=FALSE}
+## 显示数据集所有变量与Species变量的关系
+iris %>% 
+  report(output_file = "report2.html", 
+         output_dir = "explore",
+         target = Species)
+```
+[生成网页报告2](explore/report2.html)
+
+target可以是连续变量，也可以是分类变量。如果和探索变量都是连续变量，可以分析相关性。
+```{r}
+iris %>% explore(Sepal.Length, Petal.Length)
+```
+
+```{r}
+iris %>% explore(Sepal.Length, Petal.Length, 
+                 target = Species)
+```
+```{r}
+iris %>% 
+  select(Sepal.Length, Sepal.Width) %>% # 选两个变量
+  explore_all()
+```
+```{r}
+iris %>% 
+  select(Sepal.Length, Sepal.Width, Species) %>% 
+  explore_all(target = Species) # 添加target变量
+```
+

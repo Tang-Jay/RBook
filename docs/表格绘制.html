@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 8 章 表格绘制 | R语言画图</title>
+  <meta name="description" content="第 8 章 表格绘制 | R语言画图" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 8 章 表格绘制 | R语言画图" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 8 章 表格绘制 | R语言画图" />
+  
+  
+  
+
+<meta name="author" content="唐洁" />
+
+
+<meta name="date" content="2022-10-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="kableextra包画图.html"/>
+<link rel="next" href="变化趋势图.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.23/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R语言画图</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 前言</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i><b>1.1</b> 致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="图形参数设置.html"><a href="图形参数设置.html"><i class="fa fa-check"></i><b>2</b> 图形参数设置</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="图形参数设置.html"><a href="图形参数设置.html#颜色"><i class="fa fa-check"></i><b>2.1</b> 颜色</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="图形参数设置.html"><a href="图形参数设置.html#固有颜色"><i class="fa fa-check"></i><b>2.1.1</b> 固有颜色</a></li>
+<li class="chapter" data-level="2.1.2" data-path="图形参数设置.html"><a href="图形参数设置.html#自助调色"><i class="fa fa-check"></i><b>2.1.2</b> 自助调色</a></li>
+<li class="chapter" data-level="2.1.3" data-path="图形参数设置.html"><a href="图形参数设置.html#主题调色板"><i class="fa fa-check"></i><b>2.1.3</b> 主题调色板</a></li>
+<li class="chapter" data-level="2.1.4" data-path="图形参数设置.html"><a href="图形参数设置.html#其他主题配色函数"><i class="fa fa-check"></i><b>2.1.4</b> 其他主题配色函数</a></li>
+<li class="chapter" data-level="2.1.5" data-path="图形参数设置.html"><a href="图形参数设置.html#颜色扩展包"><i class="fa fa-check"></i><b>2.1.5</b> 颜色扩展包</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="图形参数设置.html"><a href="图形参数设置.html#文字"><i class="fa fa-check"></i><b>2.2</b> 文字</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="图形参数设置.html"><a href="图形参数设置.html#字体"><i class="fa fa-check"></i><b>2.2.1</b> 字体</a></li>
+<li class="chapter" data-level="2.2.2" data-path="图形参数设置.html"><a href="图形参数设置.html#大小"><i class="fa fa-check"></i><b>2.2.2</b> 大小</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="图形参数设置.html"><a href="图形参数设置.html#点"><i class="fa fa-check"></i><b>2.3</b> 点</a></li>
+<li class="chapter" data-level="2.4" data-path="图形参数设置.html"><a href="图形参数设置.html#线"><i class="fa fa-check"></i><b>2.4</b> 线</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="低级绘图函数.html"><a href="低级绘图函数.html"><i class="fa fa-check"></i><b>3</b> 低级绘图函数</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="低级绘图函数.html"><a href="低级绘图函数.html#标题"><i class="fa fa-check"></i><b>3.1</b> 标题</a></li>
+<li class="chapter" data-level="3.2" data-path="低级绘图函数.html"><a href="低级绘图函数.html#图例"><i class="fa fa-check"></i><b>3.2</b> 图例</a></li>
+<li class="chapter" data-level="3.3" data-path="低级绘图函数.html"><a href="低级绘图函数.html#坐标轴"><i class="fa fa-check"></i><b>3.3</b> 坐标轴</a></li>
+<li class="chapter" data-level="3.4" data-path="低级绘图函数.html"><a href="低级绘图函数.html#网格线"><i class="fa fa-check"></i><b>3.4</b> 网格线</a></li>
+<li class="chapter" data-level="3.5" data-path="低级绘图函数.html"><a href="低级绘图函数.html#点-1"><i class="fa fa-check"></i><b>3.5</b> 点</a></li>
+<li class="chapter" data-level="3.6" data-path="低级绘图函数.html"><a href="低级绘图函数.html#线-1"><i class="fa fa-check"></i><b>3.6</b> 线</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="高级绘图函数.html"><a href="高级绘图函数.html"><i class="fa fa-check"></i><b>4</b> 高级绘图函数</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="高级绘图函数.html"><a href="高级绘图函数.html#饼图"><i class="fa fa-check"></i><b>4.1</b> 饼图</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="qq图.html"><a href="qq图.html"><i class="fa fa-check"></i><b>5</b> QQ图</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="qq图.html"><a href="qq图.html#绘制qq图"><i class="fa fa-check"></i><b>5.1</b> 绘制QQ图</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="qq图.html"><a href="qq图.html#r包绘制"><i class="fa fa-check"></i><b>5.1.1</b> R包绘制</a></li>
+<li class="chapter" data-level="5.1.2" data-path="qq图.html"><a href="qq图.html#手工绘制"><i class="fa fa-check"></i><b>5.1.2</b> 手工绘制</a></li>
+<li class="chapter" data-level="5.1.3" data-path="qq图.html"><a href="qq图.html#函数绘制正态qq图"><i class="fa fa-check"></i><b>5.1.3</b> 函数绘制正态qq图</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="qq图.html"><a href="qq图.html#参考资料"><i class="fa fa-check"></i><b>5.2</b> 参考资料</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="gt包画表.html"><a href="gt包画表.html"><i class="fa fa-check"></i><b>6</b> gt包画表</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="gt包画表.html"><a href="gt包画表.html#获取数据"><i class="fa fa-check"></i><b>6.1</b> 获取数据</a></li>
+<li class="chapter" data-level="6.2" data-path="gt包画表.html"><a href="gt包画表.html#创建gt表格"><i class="fa fa-check"></i><b>6.2</b> 创建gt表格</a></li>
+<li class="chapter" data-level="6.3" data-path="gt包画表.html"><a href="gt包画表.html#添加标题"><i class="fa fa-check"></i><b>6.3</b> 添加标题</a></li>
+<li class="chapter" data-level="6.4" data-path="gt包画表.html"><a href="gt包画表.html#添加脚注"><i class="fa fa-check"></i><b>6.4</b> 添加脚注</a></li>
+<li class="chapter" data-level="6.5" data-path="gt包画表.html"><a href="gt包画表.html#添加左侧边栏"><i class="fa fa-check"></i><b>6.5</b> 添加左侧边栏</a></li>
+<li class="chapter" data-level="6.6" data-path="gt包画表.html"><a href="gt包画表.html#分组"><i class="fa fa-check"></i><b>6.6</b> 分组</a></li>
+<li class="chapter" data-level="6.7" data-path="gt包画表.html"><a href="gt包画表.html#总体呈现"><i class="fa fa-check"></i><b>6.7</b> 总体呈现</a></li>
+<li class="chapter" data-level="6.8" data-path="gt包画表.html"><a href="gt包画表.html#其他"><i class="fa fa-check"></i><b>6.8</b> 其他</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="kableextra包画图.html"><a href="kableextra包画图.html"><i class="fa fa-check"></i><b>7</b> kableExtra包画图</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="kableextra包画图.html"><a href="kableextra包画图.html#生成html表格"><i class="fa fa-check"></i><b>7.1</b> 生成html表格</a></li>
+<li class="chapter" data-level="7.2" data-path="kableextra包画图.html"><a href="kableextra包画图.html#渲染表格"><i class="fa fa-check"></i><b>7.2</b> 渲染表格</a></li>
+<li class="chapter" data-level="7.3" data-path="kableextra包画图.html"><a href="kableextra包画图.html#搭配dplyr"><i class="fa fa-check"></i><b>7.3</b> 搭配dplyr</a></li>
+<li class="chapter" data-level="7.4" data-path="kableextra包画图.html"><a href="kableextra包画图.html#搭配formattable"><i class="fa fa-check"></i><b>7.4</b> 搭配formattable</a></li>
+<li class="chapter" data-level="7.5" data-path="kableextra包画图.html"><a href="kableextra包画图.html#列组"><i class="fa fa-check"></i><b>7.5</b> 列组</a></li>
+<li class="chapter" data-level="7.6" data-path="kableextra包画图.html"><a href="kableextra包画图.html#行组"><i class="fa fa-check"></i><b>7.6</b> 行组</a></li>
+<li class="chapter" data-level="7.7" data-path="kableextra包画图.html"><a href="kableextra包画图.html#保存html表格"><i class="fa fa-check"></i><b>7.7</b> 保存HTML表格</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="表格绘制.html"><a href="表格绘制.html"><i class="fa fa-check"></i><b>8</b> 表格绘制</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="表格绘制.html"><a href="表格绘制.html#单一的表格"><i class="fa fa-check"></i><b>8.1</b> 单一的表格</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="表格绘制.html"><a href="表格绘制.html#dt包"><i class="fa fa-check"></i><b>8.1.1</b> DT包</a></li>
+<li class="chapter" data-level="8.1.2" data-path="表格绘制.html"><a href="表格绘制.html#gt包"><i class="fa fa-check"></i><b>8.1.2</b> gt包</a></li>
+<li class="chapter" data-level="8.1.3" data-path="表格绘制.html"><a href="表格绘制.html#sjplot包"><i class="fa fa-check"></i><b>8.1.3</b> sjPlot包</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="表格绘制.html"><a href="表格绘制.html#丰富的表格"><i class="fa fa-check"></i><b>8.2</b> 丰富的表格</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="表格绘制.html"><a href="表格绘制.html#ggpubr"><i class="fa fa-check"></i><b>8.2.1</b> ggpubr</a></li>
+<li class="chapter" data-level="8.2.2" data-path="表格绘制.html"><a href="表格绘制.html#ggpmisc"><i class="fa fa-check"></i><b>8.2.2</b> ggpmisc</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="变化趋势图.html"><a href="变化趋势图.html"><i class="fa fa-check"></i><b>9</b> 变化趋势图</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="变化趋势图.html"><a href="变化趋势图.html#时间序列图"><i class="fa fa-check"></i><b>9.1</b> 时间序列图</a></li>
+<li class="chapter" data-level="9.2" data-path="变化趋势图.html"><a href="变化趋势图.html#堆叠面积图"><i class="fa fa-check"></i><b>9.2</b> 堆叠面积图</a></li>
+<li class="chapter" data-level="9.3" data-path="变化趋势图.html"><a href="变化趋势图.html#日历热力图"><i class="fa fa-check"></i><b>9.3</b> 日历热力图</a></li>
+<li class="chapter" data-level="9.4" data-path="变化趋势图.html"><a href="变化趋势图.html#坡度图"><i class="fa fa-check"></i><b>9.4</b> 坡度图</a></li>
+<li class="chapter" data-level="9.5" data-path="变化趋势图.html"><a href="变化趋势图.html#季节图"><i class="fa fa-check"></i><b>9.5</b> 季节图</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="explore包.html"><a href="explore包.html"><i class="fa fa-check"></i><b>10</b> explore包</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="explore包.html"><a href="explore包.html#包的使用"><i class="fa fa-check"></i><b>10.1</b> 包的使用</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="colorspace包.html"><a href="colorspace包.html"><i class="fa fa-check"></i><b>11</b> colorspace包</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="colorspace包.html"><a href="colorspace包.html#提取颜色"><i class="fa fa-check"></i><b>11.1</b> 提取颜色</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="colorspace包.html"><a href="colorspace包.html#plot配色"><i class="fa fa-check"></i><b>11.1.1</b> plot配色</a></li>
+<li class="chapter" data-level="11.1.2" data-path="colorspace包.html"><a href="colorspace包.html#barplot配色"><i class="fa fa-check"></i><b>11.1.2</b> barplot配色</a></li>
+<li class="chapter" data-level="11.1.3" data-path="colorspace包.html"><a href="colorspace包.html#ggplot2配色"><i class="fa fa-check"></i><b>11.1.3</b> ggplot2配色</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="colorspace包.html"><a href="colorspace包.html#将颜色回归hcl"><i class="fa fa-check"></i><b>11.2</b> 将颜色回归HCL</a></li>
+<li class="chapter" data-level="11.3" data-path="colorspace包.html"><a href="colorspace包.html#不同图配色"><i class="fa fa-check"></i><b>11.3</b> 不同图配色</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="地图.html"><a href="地图.html"><i class="fa fa-check"></i><b>12</b> 地图</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="地图.html"><a href="地图.html#获取地图数据"><i class="fa fa-check"></i><b>12.1</b> 获取地图数据</a></li>
+<li class="chapter" data-level="12.2" data-path="地图.html"><a href="地图.html#绘制中国地图"><i class="fa fa-check"></i><b>12.2</b> 绘制中国地图</a></li>
+<li class="chapter" data-level="12.3" data-path="地图.html"><a href="地图.html#给特定省份填色"><i class="fa fa-check"></i><b>12.3</b> 给特定省份填色</a></li>
+<li class="chapter" data-level="12.4" data-path="地图.html"><a href="地图.html#其他参考"><i class="fa fa-check"></i><b>12.4</b> 其他参考</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言画图</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="表格绘制" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">第 8 章</span> 表格绘制<a href="表格绘制.html#表格绘制" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><a href="https://mp.weixin.qq.com/s/NQDXkcQQSepiX0cjc8-ycw">参考来源：公众号“Datacharm”，作者宁俊骐</a></p>
+<div id="单一的表格" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> 单一的表格<a href="表格绘制.html#单一的表格" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>这一部分可能有很多优秀的第三方包可以制作，这里介绍前3个优秀的表格制作包，分别为</p>
+<ul>
+<li><a href="https://rstudio.github.io/DT/">DT</a></li>
+<li><a href="https://gt.rstudio.com/index.html">gt</a></li>
+<li><a href="https://strengejacke.github.io/sjPlot/index.html">sjPlot</a></li>
+<li>gtsummary</li>
+<li>kableExtra</li>
+<li>formattable</li>
+<li>reactable</li>
+<li>flextable</li>
+</ul>
+<div id="dt包" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> DT包<a href="表格绘制.html#dt包" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="表格绘制.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 可生成交互式HTML表格</span></span>
+<span id="cb95-2"><a href="表格绘制.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb95-3"><a href="表格绘制.html#cb95-3" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(iris)</span></code></pre></div>
+<div id="htmlwidget-d3a7dafc827f93ef7ddf" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d3a7dafc827f93ef7ddf">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="表格绘制.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 定制表格</span></span>
+<span id="cb96-2"><a href="表格绘制.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(iris) <span class="sc">%&gt;%</span> </span>
+<span id="cb96-3"><a href="表格绘制.html#cb96-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">formatStyle</span>(<span class="st">&#39;Sepal.Length&#39;</span>, <span class="at">fontWeight =</span> <span class="fu">styleInterval</span>(<span class="dv">5</span>, <span class="fu">c</span>(<span class="st">&#39;normal&#39;</span>, <span class="st">&#39;bold&#39;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb96-4"><a href="表格绘制.html#cb96-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">formatStyle</span>(</span>
+<span id="cb96-5"><a href="表格绘制.html#cb96-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Sepal.Width&#39;</span>,</span>
+<span id="cb96-6"><a href="表格绘制.html#cb96-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">styleInterval</span>(<span class="fu">c</span>(<span class="fl">3.4</span>, <span class="fl">3.8</span>), <span class="fu">c</span>(<span class="st">&#39;white&#39;</span>, <span class="st">&#39;blue&#39;</span>, <span class="st">&#39;red&#39;</span>)),</span>
+<span id="cb96-7"><a href="表格绘制.html#cb96-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">backgroundColor =</span> <span class="fu">styleInterval</span>(<span class="fl">3.4</span>, <span class="fu">c</span>(<span class="st">&#39;gray&#39;</span>, <span class="st">&#39;yellow&#39;</span>))</span>
+<span id="cb96-8"><a href="表格绘制.html#cb96-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb96-9"><a href="表格绘制.html#cb96-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">formatStyle</span>(</span>
+<span id="cb96-10"><a href="表格绘制.html#cb96-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Petal.Length&#39;</span>,</span>
+<span id="cb96-11"><a href="表格绘制.html#cb96-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">background =</span> <span class="fu">styleColorBar</span>(iris<span class="sc">$</span>Petal.Length, <span class="st">&#39;steelblue&#39;</span>),</span>
+<span id="cb96-12"><a href="表格绘制.html#cb96-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">backgroundSize =</span> <span class="st">&#39;100% 90%&#39;</span>,</span>
+<span id="cb96-13"><a href="表格绘制.html#cb96-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">backgroundRepeat =</span> <span class="st">&#39;no-repeat&#39;</span>,</span>
+<span id="cb96-14"><a href="表格绘制.html#cb96-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">backgroundPosition =</span> <span class="st">&#39;center&#39;</span></span>
+<span id="cb96-15"><a href="表格绘制.html#cb96-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb96-16"><a href="表格绘制.html#cb96-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">formatStyle</span>(</span>
+<span id="cb96-17"><a href="表格绘制.html#cb96-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Species&#39;</span>,</span>
+<span id="cb96-18"><a href="表格绘制.html#cb96-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">transform =</span> <span class="st">&#39;rotateX(45deg) rotateY(20deg) rotateZ(30deg)&#39;</span>,</span>
+<span id="cb96-19"><a href="表格绘制.html#cb96-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">backgroundColor =</span> <span class="fu">styleEqual</span>(</span>
+<span id="cb96-20"><a href="表格绘制.html#cb96-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">unique</span>(iris<span class="sc">$</span>Species), <span class="fu">c</span>(<span class="st">&#39;lightblue&#39;</span>, <span class="st">&#39;lightgreen&#39;</span>, <span class="st">&#39;lightpink&#39;</span>)</span>
+<span id="cb96-21"><a href="表格绘制.html#cb96-21" aria-hidden="true" tabindex="-1"></a>    ))</span></code></pre></div>
+<div id="htmlwidget-0dddd11192d2b5b55f14" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0dddd11192d2b5b55f14">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'font-weight':isNaN(parseFloat(value)) ? '' : value <= 5 ? \"normal\" : \"bold\"});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'color':isNaN(parseFloat(value)) ? '' : value <= 3.4 ? \"white\" : value <= 3.8 ? \"blue\" : \"red\",'background-color':isNaN(parseFloat(value)) ? '' : value <= 3.4 ? \"gray\" : \"yellow\"});\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'background':isNaN(parseFloat(value)) || value <= 1.000000 ? '' : 'linear-gradient(90.000000deg, transparent ' + Math.max(6.900000 - value, 0)/5.900000 * 100 + '%, steelblue ' + Math.max(6.900000 - value, 0)/5.900000 * 100 + '%)','background-size':'100% 90%','background-repeat':'no-repeat','background-position':'center'});\nvar value=data[5]; $(this.api().cell(row, 5).node()).css({'background-color':value == \"setosa\" ? \"lightblue\" : value == \"versicolor\" ? \"lightgreen\" : value == \"virginica\" ? \"lightpink\" : null,'transform':'rotateX(45deg) rotateY(20deg) rotateZ(30deg)'});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+</div>
+<div id="gt包" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> gt包<a href="表格绘制.html#gt包" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="表格绘制.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 出版级别表格制作</span></span>
+<span id="cb97-2"><a href="表格绘制.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb97-3"><a href="表格绘制.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb97-4"><a href="表格绘制.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
+<span id="cb97-5"><a href="表格绘制.html#cb97-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-6"><a href="表格绘制.html#cb97-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the start and end dates for the data range</span></span>
+<span id="cb97-7"><a href="表格绘制.html#cb97-7" aria-hidden="true" tabindex="-1"></a>start_date <span class="ot">&lt;-</span> <span class="st">&quot;2010-06-07&quot;</span></span>
+<span id="cb97-8"><a href="表格绘制.html#cb97-8" aria-hidden="true" tabindex="-1"></a>end_date <span class="ot">&lt;-</span> <span class="st">&quot;2010-06-14&quot;</span></span>
+<span id="cb97-9"><a href="表格绘制.html#cb97-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-10"><a href="表格绘制.html#cb97-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a gt table based on preprocessed</span></span>
+<span id="cb97-11"><a href="表格绘制.html#cb97-11" aria-hidden="true" tabindex="-1"></a><span class="co"># `sp500` table data</span></span>
+<span id="cb97-12"><a href="表格绘制.html#cb97-12" aria-hidden="true" tabindex="-1"></a>sp500 <span class="sc">%&gt;%</span></span>
+<span id="cb97-13"><a href="表格绘制.html#cb97-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(date <span class="sc">&gt;=</span> start_date <span class="sc">&amp;</span> date <span class="sc">&lt;=</span> end_date) <span class="sc">%&gt;%</span></span>
+<span id="cb97-14"><a href="表格绘制.html#cb97-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>adj_close) <span class="sc">%&gt;%</span></span>
+<span id="cb97-15"><a href="表格绘制.html#cb97-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb97-16"><a href="表格绘制.html#cb97-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb97-17"><a href="表格绘制.html#cb97-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;S&amp;P 500&quot;</span>,</span>
+<span id="cb97-18"><a href="表格绘制.html#cb97-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&quot;{start_date} to {end_date}&quot;</span>)</span>
+<span id="cb97-19"><a href="表格绘制.html#cb97-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb97-20"><a href="表格绘制.html#cb97-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_date</span>(</span>
+<span id="cb97-21"><a href="表格绘制.html#cb97-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> date,</span>
+<span id="cb97-22"><a href="表格绘制.html#cb97-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_style =</span> <span class="dv">3</span></span>
+<span id="cb97-23"><a href="表格绘制.html#cb97-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb97-24"><a href="表格绘制.html#cb97-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_currency</span>(</span>
+<span id="cb97-25"><a href="表格绘制.html#cb97-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(open, high, low, close),</span>
+<span id="cb97-26"><a href="表格绘制.html#cb97-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">currency =</span> <span class="st">&quot;USD&quot;</span></span>
+<span id="cb97-27"><a href="表格绘制.html#cb97-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb97-28"><a href="表格绘制.html#cb97-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
+<span id="cb97-29"><a href="表格绘制.html#cb97-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> volume,</span>
+<span id="cb97-30"><a href="表格绘制.html#cb97-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">suffixing =</span> <span class="cn">TRUE</span></span>
+<span id="cb97-31"><a href="表格绘制.html#cb97-31" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div id="thctpnrrss" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#thctpnrrss .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#thctpnrrss .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#thctpnrrss .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#thctpnrrss .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#thctpnrrss .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#thctpnrrss .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#thctpnrrss .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#thctpnrrss .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#thctpnrrss .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#thctpnrrss .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#thctpnrrss .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#thctpnrrss .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#thctpnrrss .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#thctpnrrss .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#thctpnrrss .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#thctpnrrss .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#thctpnrrss .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#thctpnrrss .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#thctpnrrss .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#thctpnrrss .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#thctpnrrss .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#thctpnrrss .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#thctpnrrss .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#thctpnrrss .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#thctpnrrss .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#thctpnrrss .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#thctpnrrss .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#thctpnrrss .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#thctpnrrss .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#thctpnrrss .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#thctpnrrss .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#thctpnrrss .gt_left {
+  text-align: left;
+}
+
+#thctpnrrss .gt_center {
+  text-align: center;
+}
+
+#thctpnrrss .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#thctpnrrss .gt_font_normal {
+  font-weight: normal;
+}
+
+#thctpnrrss .gt_font_bold {
+  font-weight: bold;
+}
+
+#thctpnrrss .gt_font_italic {
+  font-style: italic;
+}
+
+#thctpnrrss .gt_super {
+  font-size: 65%;
+}
+
+#thctpnrrss .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#thctpnrrss .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#thctpnrrss .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#thctpnrrss .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#thctpnrrss .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#thctpnrrss .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#thctpnrrss .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <td colspan="6" class="gt_heading gt_title gt_font_normal" style>S&amp;P 500</td>
+    </tr>
+    <tr>
+      <td colspan="6" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>2010-06-07 to 2010-06-14</td>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="date">date</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="open">open</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="high">high</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="low">low</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="close">close</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="volume">volume</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="date" class="gt_row gt_right">Mon, Jun 14, 2010</td>
+<td headers="open" class="gt_row gt_right">$1,095.00</td>
+<td headers="high" class="gt_row gt_right">$1,105.91</td>
+<td headers="low" class="gt_row gt_right">$1,089.03</td>
+<td headers="close" class="gt_row gt_right">$1,089.63</td>
+<td headers="volume" class="gt_row gt_right">4.43B</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">Fri, Jun 11, 2010</td>
+<td headers="open" class="gt_row gt_right">$1,082.65</td>
+<td headers="high" class="gt_row gt_right">$1,092.25</td>
+<td headers="low" class="gt_row gt_right">$1,077.12</td>
+<td headers="close" class="gt_row gt_right">$1,091.60</td>
+<td headers="volume" class="gt_row gt_right">4.06B</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">Thu, Jun 10, 2010</td>
+<td headers="open" class="gt_row gt_right">$1,058.77</td>
+<td headers="high" class="gt_row gt_right">$1,087.85</td>
+<td headers="low" class="gt_row gt_right">$1,058.77</td>
+<td headers="close" class="gt_row gt_right">$1,086.84</td>
+<td headers="volume" class="gt_row gt_right">5.14B</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">Wed, Jun 9, 2010</td>
+<td headers="open" class="gt_row gt_right">$1,062.75</td>
+<td headers="high" class="gt_row gt_right">$1,077.74</td>
+<td headers="low" class="gt_row gt_right">$1,052.25</td>
+<td headers="close" class="gt_row gt_right">$1,055.69</td>
+<td headers="volume" class="gt_row gt_right">5.98B</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">Tue, Jun 8, 2010</td>
+<td headers="open" class="gt_row gt_right">$1,050.81</td>
+<td headers="high" class="gt_row gt_right">$1,063.15</td>
+<td headers="low" class="gt_row gt_right">$1,042.17</td>
+<td headers="close" class="gt_row gt_right">$1,062.00</td>
+<td headers="volume" class="gt_row gt_right">6.19B</td></tr>
+    <tr><td headers="date" class="gt_row gt_right">Mon, Jun 7, 2010</td>
+<td headers="open" class="gt_row gt_right">$1,065.84</td>
+<td headers="high" class="gt_row gt_right">$1,071.36</td>
+<td headers="low" class="gt_row gt_right">$1,049.86</td>
+<td headers="close" class="gt_row gt_right">$1,050.47</td>
+<td headers="volume" class="gt_row gt_right">5.47B</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+<div id="sjplot包" class="section level3 hasAnchor" number="8.1.3">
+<h3><span class="header-section-number">8.1.3</span> sjPlot包<a href="表格绘制.html#sjplot包" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="表格绘制.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb98-2"><a href="表格绘制.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjmisc)</span>
+<span id="cb98-3"><a href="表格绘制.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjlabelled)</span>
+<span id="cb98-4"><a href="表格绘制.html#cb98-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-5"><a href="表格绘制.html#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="co"># sample data</span></span>
+<span id="cb98-6"><a href="表格绘制.html#cb98-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;efc&quot;</span>)</span>
+<span id="cb98-7"><a href="表格绘制.html#cb98-7" aria-hidden="true" tabindex="-1"></a>efc <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(efc, c161sex, c172code)</span>
+<span id="cb98-8"><a href="表格绘制.html#cb98-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-9"><a href="表格绘制.html#cb98-9" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(barthtot <span class="sc">~</span> c160age <span class="sc">+</span> c12hour <span class="sc">+</span> c161sex <span class="sc">+</span> c172code, <span class="at">data =</span> efc)</span>
+<span id="cb98-10"><a href="表格绘制.html#cb98-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_model</span>(m1)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
+ 
+</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">
+Total score BARTHEL INDEX
+</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">
+Predictors
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+Estimates
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+CI
+</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">
+p
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+87.15
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+77.96 – 96.34
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+carer’ age
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.21
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.35 – -0.07
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>0.004</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+average number of hours<br>of care per week
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.28
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.32 – -0.24
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>&lt;0.001</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+carer’s gender: Female
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-0.39
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-4.49 – 3.71
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.850
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+carer’s level of<br>education: intermediate<br>level of education
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+1.37
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-3.12 – 5.85
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.550
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+carer’s level of<br>education: high level of<br>education
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-1.64
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+-7.22 – 3.93
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.564
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">
+821
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
+R<sup>2</sup> / R<sup>2</sup> adjusted
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">
+0.271 / 0.266
+</td>
+</tr>
+</table>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="表格绘制.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 定制化绘制</span></span>
+<span id="cb99-2"><a href="表格绘制.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_model</span>(</span>
+<span id="cb99-3"><a href="表格绘制.html#cb99-3" aria-hidden="true" tabindex="-1"></a>  m1,</span>
+<span id="cb99-4"><a href="表格绘制.html#cb99-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">CSS =</span> <span class="fu">list</span>(</span>
+<span id="cb99-5"><a href="表格绘制.html#cb99-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">css.depvarhead =</span> <span class="st">&#39;color: red;&#39;</span>,</span>
+<span id="cb99-6"><a href="表格绘制.html#cb99-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">css.centeralign =</span> <span class="st">&#39;text-align: left;&#39;</span>, </span>
+<span id="cb99-7"><a href="表格绘制.html#cb99-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">css.firsttablecol =</span> <span class="st">&#39;font-weight: bold;&#39;</span>, </span>
+<span id="cb99-8"><a href="表格绘制.html#cb99-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">css.summary =</span> <span class="st">&#39;color: blue;&#39;</span></span>
+<span id="cb99-9"><a href="表格绘制.html#cb99-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb99-10"><a href="表格绘制.html#cb99-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<table style="border-collapse:collapse; border:none;">
+<tr>
+<th style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black; font-weight: bold; ">
+ 
+</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:italic; font-weight:normal; padding:0.2cm; border-bottom:1px solid black;">
+Total score BARTHEL INDEX
+</th>
+</tr>
+<tr>
+<td style=" color: red; border-bottom:1px solid black; font-weight: bold; ">
+Predictors
+</td>
+<td style=" color: red; border-bottom:1px solid black; ">
+Estimates
+</td>
+<td style=" color: red; border-bottom:1px solid black; ">
+CI
+</td>
+<td style=" color: red; border-bottom:1px solid black; ">
+p
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; font-weight: bold; ">
+(Intercept)
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+87.15
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+77.96 – 96.34
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+<strong>&lt;0.001</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; font-weight: bold; ">
+carer’ age
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+-0.21
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+-0.35 – -0.07
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+<strong>0.004</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; font-weight: bold; ">
+average number of hours<br>of care per week
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+-0.28
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+-0.32 – -0.24
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+<strong>&lt;0.001</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; font-weight: bold; ">
+carer’s gender: Female
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+-0.39
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+-4.49 – 3.71
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+0.850
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; font-weight: bold; ">
+carer’s level of<br>education: intermediate<br>level of education
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+1.37
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+-3.12 – 5.85
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+0.550
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; font-weight: bold; ">
+carer’s level of<br>education: high level of<br>education
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+-1.64
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+-7.22 – 3.93
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align: left;  ">
+0.564
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; color: blue; border-top:1px solid;">
+Observations
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center; border-top:1px solid;" colspan="3">
+821
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; color: blue;">
+R<sup>2</sup> / R<sup>2</sup> adjusted
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; color: blue; text-align:center;" colspan="3">
+0.271 / 0.266
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="丰富的表格" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> 丰富的表格<a href="表格绘制.html#丰富的表格" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><a href="https://rpkgs.datanovia.com/ggpubr/reference/ggtexttable.html">ggpubr</a></li>
+<li><a href="https://docs.r4photobiology.info/ggpmisc/reference/stat_fit_tb.html">ggpmisc</a></li>
+</ul>
+<div id="ggpubr" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> ggpubr<a href="表格绘制.html#ggpubr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R-ggpubr包在<a href="https://mp.weixin.qq.com/s?__biz=Mzg3MDY4ODI3MQ==&amp;mid=2247498006&amp;idx=1&amp;sn=671777e9d1061e8c1bcc5204a9e1a08d&amp;source=41#wechat_redirect">统计绘图 | 一行代码教你绘制顶级期刊要求配图</a>有介绍其如何绘制科研图表，这里则重点介绍其绘制表格的函数，当然还是可以和ggplot2图表对象一起展示的。</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="表格绘制.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb100-2"><a href="表格绘制.html#cb100-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">head</span>(iris)</span>
+<span id="cb100-3"><a href="表格绘制.html#cb100-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-4"><a href="表格绘制.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Default table</span></span>
+<span id="cb100-5"><a href="表格绘制.html#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove row names using rows = NULL</span></span>
+<span id="cb100-6"><a href="表格绘制.html#cb100-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtexttable</span>(df, <span class="at">rows =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-100-1.png" width="100%" height="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="表格绘制.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 定制主题</span></span>
+<span id="cb101-2"><a href="表格绘制.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtexttable</span>(df, <span class="at">rows =</span> <span class="cn">NULL</span>, <span class="at">theme =</span> <span class="fu">ttheme</span>(<span class="st">&quot;mBlue&quot;</span>))</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-101-1.png" width="100%" height="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="表格绘制.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 自定义</span></span>
+<span id="cb102-2"><a href="表格绘制.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtexttable</span>(df, <span class="at">rows =</span> <span class="cn">NULL</span>,</span>
+<span id="cb102-3"><a href="表格绘制.html#cb102-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">theme =</span> <span class="fu">ttheme</span>(</span>
+<span id="cb102-4"><a href="表格绘制.html#cb102-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">colnames.style =</span> <span class="fu">colnames_style</span>(<span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#8cc257&quot;</span>),</span>
+<span id="cb102-5"><a href="表格绘制.html#cb102-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">tbody.style =</span> <span class="fu">tbody_style</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">&quot;#e8f3de&quot;</span>, <span class="st">&quot;#d3e8bb&quot;</span>))</span>
+<span id="cb102-6"><a href="表格绘制.html#cb102-6" aria-hidden="true" tabindex="-1"></a>           )</span>
+<span id="cb102-7"><a href="表格绘制.html#cb102-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-102-1.png" width="100%" height="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="ggpmisc" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> ggpmisc<a href="表格绘制.html#ggpmisc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R-ggpmisc包中绘制表格的函数为<code>stat_fit_tb()</code>,其功能主要是一些统计结果和拟合结果进行表格展示。</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="表格绘制.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpmisc)</span>
+<span id="cb103-2"><a href="表格绘制.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb103-3"><a href="表格绘制.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xts)</span>
+<span id="cb103-4"><a href="表格绘制.html#cb103-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb103-5"><a href="表格绘制.html#cb103-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nlme)</span>
+<span id="cb103-6"><a href="表格绘制.html#cb103-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quantreg)</span>
+<span id="cb103-7"><a href="表格绘制.html#cb103-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb103-8"><a href="表格绘制.html#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom.mixed)</span>
+<span id="cb103-9"><a href="表格绘制.html#cb103-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(hrbrthemes)</span>
+<span id="cb103-10"><a href="表格绘制.html#cb103-10" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4321</span>)</span>
+<span id="cb103-11"><a href="表格绘制.html#cb103-11" aria-hidden="true" tabindex="-1"></a><span class="co"># generate artificial data</span></span>
+<span id="cb103-12"><a href="表格绘制.html#cb103-12" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb103-13"><a href="表格绘制.html#cb103-13" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> (x <span class="sc">+</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> x<span class="sc">^</span><span class="dv">3</span>) <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(x), <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fu">mean</span>(x<span class="sc">^</span><span class="dv">3</span>) <span class="sc">/</span> <span class="dv">4</span>)</span>
+<span id="cb103-14"><a href="表格绘制.html#cb103-14" aria-hidden="true" tabindex="-1"></a>my.data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, </span>
+<span id="cb103-15"><a href="表格绘制.html#cb103-15" aria-hidden="true" tabindex="-1"></a>                      y, </span>
+<span id="cb103-16"><a href="表格绘制.html#cb103-16" aria-hidden="true" tabindex="-1"></a>                      <span class="at">group =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), </span>
+<span id="cb103-17"><a href="表格绘制.html#cb103-17" aria-hidden="true" tabindex="-1"></a>                      <span class="at">y2 =</span> y <span class="sc">*</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">2</span>),</span>
+<span id="cb103-18"><a href="表格绘制.html#cb103-18" aria-hidden="true" tabindex="-1"></a>                      <span class="at">block =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;b&quot;</span>),</span>
+<span id="cb103-19"><a href="表格绘制.html#cb103-19" aria-hidden="true" tabindex="-1"></a>                      <span class="at">wt =</span> <span class="fu">sqrt</span>(x))</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="表格绘制.html#cb104-1" aria-hidden="true" tabindex="-1"></a>formula <span class="ot">&lt;-</span> y <span class="sc">~</span> x <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">3</span>)</span>
+<span id="cb104-2"><a href="表格绘制.html#cb104-2" aria-hidden="true" tabindex="-1"></a>plot04 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(my.data, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb104-3"><a href="表格绘制.html#cb104-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">21</span>,<span class="at">fill=</span><span class="st">&quot;#BC3C28&quot;</span>,<span class="at">colour=</span><span class="st">&quot;black&quot;</span>,<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb104-4"><a href="表格绘制.html#cb104-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">formula =</span> formula) <span class="sc">+</span></span>
+<span id="cb104-5"><a href="表格绘制.html#cb104-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_fit_tb</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>
+<span id="cb104-6"><a href="表格绘制.html#cb104-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">formula =</span> formula),</span>
+<span id="cb104-7"><a href="表格绘制.html#cb104-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">tb.vars =</span> <span class="fu">c</span>(<span class="at">Parameter =</span> <span class="st">&quot;term&quot;</span>, </span>
+<span id="cb104-8"><a href="表格绘制.html#cb104-8" aria-hidden="true" tabindex="-1"></a>                          <span class="at">Estimate =</span> <span class="st">&quot;estimate&quot;</span>, </span>
+<span id="cb104-9"><a href="表格绘制.html#cb104-9" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;s.e.&quot;</span> <span class="ot">=</span> <span class="st">&quot;std.error&quot;</span>, </span>
+<span id="cb104-10"><a href="表格绘制.html#cb104-10" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;italic(t)&quot;</span> <span class="ot">=</span> <span class="st">&quot;statistic&quot;</span>, </span>
+<span id="cb104-11"><a href="表格绘制.html#cb104-11" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;italic(P)&quot;</span> <span class="ot">=</span> <span class="st">&quot;p.value&quot;</span>),</span>
+<span id="cb104-12"><a href="表格绘制.html#cb104-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">label.y =</span> <span class="st">&quot;top&quot;</span>, <span class="at">label.x =</span> <span class="st">&quot;left&quot;</span>,</span>
+<span id="cb104-13"><a href="表格绘制.html#cb104-13" aria-hidden="true" tabindex="-1"></a>              <span class="at">parse =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb104-14"><a href="表格绘制.html#cb104-14" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(</span>
+<span id="cb104-15"><a href="表格绘制.html#cb104-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Example of &lt;span style=&#39;color:#D20F26&#39;&gt;ggpmisc::stat_fit_tb function&lt;/span&gt;&quot;</span>,</span>
+<span id="cb104-16"><a href="表格绘制.html#cb104-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;processed charts with &lt;span style=&#39;color:#1A73E8&#39;&gt;stat_fit_tb()&lt;/span&gt;&quot;</span>,</span>
+<span id="cb104-17"><a href="表格绘制.html#cb104-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Visualization by &lt;span style=&#39;color:#0057FF&#39;&gt;DataCharm&lt;/span&gt;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb104-18"><a href="表格绘制.html#cb104-18" aria-hidden="true" tabindex="-1"></a>  hrbrthemes<span class="sc">::</span><span class="fu">theme_ipsum</span>(<span class="at">base_family =</span> <span class="st">&quot;Roboto Condensed&quot;</span>)  <span class="sc">+</span></span>
+<span id="cb104-19"><a href="表格绘制.html#cb104-19" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(</span>
+<span id="cb104-20"><a href="表格绘制.html#cb104-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>,<span class="at">vjust =</span> .<span class="dv">5</span>,<span class="at">color =</span> <span class="st">&quot;black&quot;</span>,</span>
+<span id="cb104-21"><a href="表格绘制.html#cb104-21" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">size =</span> <span class="dv">20</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">12</span>)),</span>
+<span id="cb104-22"><a href="表格绘制.html#cb104-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>,<span class="at">vjust =</span> .<span class="dv">5</span>,<span class="at">size=</span><span class="dv">15</span>),</span>
+<span id="cb104-23"><a href="表格绘制.html#cb104-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&#39;bold&#39;</span>,<span class="at">size =</span> <span class="dv">12</span>)</span>
+<span id="cb104-24"><a href="表格绘制.html#cb104-24" aria-hidden="true" tabindex="-1"></a>      )</span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="kableextra包画图.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="变化趋势图.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/07-tables.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
