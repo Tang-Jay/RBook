@@ -1,6 +1,6 @@
 # 变化趋势图
 
-[参考来源：公众号“庄闪闪”](https://mp.weixin.qq.com/s/djRdS5Y3kBzJ1u32tHfhqQ)
+[参考来源：公众号“庄闪闪R语言学习手册”。](https://mp.weixin.qq.com/s/djRdS5Y3kBzJ1u32tHfhqQ)
 
 ```{r}
 ## 加载数据集

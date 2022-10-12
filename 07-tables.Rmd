@@ -1,6 +1,6 @@
 # 表格绘制
 
-[参考来源：公众号“Datacharm”，作者宁俊骐](https://mp.weixin.qq.com/s/NQDXkcQQSepiX0cjc8-ycw)
+[参考来源：公众号“Datacharm”，作者宁俊骐。](https://mp.weixin.qq.com/s/NQDXkcQQSepiX0cjc8-ycw)
 
 ## 单一的表格
 这一部分可能有很多优秀的第三方包可以制作，这里介绍前3个优秀的表格制作包，分别为

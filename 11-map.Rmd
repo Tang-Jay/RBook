@@ -1,13 +1,55 @@
 # 地图
 
-[参考来源：公众号“庄闪闪的R语言手册”](https://mp.weixin.qq.com/s/ZjUuFtRT1j3ksaGD-hHnLg)
+## 部分中国地图
+
+```{r}
+## 显示字体
+library(sysfonts)
+library(showtextdb)
+library(showtext)
+showtext_auto(enable = TRUE)
+font_add('font/simhei', 'font/simhei.ttf')
+# names(postscriptFonts()) # 查看字体集
+```
+
+```{r}
+## 用eps保存图片
+# setEPS() 
+# postscript('eps/中国地图.eps', width=6, height=7)
+# dev.off() 
+```
+
+```{r}
+library(maps)
+library(mapdata)
+dat = read.csv(text = 
+	"城市,jd,wd
+    4,113.25,23.13333333
+    3,113,28.18333333
+    1,102.6833333,25
+    2,108.3333333,22.8
+    ")
+
+map("china", ylim = c(18, 54))
+points(dat$jd, dat$wd, pch = 19, cex = 0.7)
+text(dat$jd, dat$wd, dat[, 1], cex = 0.7, pos = c(3,2,2,3))
+legend('bottomright', legend=c('1 云南省','2 广西省','3 湖南省','4 广东省'), bty='n')
+```
 
 
+
+## 中国地图
 用 R 语言绘制包含十段线的地图，并且可以根据数据实现对各省份的填色。
 
+[R语言绘制十段线地图，给特定省份填色](https://mp.weixin.qq.com/s/ZjUuFtRT1j3ksaGD-hHnLg)
 
+[十段线百科](https://baike.baidu.com/item/%E5%8D%81%E6%AE%B5%E7%BA%BF/14688257)
 
-## 获取地图数据
+[R语言绘制中国地图：着色省份、标注省份名称](https://bbs.pinggu.org/thread-9927782-1-1.html)
+
+[R语言绘制中国地图，增加指北针、比例尺和九段线区域小图](https://blog.csdn.net/joywww/article/details/116521133)
+
+### 获取数据
 
 ```{r message=FALSE, warning=FALSE}
 library(geojsonsf)
@@ -34,7 +76,7 @@ gjx <- China_line[China_line$QUHUADAIMA == "guojiexian",]
 province <- read.csv("map/province.csv")
 ```
 
-## 绘制中国地图
+### 绘制地图
 
 ```{r}
 fig1 <-  ggplot()+
@@ -89,7 +131,7 @@ fig = ggdraw() +
    draw_plot(fig2, x = 0.8, y = 0, width = 0.13, height = 0.39)
 fig
 ```
-## 地图填色
+### 地图填色
 
 ```{r}
 colour <- read.csv("map/colour.csv")
@@ -170,7 +212,7 @@ fig1 <-  ggplot() +
 fig
 ```
 
-## 给特定省份填色
+### 给特定省份填色
 
 ```{r}
 colour$new_colour <- rep(0,nrow(colour))
@@ -251,12 +293,7 @@ fig1 <-  ggplot() +
 fig
 ```
 
-## 其他参考
 
-[十段线百科](https://baike.baidu.com/item/%E5%8D%81%E6%AE%B5%E7%BA%BF/14688257)
 
-[R语言绘制中国地图：着色省份、标注省份名称](https://bbs.pinggu.org/thread-9927782-1-1.html)
-
-[R语言绘制中国地图，增加指北针、比例尺和九段线区域小图](https://blog.csdn.net/joywww/article/details/116521133)
 
 
